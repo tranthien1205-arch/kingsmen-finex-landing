@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "video_id": "REPLACE_VIDEO_ID_1",
+      "author": "",
+      "caption": "Demo thi công 4 bước — DIY tại nhà",
+      "thumbnail": "",
+      "order": 1,
+      "active": true
+    },
+    {
+      "video_id": "REPLACE_VIDEO_ID_2",
+      "author": "",
+      "caption": "Before/After 24h — Cải tạo sàn không đục phá",
+      "thumbnail": "",
+      "order": 2,
+      "active": true
+    },
+    {
+      "video_id": "REPLACE_VIDEO_ID_3",
+      "author": "",
+      "caption": "12 màu terrazzo trending 2026",
+      "thumbnail": "",
+      "order": 3,
+      "active": true
+    }
+  ]
+}

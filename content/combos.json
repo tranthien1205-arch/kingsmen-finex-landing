@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": "1kg",
+      "weight_kg": 1,
+      "area_m2": 0.3,
+      "price": 250000,
+      "original": 320000,
+      "label": "Finex F300 — 1kg",
+      "tagline": "Dùng thử / sample",
+      "badge": "",
+      "discount_pct": 22,
+      "image": "assets/finex/pack-1kg.jpg",
+      "active": true
+    },
+    {
+      "id": "3.5kg",
+      "weight_kg": 3.5,
+      "area_m2": 1.5,
+      "price": 750000,
+      "original": 980000,
+      "label": "Finex F300 — 3.5kg",
+      "tagline": "Phòng nhỏ / WC",
+      "badge": "",
+      "discount_pct": 23,
+      "image": "assets/finex/pack-3.5kg.jpg",
+      "active": true
+    },
+    {
+      "id": "7kg",
+      "weight_kg": 7,
+      "area_m2": 3,
+      "price": 1400000,
+      "original": 1850000,
+      "label": "Finex F300 — 7kg",
+      "tagline": "Phòng vừa, phổ biến nhất",
+      "badge": "Phổ biến nhất",
+      "discount_pct": 24,
+      "image": "assets/finex/pack-7kg.jpg",
+      "active": true
+    }
+  ]
+}

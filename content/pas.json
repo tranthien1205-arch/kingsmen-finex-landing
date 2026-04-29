@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "icon": "🧱",
+      "title": "Đục phá gạch cũ",
+      "bullets": [
+        "Bụi bẩn khủng khiếp 5-7 ngày",
+        "Phải dọn toàn bộ đồ đạc",
+        "Tiếng ồn, hàng xóm khó chịu",
+        "Chi phí gấp đôi Finex F300"
+      ]
+    },
+    {
+      "icon": "🪵",
+      "title": "Sàn gỗ công nghiệp",
+      "bullets": [
+        "Chứa formaldehyde độc hại",
+        "Mối mọt sau 2-3 năm",
+        "Kỵ nước, phồng rộp",
+        "Không chống trầy xước"
+      ]
+    },
+    {
+      "icon": "🧴",
+      "title": "Sàn nhựa PVC/SPC",
+      "bullets": [
+        "VOC gây hại sức khỏe",
+        "Dễ trầy, mất thẩm mỹ",
+        "Có khe hở, thấm nước",
+        "Nhìn rẻ tiền"
+      ]
+    }
+  ]
+}

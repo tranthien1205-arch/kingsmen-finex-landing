@@ -1,0 +1,35 @@
+{
+  "headers": ["Tiêu chí", "Terrazy ⭐", "Sàn gỗ CN", "PVC/SPC", "Gạch lát lại"],
+  "rows": [
+    {
+      "label": "Đục phá",
+      "values": ["KHÔNG", "Cần xử lý", "Cần xử lý", "PHÁ TOÀN BỘ"],
+      "highlights": ["good", "", "", "bad"]
+    },
+    {
+      "label": "Bụi, tiếng ồn",
+      "values": ["KHÔNG", "Ít", "Ít", "RẤT NHIỀU"],
+      "highlights": ["good", "", "", "bad"]
+    },
+    {
+      "label": "Thời gian",
+      "values": ["24-48h", "3-5 ngày", "2-3 ngày", "7-10 ngày"],
+      "highlights": ["good", "", "", "bad"]
+    },
+    {
+      "label": "Chống thấm",
+      "values": ["Tuyệt đối", "Không", "Không", "Qua ron"],
+      "highlights": ["good", "bad", "bad", ""]
+    },
+    {
+      "label": "VOC/Độc tố",
+      "values": ["KHÔNG", "Formaldehyde", "Có", "Ít"],
+      "highlights": ["good", "bad", "bad", ""]
+    },
+    {
+      "label": "Độ bền",
+      "values": ["10+ năm", "3-5 năm", "5-7 năm", "10+ năm"],
+      "highlights": ["good", "", "", ""]
+    }
+  ]
+}

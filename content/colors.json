@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "code": "T05",
+      "name": "Nâu Gỗ",
+      "hex": "#8b6f47",
+      "recommended_for": "",
+      "order": 1,
+      "description": "",
+      "swatch_image": "",
+      "scene_image": "",
+      "featured": false,
+      "active": true
+    },
+    {
+      "code": "T06",
+      "name": "Xanh Rêu",
+      "hex": "#6b8068",
+      "recommended_for": "",
+      "order": 1,
+      "description": "",
+      "swatch_image": "",
+      "scene_image": "",
+      "featured": false,
+      "active": true
+    },
+    {
+      "code": "T07",
+      "name": "Xanh Dương Nhẹ",
+      "hex": "#a4bdd4",
+      "recommended_for": "",
+      "order": 1,
+      "description": "",
+      "swatch_image": "",
+      "scene_image": "",
+      "featured": false,
+      "active": true
+    },
+    {
+      "code": "T08",
+      "name": "Hồng Phấn",
+      "hex": "#e8c8c4",
+      "recommended_for": "",
+      "order": 1,
+      "description": "",
+      "swatch_image": "",
+      "scene_image": "",
+      "featured": false,
+      "active": true
+    },
+    {
+      "code": "T09",
+      "name": "Đen Carbon",
+      "hex": "#2d2d2d",
+      "recommended_for": "",
+      "order": 1,
+      "description": "",
+      "swatch_image": "",
+      "scene_image": "",
+      "featured": true,
+      "active": true
+    }
+  ]
+}

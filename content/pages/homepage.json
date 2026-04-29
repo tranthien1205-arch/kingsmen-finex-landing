@@ -1,0 +1,569 @@
+{
+  "seo": {
+    "title": "Kingsmen Terrazy — Sàn epoxy tự phẳng thế hệ mới",
+    "description": "Sàn epoxy hiệu ứng số 1 Việt Nam · Cải tạo sàn không đục phá · Hiệu ứng terrazzo · 24-48h hoàn thiện · Bảo hành 10 năm. Thương hiệu Mỹ — Phân phối độc quyền bởi Masfico.",
+    "canonical": "https://kingsmen-terrazy.pages.dev/",
+    "index": true,
+    "og_image": ""
+  },
+  "blocks": [
+    {
+      "block_type": "hero",
+      "block_label": "1. Hero chính",
+      "eyebrow": "🇺🇸 Thương hiệu Mỹ · A+ Eurofins · ISO 9001",
+      "title": "KINGSMEN TERRAZY — Sàn epoxy tự phẳng thế hệ mới",
+      "subtitle": "Chuyên dụng cải tạo sàn không đục phá · Hiệu ứng terrazzo sang trọng · Tự phẳng ≤3mm · Hoàn thiện 24-48h",
+      "layout": "center-overlay",
+      "text_color": "white",
+      "background_image": "/assets/bucket_pouring.jpg",
+      "video_url": "",
+      "overlay": 60,
+      "cta_primary": {
+        "label": "🎁 NHẬN ƯU ĐÃI 25%",
+        "url": "#order",
+        "style": "gold"
+      },
+      "cta_secondary": {
+        "label": "📞 0888 144 848",
+        "url": "tel:0888144848",
+        "style": "outline"
+      },
+      "trust_badges": [
+        {
+          "icon": "🇺🇸",
+          "text": "Thương hiệu Mỹ"
+        },
+        {
+          "icon": "🏅",
+          "text": "A+ Eurofins"
+        },
+        {
+          "icon": "🛡️",
+          "text": "Bảo hành 10 năm"
+        },
+        {
+          "icon": "⭐",
+          "text": "4.9/5 · 3.547 đánh giá"
+        },
+        {
+          "icon": "📦",
+          "text": "12.000+ đơn hàng"
+        }
+      ]
+    },
+    {
+      "block_type": "brands",
+      "block_label": "2. Trust stamps — chứng nhận",
+      "title": "Được chứng nhận & kiểm định",
+      "style": "grayscale",
+      "autoscroll": false,
+      "logos": [
+        {
+          "logo": "",
+          "alt": "",
+          "url": ""
+        },
+        {
+          "logo": "",
+          "alt": "",
+          "url": ""
+        },
+        {
+          "logo": "",
+          "alt": "",
+          "url": ""
+        },
+        {
+          "logo": "",
+          "alt": "",
+          "url": ""
+        },
+        {
+          "logo": "",
+          "alt": "",
+          "url": ""
+        },
+        {
+          "logo": "",
+          "alt": "",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "block_type": "features",
+      "block_label": "3. PAS — Vấn đề cải tạo sàn",
+      "eyebrow": "Bạn đang gặp vấn đề?",
+      "title": "Cải tạo sàn cũ — cơn ác mộng của gia chủ",
+      "subtitle": "3 lựa chọn truyền thống — mỗi cái đều có nỗi đau riêng",
+      "columns": "3",
+      "card_style": "bordered",
+      "background": "white",
+      "items": [
+        {
+          "icon": "🧱",
+          "image": "",
+          "title": "Đục phá gạch cũ",
+          "description": "✗ Bụi bẩn khủng khiếp 5-7 ngày · ✗ Phải dọn toàn bộ đồ đạc · ✗ Tiếng ồn, hàng xóm khó chịu · ✗ Chi phí gấp đôi Terrazy",
+          "url": ""
+        },
+        {
+          "icon": "🪵",
+          "image": "",
+          "title": "Sàn gỗ công nghiệp",
+          "description": "✗ Chứa formaldehyde độc hại · ✗ Mối mọt sau 2-3 năm · ✗ Kỵ nước, phồng rộp · ✗ Không chống trầy xước",
+          "url": ""
+        },
+        {
+          "icon": "🧴",
+          "image": "",
+          "title": "Sàn nhựa PVC/SPC",
+          "description": "✗ VOC gây hại sức khỏe · ✗ Dễ trầy, mất thẩm mỹ · ✗ Có khe hở, thấm nước · ✗ Nhìn rẻ tiền",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "block_type": "gallery",
+      "block_label": "4. Before/After — Kết quả thực tế",
+      "eyebrow": "Kết quả thực tế",
+      "title": "Trước & Sau — 3 ngày lột xác",
+      "subtitle": "",
+      "layout": "before-after",
+      "background": "white",
+      "lightbox": true,
+      "items": [
+        {
+          "image": "/assets/before_after.jpg",
+          "image_before": "",
+          "caption": "Sàn cũ xuống cấp, ron đen, gạch sứt mẻ",
+          "alt": "",
+          "link": ""
+        },
+        {
+          "image": "/assets/before_after.jpg",
+          "image_before": "",
+          "caption": "Sàn mới Terrazy liền mạch, sang như villa",
+          "alt": "",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "block_type": "features",
+      "block_label": "5. Tính năng nổi bật (5 USP)",
+      "eyebrow": "5 điểm khác biệt",
+      "title": "Tại sao chọn Kingsmen Terrazy?",
+      "subtitle": "Ứng dụng công nghệ vật liệu hiện đại từ Mỹ — vượt xa tiêu chuẩn thị trường VN",
+      "columns": "3",
+      "card_style": "shadow",
+      "background": "white",
+      "items": [
+        {
+          "icon": "🚫",
+          "image": "",
+          "title": "Không đục phá",
+          "description": "Thi công trực tiếp trên gạch/nền cũ. Tiết kiệm 50% chi phí, 70% thời gian.",
+          "url": ""
+        },
+        {
+          "icon": "💧",
+          "image": "",
+          "title": "Tự phẳng ≤3mm",
+          "description": "Tự san phẳng thông minh chênh lệch tối đa 3mm. Không cần làm phẳng trước.",
+          "url": ""
+        },
+        {
+          "icon": "🌿",
+          "image": "",
+          "title": "Không bụi · VOC",
+          "description": "An toàn tuyệt đối cho trẻ em, người cao tuổi. Đạt chuẩn A+ Pháp.",
+          "url": ""
+        },
+        {
+          "icon": "💎",
+          "image": "",
+          "title": "Hiệu ứng Terrazzo",
+          "description": "12 màu hiệu ứng đá mài. Hardness 6H. Bề mặt liền mạch, sang trọng.",
+          "url": ""
+        },
+        {
+          "icon": "🛡️",
+          "image": "",
+          "title": "Chống thấm liền mạch",
+          "description": "Bám dính ≥3.0 MPa. Không khe hở, không ron — chống thấm tuyệt đối.",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "block_type": "text",
+      "block_label": "6. So sánh — Truyền thống vs Terrazy",
+      "title": "",
+      "content": "**📊 ỐP LÁT TRUYỀN THỐNG vs KINGSMEN TERRAZY — 6 tiêu chí quan trọng**\n\n| Tiêu chí | **Terrazy ⭐** | Sàn gỗ CN | PVC/SPC | Gạch lát lại |\n|---|---|---|---|---|\n| Đục phá | ✅ KHÔNG | Cần xử lý | Cần xử lý | ❌ PHÁ TOÀN BỘ |\n| Bụi, tiếng ồn | ✅ KHÔNG | Ít | Ít | ❌ RẤT NHIỀU |\n| Thời gian | ✅ 24-48h | 3-5 ngày | 2-3 ngày | ❌ 7-10 ngày |\n| Chống thấm | ✅ Tuyệt đối | ❌ Không | ❌ Không | ⚠️ Qua ron — thấm |\n| VOC/Độc tố | ✅ KHÔNG | ❌ Formaldehyde | ❌ Có | Ít |\n| Độ bền | ✅ 10+ năm | 3-5 năm | 5-7 năm | 10+ năm |\n\n*So sánh trực quan với hình ảnh: xem [/assets/comparison.jpg](/assets/comparison.jpg)*",
+      "width": "wide",
+      "align": "left",
+      "background": "white",
+      "padding": "lg"
+    },
+    {
+      "block_type": "text",
+      "block_label": "7. Safety & Family — An toàn cho gia đình",
+      "title": "",
+      "content": "## Sàn nhà chuẩn y tế cho gia đình\n\n**An toàn tuyệt đối · Không VOC · Không bụi**\n\nKingsmen Terrazy đạt chuẩn **A+ Eurofins (Pháp)** — tiêu chuẩn không khí trong nhà cao nhất thế giới. Bé con lăn lê bò trườn cả ngày, ba mẹ vẫn yên tâm.\n\n- 🚫☠️ **KHÔNG hóa chất độc hại**\n- 🌬️ **KHÔNG bụi, KHÔNG VOC**\n- 👶 **An toàn cho trẻ em**\n- 🌱 **Hướng tới lối sống xanh**",
+      "width": "wide",
+      "align": "left",
+      "background": "white",
+      "padding": "lg"
+    },
+    {
+      "block_type": "text",
+      "block_label": "8. Waterproof — Chống thấm liền mạch",
+      "title": "",
+      "content": "## Chống thấm liền mạch tuyệt đối\n\n**Công nghệ chống thấm thế hệ mới**\n\nKhông ron, không khe hở — bề mặt liền mạch như một tấm kính. Bám dính **≥3.0 MPa** — gấp 2 lần tiêu chuẩn thị trường.\n\n- ✓ Tăng tuổi thọ sàn, giảm chi phí bảo trì\n- ✓ Ngăn thấm nước, tránh bong tróc về sau\n- ✓ Đạt chuẩn vệ sinh gia đình & dịch vụ",
+      "width": "wide",
+      "align": "left",
+      "background": "white",
+      "padding": "lg"
+    },
+    {
+      "block_type": "gallery",
+      "block_label": "9. Application spaces — Ứng dụng đa dạng",
+      "eyebrow": "Ứng dụng đa dạng",
+      "title": "Từ nhà riêng đến không gian thương mại",
+      "subtitle": "",
+      "layout": "grid-2",
+      "background": "white",
+      "lightbox": true,
+      "items": [
+        {
+          "image": "/assets/living_spaces.jpg",
+          "image_before": "",
+          "caption": "🏠 Nhà ở — Nhà phố · Chung cư · Biệt thự · Villa",
+          "alt": "",
+          "link": ""
+        },
+        {
+          "image": "/assets/commercial.jpg",
+          "image_before": "",
+          "caption": "🏢 Thương mại — Quán cà phê · Nhà hàng · Văn phòng · Spa · Khu vui chơi",
+          "alt": "",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "block_type": "gallery",
+      "block_label": "10. Renovation showcase — Case study",
+      "eyebrow": "Case study thực tế",
+      "title": "Làm mới sàn nhà trong 1 ngày",
+      "subtitle": "",
+      "layout": "grid-2",
+      "background": "white",
+      "lightbox": true,
+      "items": [
+        {
+          "image": "/assets/renovation.jpg",
+          "image_before": "",
+          "caption": "Bền đẹp chuẩn thợ — không di chuyển đồ đạc",
+          "alt": "",
+          "link": ""
+        },
+        {
+          "image": "/assets/before_after.jpg",
+          "image_before": "",
+          "caption": "Gia đình vẫn sinh hoạt, không gián đoạn",
+          "alt": "",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "block_type": "color_swatches",
+      "block_label": "11. 12 Colors — Đa dạng màu hiệu ứng đá",
+      "eyebrow": "Đa dạng màu sắc",
+      "title": "12 màu hiệu ứng đá — phối mọi phong cách",
+      "subtitle": "",
+      "layout": "grid-4",
+      "source": "collection",
+      "show_filter": false,
+      "items": [
+        {
+          "code": "T04",
+          "name": "Xám Sáng",
+          "hex": "#c8c8c8",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T05",
+          "name": "Xám Đậm",
+          "hex": "#5a5a5a",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T06",
+          "name": "Đen Thanh Lịch",
+          "hex": "#2a2a2a",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T07",
+          "name": "Vàng Gold",
+          "hex": "#c9a84c",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T08",
+          "name": "Xanh Mint",
+          "hex": "#a8d5c4",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T09",
+          "name": "Xanh Pastel",
+          "hex": "#b7d4e5",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T10",
+          "name": "Hồng Pastel",
+          "hex": "#f0d4d4",
+          "swatch_image": "",
+          "scene_image": ""
+        },
+        {
+          "code": "T11",
+          "name": "Nâu Đất",
+          "hex": "#9a6b4f",
+          "swatch_image": "",
+          "scene_image": ""
+        }
+      ]
+    },
+    {
+      "block_type": "cta_banner",
+      "block_label": "12. Order combo — CTA chính (3 bước)",
+      "eyebrow": "🎁 ƯU ĐÃI 25% — HẾT HÔM NAY",
+      "title": "Đặt Combo Kingsmen Terrazy",
+      "description": "3 bước đơn giản · Giao 24h · Hỗ trợ thi công miễn phí. Combo 3m² · 4.5m² · 6m² — chọn đúng diện tích nhà bạn.",
+      "style": "teal",
+      "layout": "centered",
+      "bg_image": "",
+      "padding": "lg",
+      "buttons": [
+        {
+          "label": "🎁 ĐẶT COMBO NGAY",
+          "url": "#order",
+          "style": "gold",
+          "icon": "🎁"
+        },
+        {
+          "label": "📞 Gọi tư vấn 0888 144 848",
+          "url": "tel:0888144848",
+          "style": "white",
+          "icon": "📞"
+        }
+      ]
+    },
+    {
+      "block_type": "text",
+      "block_label": "13. 4 Steps installation — Hướng dẫn thi công",
+      "title": "",
+      "content": "## Thi công chỉ với 4 bước đơn giản\n\n**1. Vệ sinh nền** — Quét sạch bụi, lau khô bề mặt gạch/nền cũ\n\n**2. Trộn vật liệu** — Khuấy kỹ đúng tỷ lệ (xem hướng dẫn trên thùng)\n\n**3. Đổ & san phẳng** — Đổ đều, dùng bay san — vật liệu tự phẳng thông minh\n\n**4. Chờ khô** — 8h đi lại nhẹ · 24h dùng bình thường · 48h hoàn thiện 100%\n\n---\n\n⚠️ **LƯU Ý QUAN TRỌNG:**\n- Thi công xong trong 40 phút sau khi trộn, tránh đông cứng\n- Khuấy kỹ đúng tỷ lệ trước khi dùng để sơn khô đều\n- Khi dùng nhiều màu, cần dán keo phân ranh và làm sạch dụng cụ trước khi thi công lại",
+      "width": "wide",
+      "align": "left",
+      "background": "white",
+      "padding": "lg"
+    },
+    {
+      "block_type": "text",
+      "block_label": "14. Technical specs — Thông số kỹ thuật",
+      "title": "",
+      "content": "## Thông số kỹ thuật Kingsmen Terrazy\n\n| Thông số | Giá trị |\n|---|---|\n| **Độ cứng (Hardness)** | 6H |\n| **Bám dính (Adhesion)** | ≥ 3.0 MPa |\n| **Tự phẳng** | ≤ 3mm chênh lệch |\n| **Hiệu ứng** | Terrazzo (12 màu) |\n| **VOC** | Không (chuẩn A+ Eurofins) |\n| **Thời gian khô** | 8h đi lại · 48h hoàn thiện |\n| **Định mức** | 1.1-1.3 kg/m² (1mm) |\n| **Bảo hành** | 10 năm |\n| **Chứng nhận** | ISO 9001 · A+ Eurofins · CE · SGS · QCVN |\n\n*Xem chi tiết toàn bộ thông số: [/assets/page-13.jpg](/assets/page-13.jpg)*",
+      "width": "narrow",
+      "align": "left",
+      "background": "white",
+      "padding": "lg"
+    },
+    {
+      "block_type": "testimonials",
+      "block_label": "15. Reviews — 6 review thực tế",
+      "title": "Khách hàng nói gì về Kingsmen Terrazy?",
+      "subtitle": "",
+      "layout": "grid-3",
+      "source": "collection",
+      "items": [
+        {
+          "name": "Chị Nguyễn H.",
+          "subtitle": "",
+          "rating": 5,
+          "quote": "Cải tạo nhà 60m² trong đúng 1 ngày, con nhỏ vẫn ở nhà bình thường. Sàn đẹp như villa resort. Tiết kiệm 40% so với lát gạch lại.",
+          "avatar": "",
+          "project_photo": ""
+        },
+        {
+          "name": "Anh Trần L.",
+          "subtitle": "",
+          "rating": 5,
+          "quote": "Làm quán cafe 80m², khách đi vô khen 'sàn đẹp quá'. Không bụi khi thi công, chỉ đóng cửa 2 ngày là hoạt động lại. Sau 8 tháng vẫn như mới.",
+          "avatar": "",
+          "project_photo": ""
+        },
+        {
+          "name": "Anh Minh T.",
+          "subtitle": "",
+          "rating": 5,
+          "quote": "Trưng bày Terrazy ở showroom, khách tới là thích ngay. Tỷ lệ chốt đơn tăng 30%. Kingsmen hỗ trợ demo mẫu tận nơi, kỹ thuật rất chuẩn.",
+          "avatar": "",
+          "project_photo": ""
+        },
+        {
+          "name": "Chị Lan P.",
+          "subtitle": "",
+          "rating": 5,
+          "quote": "Trước định đục phá gạch cũ, báo giá 25tr cho 30m². Làm Terrazy xong hết 12tr, đẹp hơn và không ồn. Bé 3 tuổi nhà mình lăn lê thoải mái.",
+          "avatar": "",
+          "project_photo": ""
+        },
+        {
+          "name": "Anh Vũ Đ.",
+          "subtitle": "",
+          "rating": 5,
+          "quote": "Làm nhà thầu 15 năm, chưa thấy loại vật liệu nào thi công dễ như Terrazy. Tự phẳng thật, không cần kỹ thuật cao. Team mình làm được 300m²/ngày.",
+          "avatar": "",
+          "project_photo": ""
+        },
+        {
+          "name": "Chị Kim T.",
+          "subtitle": "",
+          "rating": 5,
+          "quote": "Làm KTS, mình luôn tư vấn Terrazy cho khách muốn sàn liền mạch sang trọng. 12 màu phối với mọi phong cách. Chống thấm tuyệt đối — hợp resort, villa.",
+          "avatar": "",
+          "project_photo": ""
+        }
+      ]
+    },
+    {
+      "block_type": "tiktok",
+      "block_label": "16. TikTok Showcase — Video thực tế",
+      "eyebrow": "📱 Xem trên TikTok",
+      "title": "Khách hàng quay lại sau khi dùng Terrazy",
+      "subtitle": "Video thực tế thi công, trước/sau, review khách — theo dõi @kingsmenkeo để xem thêm",
+      "layout": "grid-3",
+      "background": "dark"
+    },
+    {
+      "block_type": "faq",
+      "block_label": "17. Objection handling — Giải đáp lo lắng",
+      "title": "Còn lăn tăn? Đây là câu trả lời",
+      "subtitle": "",
+      "layout": "accordion",
+      "source": "collection",
+      "items": [
+        {
+          "question": "💭 Tôi chưa tin chất lượng — lỡ không như quảng cáo?",
+          "answer": "Hiểu mà — tâm lý ai cũng vậy. Vì thế chúng tôi có:\n- **Mẫu thử 1kg** — bạn test trực tiếp trên sàn nhà\n- **Bảo hành 10 năm** — lỗi vật liệu đổi mới 100%\n- **3.547 review ⭐4.9/5** từ khách thật, có hình\n- Đạt chuẩn **A+ Eurofins, ISO 9001, CE** — không phải nói suông",
+          "category": ""
+        },
+        {
+          "question": "💭 Không biết thi công — có tự làm được không?",
+          "answer": "Terrazy là **vật liệu tự phẳng thông minh** — dễ thi công nhất trong các loại sàn. Chỉ 4 bước: Vệ sinh → Trộn → Đổ → Chờ khô.\n\nNếu ngại, bạn chọn combo, team kỹ thuật Kingsmen sẽ **hỗ trợ miễn phí qua video call** hoặc giới thiệu đội thợ gần nhất tại khu vực của bạn.",
+          "category": ""
+        },
+        {
+          "question": "💭 Giá có đắt hơn sàn gạch/nhựa không?",
+          "answer": "Tính **tổng chi phí** (vật liệu + công + dọn rác + thời gian sinh hoạt bị gián đoạn), Terrazy **tiết kiệm 40-50%** so với đục phá lát gạch mới. Rẻ hơn sàn gỗ cao cấp và bền gấp 3 lần sàn nhựa PVC.",
+          "category": ""
+        },
+        {
+          "question": "💭 Bền được bao lâu?",
+          "answer": "Tuổi thọ thực tế **10-15 năm** trong điều kiện dân dụng bình thường. Hardness 6H (khó trầy), chịu tải nặng 1000g không nứt, chịu hóa chất (axit, kiềm, dầu). Khách hàng đầu tiên dùng Terrazy từ 2021 tới giờ vẫn như mới.",
+          "category": ""
+        },
+        {
+          "question": "💭 Nhà tôi có trẻ nhỏ — có độc hại không?",
+          "answer": "**Không. Tuyệt đối không.** Terrazy đạt chuẩn **A+ Eurofins** — tiêu chuẩn không khí trong nhà cao nhất của Pháp.\n\nKhông VOC, không formaldehyde, không bụi khi thi công. Bé con có thể lăn lê bò trườn ngay sau 8 giờ thi công (đi lại được). Phụ huynh nhiều công trình confirm: \"bé không bị dị ứng, không ho\".",
+          "category": ""
+        }
+      ]
+    },
+    {
+      "block_type": "faq",
+      "block_label": "18. FAQ — Câu hỏi thường gặp",
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "",
+      "layout": "accordion",
+      "source": "collection",
+      "items": [
+        {
+          "question": "🚚 Giao hàng mất bao lâu?",
+          "answer": "Nội thành TP.HCM & Hà Nội: **24 giờ**. Các tỉnh khác: 2-4 ngày. Miễn phí giao hàng toàn quốc cho combo từ 3m² trở lên.",
+          "category": ""
+        },
+        {
+          "question": "💰 Có thể trả khi nhận hàng (COD) không?",
+          "answer": "Có. Bạn có thể chọn COD, chuyển khoản, Momo, ZaloPay hoặc trả góp (đơn từ 5 triệu). Nhân viên sẽ tư vấn cụ thể khi gọi xác nhận.",
+          "category": ""
+        },
+        {
+          "question": "📏 1 combo phủ được bao nhiêu m²?",
+          "answer": "Định mức chuẩn: **1.1-1.3 kg/m²** ở độ dày 1mm. Combo 3m², 4.5m², 6m² tương ứng với diện tích phủ tiêu chuẩn. Với nền cũ không đều có thể cần thêm 10-15%.",
+          "category": ""
+        },
+        {
+          "question": "🎨 Có thể pha màu theo yêu cầu không?",
+          "answer": "Có. Với đơn từ **20m² trở lên**, Kingsmen có dịch vụ **ColorMatch™** — pha màu custom theo yêu cầu. Thời gian xử lý thêm 5-7 ngày.",
+          "category": ""
+        },
+        {
+          "question": "🛠️ Hỗ trợ thi công như thế nào?",
+          "answer": "Video hướng dẫn chi tiết, hotline kỹ thuật **24/7**, hỗ trợ qua video call. Với đơn từ 10m², có thể giới thiệu đội thợ chuẩn tại khu vực của bạn (phí thợ riêng, minh bạch).",
+          "category": ""
+        },
+        {
+          "question": "📃 Có chính sách bảo hành không?",
+          "answer": "**Bảo hành vật liệu 10 năm.** Nếu có lỗi từ nhà sản xuất (bong tróc, phai màu bất thường), đổi mới 100%. Thi công đúng hướng dẫn.",
+          "category": ""
+        }
+      ]
+    },
+    {
+      "block_type": "cta_banner",
+      "block_label": "19. Final CTA — Đặt combo ngay",
+      "eyebrow": "🎁 ƯU ĐÃI 25% — HẾT HÔM NAY",
+      "title": "Sàn nhà đẹp chuẩn villa — chỉ 1 ngày",
+      "description": "Đừng để sàn cũ xấu thêm một ngày nào nữa. Đặt combo Kingsmen Terrazy ngay — nhân viên gọi tư vấn trong 15 phút. ✓ Giao 24h · ✓ COD miễn phí · ✓ Bảo hành 10 năm · ✓ Đổi trả trong 7 ngày",
+      "style": "gradient",
+      "layout": "centered",
+      "bg_image": "",
+      "padding": "lg",
+      "buttons": [
+        {
+          "label": "🎁 ĐẶT COMBO NGAY",
+          "url": "#order",
+          "style": "gold",
+          "icon": "🎁"
+        },
+        {
+          "label": "📞 0888 144 848",
+          "url": "tel:0888144848",
+          "style": "white",
+          "icon": "📞"
+        },
+        {
+          "label": "💬 Chat Zalo",
+          "url": "https://zalo.me/0888144848",
+          "style": "outline",
+          "icon": "💬"
+        }
+      ]
+    }
+  ],
+  "published": true
+}

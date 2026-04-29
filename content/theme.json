@@ -1,0 +1,25 @@
+{
+  "colors": {
+    "primary": "#0C7B6F",
+    "primary_dark": "#0A6359",
+    "accent": "#C9A84C",
+    "dark": "#1A3A4A",
+    "text": "#2D2D2D",
+    "muted": "#8C8C8C",
+    "background": "#FFFFFF",
+    "bg_alt": "#F5F5F5",
+    "border": "#E0E0E0",
+    "success": "#10B981",
+    "warning": "#F59E0B",
+    "danger": "#C41E3A"
+  },
+  "typography": {
+    "font_heading": "'Google Sans', Arial, sans-serif",
+    "font_body": "'Google Sans', Helvetica, sans-serif",
+    "base_size": 16
+  },
+  "shape": {
+    "radius": 12,
+    "button_radius": 8
+  }
+}

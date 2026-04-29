@@ -1,0 +1,103 @@
+{
+  "hero.badge_1":          "🇺🇸 THƯƠNG HIỆU TỪ MỸ",
+  "hero.badge_2":          "A+ EUROFINS",
+  "hero.badge_3":          "VUA KEO XÂY DỰNG",
+  "hero.title_line1":      "FINEX F300",
+  "hero.title_line2":      "Sàn Epoxy Tự Phẳng",
+  "hero.title_line3":      "Finish Made Easy",
+  "hero.subtitle_lead":    "Chuyên cải tạo sàn KHÔNG ĐỤC PHÁ.",
+  "hero.subtitle_detail":  "Tự phẳng thông minh · Chống thấm tuyệt đối · Không bụi - VOC.",
+  "hero.social_count":     "Sản phẩm mới ra mắt",
+  "hero.social_rating":    "⭐ A+ Eurofins",
+  "hero.social_reviews":   "(Tiêu chuẩn không khí cao nhất)",
+  "hero.reassurance":      "✓ Tự thi công · ✓ Hỗ trợ kỹ thuật 24/7 · ✓ Hàng chính hãng",
+  "hero.stamp_top":        "KHÔNG ĐỤC PHÁ",
+  "hero.stamp_bottom_big": "24-48h",
+  "hero.stamp_bottom_sub": "HOÀN THIỆN",
+
+  "trust_stamps.heading":  "Được chứng nhận & kiểm định",
+
+  "pas.eyebrow":           "Bạn đang gặp vấn đề?",
+  "pas.title":             "Cải tạo sàn cũ — đau đầu, tốn tiền, mất thời gian",
+  "pas.title_html":        "Cải tạo sàn cũ — <span class=\"text-ks-usa-red\">đau đầu, tốn tiền</span>, mất thời gian",
+  "pas.subtitle":          "3 lựa chọn truyền thống — mỗi cái đều có nỗi đau riêng",
+
+  "solution.eyebrow":      "Giải pháp duy nhất",
+  "solution.title":        "Finex F300 — Cải tạo sàn KHÔNG đục phá",
+
+  "before_after.eyebrow":  "Kết quả thực tế",
+  "before_after.title":    "Trước & Sau khi thi công Finex F300",
+
+  "features.eyebrow":      "4 tính năng vượt trội",
+  "features.title":        "Tại sao chọn Finex F300?",
+  "features.subtitle":     "Vật liệu epoxy thế hệ mới từ Mỹ — đáp ứng tiêu chuẩn nội thất hiện đại",
+
+  "comparison.eyebrow":    "So sánh trực quan",
+  "comparison.title_html": "Ốp lát truyền thống <span class=\"text-ks-usa-red\">vs</span> Finex F300",
+
+  "safety.eyebrow":        "An toàn tuyệt đối",
+  "safety.title":          "Sàn nhà chuẩn y tế cho gia đình",
+  "safety.title_html":     "Sàn nhà <span class=\"text-ks-teal\">chuẩn y tế</span> cho gia đình",
+  "safety.body":           "Finex F300 đạt chuẩn <strong>A+ Eurofins (Pháp)</strong> — tiêu chuẩn không khí trong nhà cao nhất thế giới. Bé con lăn lê bò trườn cả ngày, ba mẹ vẫn yên tâm.",
+
+  "waterproof.eyebrow":    "Công nghệ chống thấm",
+  "waterproof.title":      "Chống thấm liền mạch tuyệt đối",
+  "waterproof.title_html": "Chống thấm liền mạch <span class=\"text-ks-teal\">tuyệt đối</span>",
+  "waterproof.body":       "Không ron, không khe hở — bề mặt liền mạch như một tấm kính. Bám dính <strong class=\"text-ks-teal\">≥1.5 MPa</strong>, độ cứng <strong>60-70D</strong> — chống mài mòn cực tốt.",
+
+  "spaces.eyebrow":        "Các khu vực sử dụng",
+  "spaces.title":          "Từ nhà ở đến nhà xưởng — đáp ứng mọi không gian",
+  "spaces.tab_residential":"🏠 Nhà ở",
+  "spaces.tab_commercial": "🏭 Công nghiệp / TM",
+  "spaces.caption_residential": "Nhà phố · Chung cư · Biệt thự · WC · Phòng tắm",
+  "spaces.caption_commercial":  "Nhà xưởng · Showroom xe hơi · Trung tâm thương mại · Văn phòng",
+
+  "renovation.eyebrow":    "Lợi ích thi công",
+  "renovation.title":      "Tiết kiệm thời gian · chi phí · không ồn",
+  "renovation.subtitle":   "Đi lại sau 24h, hoàn thiện sau 48h — gia đình vẫn sinh hoạt bình thường",
+
+  "colors.eyebrow":        "Đa dạng màu sắc",
+  "colors.title":          "Bảng màu Colored Sand — phối mọi phong cách",
+  "colors.subtitle":       "Màu sắc hiện đại, dễ phối với nội thất tối giản đến cổ điển",
+
+  "order.fomo_badge":      "🎁 ƯU ĐÃI RA MẮT — GIẢM 22-24%",
+  "order.heading":         "Đặt Bộ Thi Công Finex F300",
+  "order.subheading":      "3 size: 1kg / 3.5kg / 7kg · Giao toàn quốc · Tư vấn kỹ thuật miễn phí",
+
+  "steps.eyebrow":         "Tự thi công được",
+  "steps.title":           "Quy trình thi công 4 bước đơn giản",
+
+  "specs.eyebrow":         "Minh bạch kỹ thuật",
+  "specs.title":           "Thông số kỹ thuật Finex F300",
+
+  "reviews.eyebrow":       "Khách hàng & nhà thầu tin dùng",
+  "reviews.title":         "Khách hàng nói gì về Finex F300?",
+
+  "tiktok.eyebrow":        "📱 Xem trên TikTok",
+  "tiktok.title":          "Video thực tế thi công Finex F300",
+  "tiktok.subtitle":       "Trước/sau · review khách · hướng dẫn thi công",
+
+  "objection.eyebrow":     "Giải đáp lo lắng",
+  "objection.title":       "Còn lăn tăn? Đây là câu trả lời",
+  "objection.title_alt":   "Còn lăn tăn? Đây là câu trả lời",
+
+  "final_cta.fomo_badge":  "🎁 ƯU ĐÃI RA MẮT — GIẢM 22-24%",
+  "final_cta.title":       "Sàn nhà phẳng đẹp chỉ trong 1 ngày",
+  "final_cta.body":        "Đặt bộ Finex F300 ngay — đội kỹ thuật Masfico hỗ trợ tư vấn thi công trong 15 phút.",
+  "final_cta.btn_primary": "🎁 ĐẶT BỘ NGAY →",
+  "final_cta.btn_secondary":"📞 0888 144 848",
+  "final_cta.btn1":        "🎁 ĐẶT BỘ — GIẢM 22-24%",
+  "final_cta.btn2":        "📞 GỌI 0888 144 848",
+  "final_cta.reassurance": "✓ Giao toàn quốc · ✓ COD · ✓ Hỗ trợ kỹ thuật 24/7 · ✓ Hàng chính hãng",
+  "final_cta.eyebrow":     "Hành động ngay",
+
+  "footer.tagline":        "Vua keo xây dựng — Vật liệu hoàn thiện chuyên dụng từ Mỹ",
+  "footer.col1_title":     "Sản phẩm",
+  "footer.col2_title":     "Hỗ trợ",
+  "footer.col3_title":     "Liên hệ",
+  "footer.copyright":      "© 2026 Finex — Phân phối bởi Masfico Việt Nam",
+  "header.cta_order":      "ĐẶT NGAY",
+
+  "faq.eyebrow":           "FAQ",
+  "faq.title":             "Câu hỏi thường gặp"
+}

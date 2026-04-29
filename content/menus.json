@@ -1,0 +1,34 @@
+{
+  "header": [
+    { "label": "Trang chủ", "url": "/", "target": "_self" },
+    { "label": "Sản phẩm", "url": "#features", "target": "_self" },
+    { "label": "Bảng màu", "url": "#colors", "target": "_self" },
+    { "label": "Bảng giá", "url": "#pricing", "target": "_self" },
+    { "label": "Đánh giá", "url": "#reviews", "target": "_self" },
+    { "label": "FAQ", "url": "#faq", "target": "_self" },
+    { "label": "Liên hệ", "url": "#contact", "target": "_self" }
+  ],
+  "footer_col1": {
+    "heading": "Sản phẩm",
+    "links": [
+      { "label": "Kingsmen Terrazy", "url": "/" },
+      { "label": "Keo chít mạch", "url": "https://keokingsmen.com" }
+    ]
+  },
+  "footer_col2": {
+    "heading": "Công ty",
+    "links": [
+      { "label": "Về Masfico", "url": "#about" },
+      { "label": "Showroom", "url": "#contact" },
+      { "label": "Tuyển dụng", "url": "/tuyen-dung" }
+    ]
+  },
+  "footer_col3": {
+    "heading": "Hỗ trợ",
+    "links": [
+      { "label": "Hướng dẫn thi công", "url": "#install" },
+      { "label": "Bảo hành", "url": "#warranty" },
+      { "label": "Chính sách", "url": "/chinh-sach" }
+    ]
+  }
+}

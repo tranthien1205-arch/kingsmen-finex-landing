@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "name": "Chị Mai Anh",
+      "location": "Quận 7, TP.HCM",
+      "combo": "Combo 4.5m²",
+      "color": "Kem Terrazzo",
+      "rating": 5,
+      "quote": "Phòng khách nhà mình cải tạo trong 1 ngày, gia đình vẫn sinh hoạt bình thường, không bụi không mùi. Kết quả đẹp hơn kỳ vọng, bạn bè tới đều hỏi mua ở đâu!",
+      "image": "/assets/prod-036.jpg",
+      "verified": true,
+      "order": 1
+    },
+    {
+      "name": "Anh Tuấn Nguyễn",
+      "location": "Cầu Giấy, Hà Nội",
+      "combo": "Combo 6m²",
+      "color": "Xám Mưa",
+      "rating": 5,
+      "quote": "Làm sàn quán cafe 6m² chỉ 2 ngày là mở bán lại. So với gạch thì tiết kiệm được gần 40%, mà hiệu ứng terrazzo sang hơn hẳn. Khách khen nức nở.",
+      "image": "/assets/prod-246.jpg",
+      "verified": true,
+      "order": 2
+    },
+    {
+      "name": "Chị Lan Phạm",
+      "location": "Đà Nẵng",
+      "combo": "Combo 6m²",
+      "color": "Trắng Ngọc",
+      "rating": 5,
+      "quote": "Showroom của mình cần nâng cấp sàn nhưng không muốn đóng cửa thi công lâu. Terrazy giúp mình xong trong 48h, bề mặt láng mịn, khách hàng cứ tưởng đá thật.",
+      "image": "/assets/prod-266.jpg",
+      "verified": true,
+      "order": 3
+    },
+    {
+      "name": "Bé Minh Châu (phụ huynh)",
+      "location": "Thủ Đức, TP.HCM",
+      "combo": "Combo 3m²",
+      "color": "Hồng Phấn",
+      "rating": 5,
+      "quote": "Làm phòng bé 3m² màu hồng phấn, không lo bé hít phải VOC. Bé chạy xe đạp trong phòng cũng không trầy, thấy yên tâm hẳn.",
+      "image": "/assets/prod-178.jpg",
+      "verified": true,
+      "order": 4
+    },
+    {
+      "name": "Anh Hoàng Long",
+      "location": "Bình Thạnh, TP.HCM",
+      "combo": "Combo 4.5m²",
+      "color": "Nâu Gỗ",
+      "rating": 5,
+      "quote": "Cải tạo nhà tắm mà không đục gạch cũ — tiết kiệm được 2 tuần và 5 triệu tiền công phá dỡ. Chống thấm tuyệt đối, đã test 6 tháng không vấn đề.",
+      "image": "/assets/prod-215.jpg",
+      "verified": true,
+      "order": 5
+    },
+    {
+      "name": "Gia đình anh Vinh",
+      "location": "Bình Dương",
+      "combo": "Combo 6m²",
+      "color": "Đen Carbon + Kem Terrazzo",
+      "rating": 5,
+      "quote": "Xem trước-sau khách hàng khác xong là quyết mua luôn. DIY 4 bước rất dễ, 2 vợ chồng tự làm 6m² trong weekend. Không ngờ kết quả chuyên nghiệp vậy.",
+      "image": "/assets/prod-165.jpg",
+      "verified": true,
+      "order": 6
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# wrangler.toml — Finex landing (Cloudflare Pages, static-only)
+#
+# Finex doesn't run its own backend — orders + events POST cross-domain
+# to the Terrazy CRM at https://kingsmen-terrazy.pages.dev. So no D1
+# binding, no Pages Functions on this project.
+
+name = "kingsmen-finex"
+compatibility_date = "2025-04-01"
+
+pages_build_output_dir = "."
