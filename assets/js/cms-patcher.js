@@ -250,12 +250,21 @@
         el.textContent = '📞 ' + phoneDisplay;
       });
     }
-    // Order/offer button labels
+    // Order/offer button labels — but skip elements marked data-keep-content
+    // (icon-only floating buttons shouldn't get overwritten with text) and skip
+    // elements managed by sections.json via data-cms-text (those handle their own copy).
     if (site.cta && site.cta.order_label) {
-      document.querySelectorAll('[data-cms-cta="order"]').forEach((el) => { el.textContent = site.cta.order_label; });
+      document.querySelectorAll('[data-cms-cta="order"]').forEach((el) => {
+        if (el.hasAttribute('data-keep-content')) return;
+        if (el.hasAttribute('data-cms-text')) return;
+        el.textContent = site.cta.order_label;
+      });
     }
     if (site.cta && site.cta.offer_label) {
-      document.querySelectorAll('[data-cms-cta-label="offer"]').forEach((el) => { el.textContent = site.cta.offer_label; });
+      document.querySelectorAll('[data-cms-cta-label="offer"]').forEach((el) => {
+        if (el.hasAttribute('data-keep-content')) return;
+        el.textContent = site.cta.offer_label;
+      });
     }
     // Zalo URL
     const zalo = site.cta && (site.cta.zalo || site.zalo_phone);
@@ -522,22 +531,24 @@
     }
     section.style.display = '';
 
-    // No aspect-ratio wrapper — TikTok embed.js sets its own height (vertical 9:16-ish)
-    // and forcing aspect-[9/16] on the parent caused the iframe to overflow / black bands.
+    // Card wraps the TikTok embed in a fixed-aspect black container that matches
+    // TikTok's native iframe shape (~605×740 ≈ 4/5). The inner blockquote is centered.
+    // The <section> contains only the @author link — keeping it minimal so when JS
+    // is loading the fallback text doesn't duplicate the card's own caption footer.
     grid.innerHTML = items.map((v) => `
       <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover flex flex-col">
-        <div class="bg-black flex items-center justify-center" style="min-height:540px">
-          <blockquote class="tiktok-embed"
-            cite="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}"
-            data-video-id="${escapeHtml(v.video_id)}"
-            data-embed-from="oembed"
-            style="max-width:605px;min-width:280px;width:100%;margin:0">
-            <section>
-              <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}">@${escapeHtml(v.author)}</a>
-              ${v.caption ? `<p>${escapeHtml(v.caption)}</p>` : ''}
-              <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}">♬ Xem trên TikTok</a>
-            </section>
-          </blockquote>
+        <div class="bg-black relative" style="aspect-ratio: 605/740;">
+          <div class="absolute inset-0 flex items-stretch justify-center">
+            <blockquote class="tiktok-embed"
+              cite="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}"
+              data-video-id="${escapeHtml(v.video_id)}"
+              data-embed-from="oembed"
+              style="max-width:100%;min-width:280px;width:100%;margin:0;border:0">
+              <section style="margin:0;padding:0">
+                <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}">@${escapeHtml(v.author)}</a>
+              </section>
+            </blockquote>
+          </div>
         </div>
         ${v.caption ? `<div class="p-3 text-sm font-semibold text-ks-dark text-center border-t border-ks-border">${escapeHtml(v.caption)}</div>` : ''}
       </div>`).join('');
