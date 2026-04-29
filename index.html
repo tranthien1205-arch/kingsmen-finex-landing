@@ -211,10 +211,13 @@ tailwind.config = {
     table th, table td { padding: 6px 8px !important; }
     .overflow-x-auto { -webkit-overflow-scrolling: touch; }
 
-    /* --- TikTok embeds full-width --- */
+    /* --- TikTok embeds: keep within card while letting embed.js size naturally --- */
     .tiktok-embed, blockquote.tiktok-embed {
-      min-width: 0 !important; max-width: 100% !important; width: 100% !important;
       margin: 0 auto !important;
+    }
+    blockquote.tiktok-embed iframe { background: #000; }
+    blockquote.tiktok-embed[data-embed-from] section {
+      display: none;
     }
 
     /* --- Forms: 16px font (no iOS auto-zoom) + 44px tap target --- */

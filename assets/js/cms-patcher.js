@@ -531,27 +531,31 @@
     }
     section.style.display = '';
 
-    // Card wraps the TikTok embed in a fixed-aspect black container that matches
-    // TikTok's native iframe shape (~605×740 ≈ 4/5). The inner blockquote is centered.
-    // The <section> contains only the @author link — keeping it minimal so when JS
-    // is loading the fallback text doesn't duplicate the card's own caption footer.
-    grid.innerHTML = items.map((v) => `
+    // Match TikTok's oEmbed-recommended structure exactly. The blockquote keeps
+    // max-width:605px / min-width:325px so embed.js sizes its iframe correctly.
+    // Card flows naturally — iframe height (~740px) drives the card height.
+    // Author URL uses ?refer=embed which embed.js expects for embed-traffic id.
+    grid.innerHTML = items.map((v) => {
+      const userUrl  = `https://www.tiktok.com/@${escapeHtml(v.author)}?refer=embed`;
+      const videoUrl = `https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}`;
+      return `
       <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover flex flex-col">
-        <div class="bg-black relative" style="aspect-ratio: 605/740;">
-          <div class="absolute inset-0 flex items-stretch justify-center">
-            <blockquote class="tiktok-embed"
-              cite="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}"
-              data-video-id="${escapeHtml(v.video_id)}"
-              data-embed-from="oembed"
-              style="max-width:100%;min-width:280px;width:100%;margin:0;border:0">
-              <section style="margin:0;padding:0">
-                <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}">@${escapeHtml(v.author)}</a>
-              </section>
-            </blockquote>
-          </div>
+        <div class="bg-black flex justify-center items-start" style="min-height:480px">
+          <blockquote class="tiktok-embed"
+            cite="${videoUrl}"
+            data-video-id="${escapeHtml(v.video_id)}"
+            data-embed-from="oembed"
+            style="max-width:605px; min-width:325px;">
+            <section>
+              <a target="_blank" title="@${escapeHtml(v.author)}" href="${userUrl}">@${escapeHtml(v.author)}</a>
+              ${v.caption ? `<p>${escapeHtml(v.caption)}</p>` : ''}
+              <a target="_blank" href="${videoUrl}?refer=embed">♬ ${v.caption ? escapeHtml(v.caption.slice(0, 60)) : 'Xem trên TikTok'}</a>
+            </section>
+          </blockquote>
         </div>
         ${v.caption ? `<div class="p-3 text-sm font-semibold text-ks-dark text-center border-t border-ks-border">${escapeHtml(v.caption)}</div>` : ''}
-      </div>`).join('');
+      </div>`;
+    }).join('');
 
     // (Re)load embed.js — easiest reliable way to (re)render after innerHTML swap.
     // Remove any existing instance + state so the script reprocesses fresh blockquotes.
