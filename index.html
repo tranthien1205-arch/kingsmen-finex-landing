@@ -16,16 +16,16 @@ tailwind.config = {
     extend: {
       colors: {
         // Finex brand tokens — kept under same `ks-*` names so all class references work unchanged
-        'ks-teal':      '#1B7A9E',  // primary navy thép
-        'ks-dark-teal': '#0F4A66',  // primary dark
-        'ks-dark':      '#1A2332',  // charcoal
-        'ks-gold':      '#7FC8D9',  // accent cam đồng
+        'ks-teal':      '#0E5F66',  // primary navy thép
+        'ks-dark-teal': '#08454A',  // primary dark
+        'ks-dark':      '#3D4045',  // charcoal
+        'ks-gold':      '#5BAEAE',  // accent cam đồng
         'ks-usa-red':   '#C41E3A',  // giữ red
-        'ks-usa-blue':  '#0F4A66',  // align với dark navy
-        'ks-light':     '#F7F9FC',  // off-white
-        'ks-mid-gray':  '#5A6B7E',  // steel grey
-        'ks-dark-text': '#1A2332',
-        'ks-border':    '#D8DEE8',
+        'ks-usa-blue':  '#08454A',  // align với dark navy
+        'ks-light':     '#F4F7F7',  // off-white
+        'ks-mid-gray':  '#6B7079',  // steel grey
+        'ks-dark-text': '#3D4045',
+        'ks-border':    '#D8DDDF',
       },
       fontFamily: {
         'display': ['Be Vietnam Pro', 'Inter', 'sans-serif'],
@@ -42,12 +42,12 @@ tailwind.config = {
   h1, h2, h3, h4, .display { font-family: 'Be Vietnam Pro', 'Inter', sans-serif; font-weight: 800; }
 
   /* Gradients */
-  .bg-ks-gradient { background: linear-gradient(135deg, #1B7A9E 0%, #0F4A66 100%); }
-  .bg-hero-gradient { background: linear-gradient(135deg, #0F4A66 0%, #1A2332 100%); }
+  .bg-ks-gradient { background: linear-gradient(135deg, #0E5F66 0%, #08454A 100%); }
+  .bg-hero-gradient { background: linear-gradient(135deg, #08454A 0%, #3D4045 100%); }
 
   /* USA badge */
   .usa-badge {
-    background: linear-gradient(180deg, #C41E3A 0%, #C41E3A 50%, #0F4A66 50%, #0F4A66 100%);
+    background: linear-gradient(180deg, #C41E3A 0%, #C41E3A 50%, #08454A 50%, #08454A 100%);
     color: white; font-weight: 800; letter-spacing: 0.5px;
   }
 
@@ -55,9 +55,9 @@ tailwind.config = {
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { animation: fadeUp 0.7s ease-out both; }
   @keyframes pulse-ring {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(127, 200, 217, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(127, 200, 217, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(127, 200, 217, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(91, 174, 174, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(91, 174, 174, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(91, 174, 174, 0); }
   }
   .pulse-ring { animation: pulse-ring 2.2s infinite; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -65,7 +65,7 @@ tailwind.config = {
 
   /* Cards */
   .card-hover { transition: all 0.3s ease; }
-  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(15, 74, 102, 0.14); }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(8, 69, 74, 0.14); }
 
   /* Accordion */
   details > summary { list-style: none; cursor: pointer; }
@@ -75,7 +75,7 @@ tailwind.config = {
 
   /* Countdown digit */
   .cd-digit {
-    background: #1A2332; color: #7FC8D9; font-weight: 800;
+    background: #3D4045; color: #5BAEAE; font-weight: 800;
     padding: 6px 10px; border-radius: 6px; min-width: 44px;
     display: inline-flex; justify-content: center; font-variant-numeric: tabular-nums;
   }
@@ -85,27 +85,27 @@ tailwind.config = {
     cursor: pointer; transition: all 0.25s;
     border: 3px solid transparent;
   }
-  .swatch.selected { border-color: #1B7A9E; transform: scale(1.08); }
+  .swatch.selected { border-color: #0E5F66; transform: scale(1.08); }
   .swatch:hover { transform: scale(1.05); }
 
   /* Combo cards */
   .combo-card { transition: all 0.3s; border: 3px solid #E0E0E0; }
-  .combo-card.active { border-color: #1B7A9E; background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 100%); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(27, 122, 158, 0.15); }
-  .combo-card .badge-best { background: #7FC8D9; color: white; }
+  .combo-card.active { border-color: #0E5F66; background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 100%); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(14, 95, 102, 0.15); }
+  .combo-card .badge-best { background: #5BAEAE; color: white; }
 
   /* FOMO sticky */
-  .fomo-bar { background: linear-gradient(90deg, #C41E3A 0%, #1A2332 50%, #1B7A9E 100%); }
+  .fomo-bar { background: linear-gradient(90deg, #C41E3A 0%, #3D4045 50%, #0E5F66 100%); }
 
   /* Scroll reveal helper */
   .io-hidden { opacity: 0; transform: translateY(24px); transition: all 0.8s; }
   .io-show { opacity: 1; transform: translateY(0); }
 
   /* Tab underline */
-  .tab-btn.active { color: #1B7A9E; border-bottom: 3px solid #1B7A9E; font-weight: 700; }
+  .tab-btn.active { color: #0E5F66; border-bottom: 3px solid #0E5F66; font-weight: 700; }
 
   /* Hero image effect */
   .hero-glow {
-    filter: drop-shadow(0 20px 40px rgba(27, 122, 158, 0.35));
+    filter: drop-shadow(0 20px 40px rgba(14, 95, 102, 0.35));
   }
   .hero-blob {
     position: absolute; border-radius: 50%;
@@ -114,10 +114,10 @@ tailwind.config = {
   }
 
   /* Review card */
-  .review-card { background: white; border-left: 4px solid #7FC8D9; }
+  .review-card { background: white; border-left: 4px solid #5BAEAE; }
 
   /* Stamps row */
-  .stamp { background: white; border: 2px solid #E0E0E0; border-radius: 10px; padding: 8px 14px; font-size: 11px; font-weight: 700; color: #0F4A66; text-transform: uppercase; letter-spacing: 0.4px; }
+  .stamp { background: white; border: 2px solid #E0E0E0; border-radius: 10px; padding: 8px 14px; font-size: 11px; font-weight: 700; color: #08454A; text-transform: uppercase; letter-spacing: 0.4px; }
 
   /* Hide scrollbar horizontal */
   .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -282,7 +282,7 @@ tailwind.config = {
 <nav class="bg-white shadow-sm sticky top-[40px] z-40 border-b border-ks-border">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
     <a href="#" class="flex items-center gap-2 shrink-0">
-      <img src="assets/finex/logo.svg" alt="Finex F300" data-cms-img="logo_header" class="h-7 md:h-9">
+      <img src="assets/finex/logo-header.png" alt="Finex F300 — Finish Made Easy" data-cms-img="logo_header" class="h-8 md:h-10 w-auto">
     </a>
     <div class="hidden lg:flex items-center gap-5 text-sm font-semibold text-ks-dark">
       <a href="#features" class="hover:text-ks-teal">Tính năng</a>
@@ -302,7 +302,7 @@ tailwind.config = {
 
 <!-- HERO -->
 <section class="relative bg-hero-gradient overflow-hidden">
-  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 20%, #7FC8D9 0, transparent 50%), radial-gradient(circle at 80% 80%, #1B7A9E 0, transparent 50%);"></div>
+  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 20%, #5BAEAE 0, transparent 50%), radial-gradient(circle at 80% 80%, #0E5F66 0, transparent 50%);"></div>
   <div class="hero-blob w-96 h-96 top-10 -right-20"></div>
   <div class="relative max-w-7xl mx-auto px-4 py-12 md:py-20 grid lg:grid-cols-2 gap-10 items-center">
     <div class="text-white reveal">
@@ -1307,7 +1307,7 @@ tailwind.config = {
 <footer class="bg-ks-dark text-white/80 py-10">
   <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
     <div class="md:col-span-2">
-      <img src="assets/finex/logo.jpg" alt="Finex F300" data-cms-img="logo_footer" class="h-10 bg-white rounded p-1 mb-3 inline-block">
+      <img src="assets/finex/logo.png" alt="Finex F300" data-cms-img="logo_footer" class="h-12 bg-white rounded p-2 mb-3 inline-block">
       <p class="text-sm mb-2">Finex F300 — Sàn Epoxy Tự Phẳng F300 thế hệ mới.<br>
       Thương hiệu Mỹ · Phân phối độc quyền bởi <strong class="text-white">Công ty CP Masfico Việt Nam</strong>.</p>
       <p class="text-sm mt-4">Website thương mại: <a href="https://finex.vuakeoxaydung.vn" class="text-ks-gold hover:underline">finex.vuakeoxaydung.vn</a></p>

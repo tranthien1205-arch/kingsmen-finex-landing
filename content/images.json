@@ -1,6 +1,6 @@
 {
-  "logo_header": "/assets/finex/logo.svg",
-  "logo_footer": "/assets/finex/logo.svg",
+  "logo_header": "/assets/finex/logo-header.png",
+  "logo_footer": "/assets/finex/logo.png",
   "hero_main": "/assets/finex/hero-banner-16x9.jpg",
   "pas_before_after": "/assets/finex/before-after.jpg",
   "features_overview": "/assets/finex/features.jpg",
