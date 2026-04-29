@@ -131,6 +131,11 @@ tailwind.config = {
   /* Stamps row */
   .stamp { background: white; border: 2px solid #E0E0E0; border-radius: 10px; padding: 8px 14px; font-size: 11px; font-weight: 700; color: #08454A; text-transform: uppercase; letter-spacing: 0.4px; }
 
+  /* TikTok embed: hide the <section> fallback content so it doesn't render
+     alongside the iframe. embed.js inserts an iframe inside the blockquote. */
+  blockquote.tiktok-embed > section { display: none; }
+  blockquote.tiktok-embed iframe { background: #000; border: 0; }
+
   /* Hide scrollbar horizontal */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { scrollbar-width: none; }
@@ -211,13 +216,9 @@ tailwind.config = {
     table th, table td { padding: 6px 8px !important; }
     .overflow-x-auto { -webkit-overflow-scrolling: touch; }
 
-    /* --- TikTok embeds: keep within card while letting embed.js size naturally --- */
+    /* --- TikTok embeds mobile centering --- */
     .tiktok-embed, blockquote.tiktok-embed {
       margin: 0 auto !important;
-    }
-    blockquote.tiktok-embed iframe { background: #000; }
-    blockquote.tiktok-embed[data-embed-from] section {
-      display: none;
     }
 
     /* --- Forms: 16px font (no iOS auto-zoom) + 44px tap target --- */
