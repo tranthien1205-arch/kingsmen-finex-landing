@@ -190,7 +190,10 @@
     document.querySelectorAll('[data-cms-text]').forEach((el) => {
       const key = el.getAttribute('data-cms-text');
       const v = sections[key];
-      if (v == null) return;
+      // Skip null/undefined OR empty string — keep static fallback so admin clearing
+      // a field doesn't blank the rendered text. To intentionally hide, set the
+      // value to a single space " " or use an active=false toggle on a list item.
+      if (v == null || v === '') return;
       // Render as innerHTML so editors can include simple inline tags / entities
       if (el.innerHTML !== v) el.innerHTML = v;
     });
