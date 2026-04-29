@@ -270,34 +270,32 @@ tailwind.config = {
 <!-- FOMO STICKY BAR (Scarcity + Urgency) -->
 <div id="fomoBar" class="fomo-bar text-white text-sm py-2 px-4 sticky top-0 z-50 shadow-md">
   <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 md:gap-6 text-center">
-    <span class="font-bold">🎁 ƯU ĐÃI 25% — GIẢM 1.000.000₫</span>
+    <span class="font-bold">🎁 ƯU ĐÃI RA MẮT — GIẢM 22-24%</span>
     <span class="hidden md:inline">|</span>
     <span class="hidden md:inline">Còn: <span class="cd-digit" id="cdH">00</span>:<span class="cd-digit" id="cdM">00</span>:<span class="cd-digit" id="cdS">00</span></span>
     <span class="hidden md:inline">|</span>
-    <a href="#order" class="bg-ks-gold text-white px-3 py-1 rounded-full font-bold hover:brightness-110 transition">Đặt ngay →</a>
+    <a href="#order" class="bg-white text-ks-dark-teal px-3 py-1 rounded-full font-bold hover:brightness-110 transition">Đặt ngay →</a>
   </div>
 </div>
 
 <!-- NAV -->
 <nav class="bg-white shadow-sm sticky top-[40px] z-40 border-b border-ks-border">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2">
-      <img src="assets/finex/logo.jpg" alt="Finex F300" data-cms-img="logo_header" class="h-9 md:h-10">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <a href="#" class="flex items-center gap-2 shrink-0">
+      <img src="assets/finex/logo.svg" alt="Finex F300" data-cms-img="logo_header" class="h-7 md:h-9">
     </a>
-    <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-ks-dark">
+    <div class="hidden lg:flex items-center gap-5 text-sm font-semibold text-ks-dark">
       <a href="#features" class="hover:text-ks-teal">Tính năng</a>
       <a href="#spaces" class="hover:text-ks-teal">Ứng dụng</a>
-      <a href="#colors" class="hover:text-ks-teal">Màu sắc</a>
       <a href="#order" class="hover:text-ks-teal">Combo & giá</a>
-      <a href="#reviews" class="hover:text-ks-teal">Đánh giá</a>
-      <a href="#tiktok" class="hover:text-ks-teal">TikTok</a>
+      <a href="#specs" class="hover:text-ks-teal">Thông số</a>
       <a href="#faq" class="hover:text-ks-teal">FAQ</a>
     </div>
     <div class="flex items-center gap-2">
       <a href="tel:0888144848" data-cms-cta="call" class="hidden md:flex items-center gap-1 text-ks-teal font-bold text-sm">
         <span data-cms-cta-label="call">📞 0888 144 848</span>
       </a>
-      <a href="#order" data-cms-cta="order" class="bg-ks-teal text-white px-4 py-2 rounded-full font-bold text-sm hover:bg-ks-dark-teal pulse-ring" data-cms-text="header.cta_order">ĐẶT HÀNG</a>
+      <a href="#order" data-cms-cta="order" class="bg-ks-teal text-white px-3 md:px-4 py-2 rounded-full font-bold text-xs md:text-sm hover:bg-ks-dark-teal pulse-ring whitespace-nowrap" data-cms-text="header.cta_order">🛒 Đặt ngay</a>
     </div>
   </div>
 </nav>
@@ -308,19 +306,19 @@ tailwind.config = {
   <div class="hero-blob w-96 h-96 top-10 -right-20"></div>
   <div class="relative max-w-7xl mx-auto px-4 py-12 md:py-20 grid lg:grid-cols-2 gap-10 items-center">
     <div class="text-white reveal">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="usa-badge text-xs px-3 py-1 rounded" data-cms-text="hero.badge_1">🇺🇸 THƯƠNG HIỆU MỸ</span>
-        <span class="bg-ks-gold text-ks-dark text-xs px-3 py-1 rounded font-bold" data-cms-text="hero.badge_2">A+ EUROFINS</span>
-        <span class="bg-white/20 text-white text-xs px-3 py-1 rounded border border-white/30" data-cms-text="hero.badge_3">ISO 9001</span>
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="usa-badge text-[10px] md:text-xs px-2.5 py-1 rounded" data-cms-text="hero.badge_1">🇺🇸 THƯƠNG HIỆU MỸ</span>
+        <span class="bg-ks-gold text-ks-dark text-[10px] md:text-xs px-2.5 py-1 rounded font-bold" data-cms-text="hero.badge_2">A+ EUROFINS</span>
+        <span class="bg-white/20 text-white text-[10px] md:text-xs px-2.5 py-1 rounded border border-white/30" data-cms-text="hero.badge_3">MỚI RA MẮT</span>
       </div>
-      <h1 class="display text-4xl md:text-5xl lg:text-6xl leading-tight mb-4">
-        <span class="text-ks-gold" data-cms-text="hero.title_line1">KINGSMEN TERRAZY</span><br>
-        <span data-cms-text="hero.title_line2">Sàn Epoxy Tự Phẳng F300</span><br>
-        <span class="text-white/90" data-cms-text="hero.title_line3">thế hệ mới</span>
+      <h1 class="display text-3xl md:text-5xl lg:text-6xl leading-tight mb-4">
+        <span class="text-ks-gold" data-cms-text="hero.title_line1">FINEX F300</span><br>
+        <span data-cms-text="hero.title_line2">Sàn Epoxy Tự Phẳng</span><br>
+        <span class="text-white/90 text-2xl md:text-3xl lg:text-4xl italic font-normal" data-cms-text="hero.title_line3">Finish Made Easy</span>
       </h1>
-      <p class="text-lg md:text-xl text-white/90 mb-6 leading-relaxed">
-        <strong class="text-ks-gold" data-cms-text="hero.subtitle_lead">Chuyên dụng cải tạo sàn không đục phá.</strong><br>
-        <span data-cms-text="hero.subtitle_detail">Hiệu ứng epoxy F300 sang trọng · Tự phẳng ≤3mm · Hoàn thiện 24-48h.</span>
+      <p class="text-base md:text-lg text-white/90 mb-6 leading-relaxed">
+        <strong class="text-ks-gold" data-cms-text="hero.subtitle_lead">Cải tạo sàn KHÔNG đục phá.</strong><br>
+        <span data-cms-text="hero.subtitle_detail">Tự phẳng · Chống thấm · Không bụi-VOC.</span>
       </p>
 
       <!-- Social proof stripe -->
@@ -332,21 +330,21 @@ tailwind.config = {
           <div class="w-8 h-8 rounded-full bg-ks-dark border-2 border-white flex items-center justify-center text-white text-xs font-bold">+</div>
         </div>
         <div class="text-white/90">
-          <span class="text-ks-gold font-bold" data-cms-text="hero.social_count">12.000+ đơn hàng</span> · <span class="font-bold" data-cms-text="hero.social_rating">⭐4.9/5</span> <span data-cms-text="hero.social_reviews">(3.500+ đánh giá)</span>
+          <span class="text-ks-gold font-bold" data-cms-text="hero.social_count">Sản phẩm mới</span> · <span class="font-bold" data-cms-text="hero.social_rating">⭐ A+ Eurofins</span> <span data-cms-text="hero.social_reviews">(không khí tốt nhất)</span>
         </div>
       </div>
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row gap-3">
-        <a href="#order" data-cms-cta="offer" class="bg-ks-gold text-ks-dark px-8 py-4 rounded-full font-black text-center hover:brightness-110 transition shadow-xl text-lg">
-          <span data-cms-cta-label="offer">🎁 NHẬN ƯU ĐÃI 25% →</span>
+        <a href="#order" data-cms-cta="offer" class="bg-ks-gold text-ks-dark px-7 py-3.5 rounded-full font-black text-center hover:brightness-110 transition shadow-xl text-base md:text-lg">
+          <span data-cms-cta-label="offer">🎁 NHẬN ƯU ĐÃI RA MẮT →</span>
         </a>
-        <a href="tel:0888144848" data-cms-cta="call" class="bg-white/10 backdrop-blur border border-white/30 text-white px-6 py-4 rounded-full font-bold text-center hover:bg-white/20 transition">
+        <a href="tel:0888144848" data-cms-cta="call" class="bg-white/10 backdrop-blur border border-white/30 text-white px-5 py-3.5 rounded-full font-bold text-center hover:bg-white/20 transition">
           <span data-cms-cta-label="call">📞 0888 144 848</span>
         </a>
       </div>
 
-      <p class="text-white/70 text-sm mt-4" data-cms-text="hero.reassurance">✓ Giao 24h nội thành · ✓ Hỗ trợ thi công · ✓ Bảo hành 10 năm</p>
+      <p class="text-white/70 text-xs md:text-sm mt-4" data-cms-text="hero.reassurance">✓ Tự thi công · ✓ Hỗ trợ kỹ thuật · ✓ Hàng chính hãng</p>
     </div>
 
     <!-- Hero image: real bucket pouring -->
