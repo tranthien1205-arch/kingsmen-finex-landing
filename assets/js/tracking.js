@@ -98,8 +98,8 @@
       ...UTM,
       events: batch
     });
-    // Cross-domain: Finex landing pings the shared CRM events endpoint.
-    const EVT_BASE = (typeof window !== 'undefined' && window.CRM_API_BASE) || 'https://kingsmen-terrazy.pages.dev';
+    // Cross-domain: Finex landing pings the shared CRM events endpoint on canonical custom domain.
+    const EVT_BASE = (typeof window !== 'undefined' && window.CRM_API_BASE) || 'https://kingsmenterrazy.vuakeoxaydung.vn';
     if (useBeacon && navigator.sendBeacon) {
       navigator.sendBeacon(EVT_BASE + '/api/events', new Blob([body], { type: 'application/json' }));
     } else {

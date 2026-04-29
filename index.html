@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  // Canonical-domain redirect for Finex. Once a custom domain is pointed at this Pages
+  // project, change `canonical` below to that hostname (e.g. 'finex.vuakeoxaydung.vn').
+  // Until then, leaving canonical = pages.dev makes this a no-op.
+  (function(){
+    var canonical = 'kingsmen-finex-landing.pages.dev';
+    if (location.hostname !== canonical && location.hostname.endsWith('.pages.dev')) {
+      location.replace('https://' + canonical + location.pathname + location.search + location.hash);
+    }
+  })();
+</script>
 <meta name="description" content="Finex F300 — Sàn Epoxy Tự Phẳng thế hệ mới, Finish Made Easy. Chuyên cải tạo sàn không đục phá: tự phẳng thông minh, chống thấm tuyệt đối, không bụi-VOC. Thương hiệu từ Mỹ, phân phối độc quyền Masfico Việt Nam.">
 <meta name="keywords" content="sàn epoxy tự phẳng, finex f300, kingsmen finex, cải tạo sàn không đục phá, colored sand epoxy floor, epoxy floor việt nam">
+<link rel="canonical" href="https://kingsmen-finex-landing.pages.dev/">
 <title>Finex F300 — Sàn Epoxy Tự Phẳng | Finish Made Easy · Cải Tạo Sàn Không Đục Phá</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1494,9 +1506,9 @@ tailwind.config = {
       session_id:       window.KS_SESSION_ID || null
     };
 
-    // Cross-domain: Finex landing posts to Terrazy CRM API.
+    // Cross-domain: Finex landing posts to Terrazy CRM API on the canonical custom domain.
     // window.CRM_API_BASE can be overridden in console for staging tests.
-    const CRM_BASE = window.CRM_API_BASE || 'https://kingsmen-terrazy.pages.dev';
+    const CRM_BASE = window.CRM_API_BASE || 'https://kingsmenterrazy.vuakeoxaydung.vn';
 
     let apiOk = false;
     let apiOrderId = null;
