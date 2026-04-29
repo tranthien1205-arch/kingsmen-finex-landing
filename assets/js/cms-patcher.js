@@ -459,36 +459,75 @@
   }
 
   // -------------------- TIKTOK --------------------
+  // Extract a 19-digit TikTok video id from anything the user might paste:
+  // - bare id "7345678901234567890"
+  // - full URL "https://www.tiktok.com/@user/video/7345678901234567890[?...]"
+  // - share link "https://vm.tiktok.com/ZSxxxxx" (cannot resolve client-side; ignored)
+  function extractTiktokId(raw) {
+    if (!raw) return '';
+    const s = String(raw).trim();
+    if (/^\d{6,}$/.test(s)) return s;
+    const m = s.match(/\/video\/(\d{6,})/);
+    return m ? m[1] : '';
+  }
+  function extractTiktokAuthor(raw, fallback) {
+    if (!raw) return fallback || 'kingsmenkeo';
+    const s = String(raw).trim().replace(/^@/, '');
+    if (/^[a-zA-Z0-9._]+$/.test(s)) return s;
+    const m = s.match(/tiktok\.com\/@([a-zA-Z0-9._]+)/);
+    return m ? m[1] : (fallback || 'kingsmenkeo');
+  }
+
   function patchTiktok(tiktok) {
     if (!tiktok || !Array.isArray(tiktok.items)) return;
     const section = document.getElementById('tiktok');
     if (!section) return;
-    // Find the existing grid container (tiktok section uses md:grid-cols-3)
     const grid = section.querySelector('.grid');
     if (!grid) return;
-    const items = tiktok.items.filter((v) => v.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
-    if (items.length === 0) return;
+
+    // Normalize + filter: must be active AND have a valid numeric video id
+    const items = tiktok.items
+      .filter((v) => v.active !== false)
+      .map((v) => ({
+        ...v,
+        video_id: extractTiktokId(v.video_id),
+        author: extractTiktokAuthor(v.author || v.video_id, 'kingsmenkeo'),
+      }))
+      .filter((v) => v.video_id)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    if (items.length === 0) {
+      // Hide whole section if no valid videos — better than showing broken embeds
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = '';
+
     grid.innerHTML = items.map((v) => `
       <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover">
         <div class="relative aspect-[9/16] bg-black">
-          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/${v.author ? '@' + String(v.author).replace(/^@/, '') : '@kingsmenkeo'}/video/${escapeHtml(v.video_id || '')}" data-video-id="${escapeHtml(v.video_id || '')}" style="max-width:100%;min-width:100%">
-            <section></section>
+          <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}"
+            data-video-id="${escapeHtml(v.video_id)}"
+            style="max-width:100%;min-width:100%;margin:0">
+            <section>
+              <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}">@${escapeHtml(v.author)}</a>
+              ${v.caption ? `<p>${escapeHtml(v.caption)}</p>` : ''}
+              <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}">♬ Xem trên TikTok</a>
+            </section>
           </blockquote>
         </div>
         ${v.caption ? `<div class="p-3 text-sm font-semibold text-ks-dark text-center border-t border-ks-border">${escapeHtml(v.caption)}</div>` : ''}
       </div>`).join('');
-    // Re-trigger TikTok embed
-    if (window.tiktok && window.tiktok.embed && window.tiktok.embed.lib) {
-      try { window.tiktok.embed.lib.render(grid.querySelectorAll('blockquote.tiktok-embed')); } catch {}
-    } else {
-      // Reload embed.js if not present (script tag exists in static)
-      const old = document.querySelector('script[src*="tiktok.com/embed.js"]');
-      if (old) {
-        const fresh = document.createElement('script');
-        fresh.async = true; fresh.src = 'https://www.tiktok.com/embed.js?_=' + Date.now();
-        old.parentNode.appendChild(fresh);
-      }
-    }
+
+    // (Re)load embed.js — easiest reliable way to (re)render after innerHTML swap.
+    // Remove any existing instance + state so the script reprocesses fresh blockquotes.
+    document.querySelectorAll('script[src*="tiktok.com/embed.js"]').forEach((s) => s.remove());
+    if (window.tiktokEmbed) try { delete window.tiktokEmbed; } catch {}
+    const fresh = document.createElement('script');
+    fresh.async = true;
+    fresh.src = 'https://www.tiktok.com/embed.js?_=' + Date.now();
+    document.body.appendChild(fresh);
   }
 
   // -------------------- BOOT --------------------
