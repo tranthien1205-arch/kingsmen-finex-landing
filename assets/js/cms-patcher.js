@@ -278,6 +278,22 @@
         const url = site.social[k];
         if (url) setAttr(`a[data-cms-social="${k}"]`, 'href', url);
       });
+      // TikTok follow CTA at bottom of #tiktok section — show only if URL set
+      const tkUrl = site.social.tiktok || '';
+      const followBox = document.getElementById('tiktok-follow-cta');
+      if (followBox) {
+        if (tkUrl) {
+          const link = document.getElementById('tiktok-follow-link');
+          if (link) link.href = tkUrl;
+          // Pull @handle from URL for nicer label
+          const m = tkUrl.match(/tiktok\.com\/@([a-zA-Z0-9._]+)/);
+          const handleEl = document.getElementById('tiktok-follow-text');
+          if (handleEl) handleEl.textContent = m ? `Theo dõi @${m[1]} · Xem tất cả video` : 'Theo dõi kênh TikTok';
+          followBox.style.display = '';
+        } else {
+          followBox.style.display = 'none';
+        }
+      }
     }
     // Tracking IDs (GA4 / FB Pixel) — inject if not already
     if (site.tracking) {
@@ -506,13 +522,16 @@
     }
     section.style.display = '';
 
+    // No aspect-ratio wrapper — TikTok embed.js sets its own height (vertical 9:16-ish)
+    // and forcing aspect-[9/16] on the parent caused the iframe to overflow / black bands.
     grid.innerHTML = items.map((v) => `
-      <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover">
-        <div class="relative aspect-[9/16] bg-black">
+      <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover flex flex-col">
+        <div class="bg-black flex items-center justify-center" style="min-height:540px">
           <blockquote class="tiktok-embed"
             cite="https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}"
             data-video-id="${escapeHtml(v.video_id)}"
-            style="max-width:100%;min-width:100%;margin:0">
+            data-embed-from="oembed"
+            style="max-width:605px;min-width:280px;width:100%;margin:0">
             <section>
               <a target="_blank" rel="noopener" href="https://www.tiktok.com/@${escapeHtml(v.author)}">@${escapeHtml(v.author)}</a>
               ${v.caption ? `<p>${escapeHtml(v.caption)}</p>` : ''}
