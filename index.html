@@ -1369,6 +1369,44 @@ tailwind.config = {
   <a href="#order" data-cms-cta="order" data-keep-content class="w-14 h-14 bg-ks-gold rounded-full shadow-2xl flex items-center justify-center text-white text-2xl" title="Đặt hàng">🛒</a>
 </div>
 
+<!-- 🎁 GIFTS / BONUSES -->
+<section id="gifts" class="py-16 bg-gradient-to-br from-amber-50 to-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <span class="text-ks-gold font-bold text-sm uppercase tracking-wider" data-cms-text="gifts.eyebrow">🎁 Quà tặng đặc biệt</span>
+      <h2 class="display text-3xl md:text-4xl text-ks-dark mt-2" data-cms-text="gifts.title">Đặt combo Finex F300 — nhận quà ngay</h2>
+      <p class="text-ks-mid-gray mt-3 max-w-2xl mx-auto" data-cms-text="gifts.subtitle">Trọn gói vật liệu + dụng cụ + bảo hành dài hạn</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4" id="cms-gifts-grid">
+      <!-- cms-patcher.js renders cards from /content/gifts.json -->
+    </div>
+    <p class="text-center text-xs text-ks-mid-gray mt-6 italic" data-cms-text="gifts.disclaimer">* Quà tặng theo combo. Áp dụng đến hết khuyến mãi.</p>
+  </div>
+</section>
+
+<!-- 📦 COMBO DETAILS — Mặc định ẩn, mở qua modal khi khách bấm "Xem chi tiết" -->
+<section id="combo-details" class="py-16 bg-white" style="display:none">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <span class="text-ks-teal font-bold text-sm uppercase tracking-wider" data-cms-text="combo_details.eyebrow">📦 Chi tiết combo</span>
+      <h2 class="display text-3xl md:text-4xl text-ks-dark mt-2" data-cms-text="combo_details.title">Trong mỗi combo Finex F300 có gì?</h2>
+      <p class="text-ks-mid-gray mt-3 max-w-2xl mx-auto" data-cms-text="combo_details.subtitle">Resin + Hardener + Sand màu chuẩn nhập + dụng cụ thi công</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5" id="cms-combo-details-grid"></div>
+  </div>
+</section>
+
+<!-- 📦 COMBO DETAIL MODAL -->
+<div id="comboDetailModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-auto shadow-2xl">
+    <div class="sticky top-0 bg-white border-b border-ks-border p-4 flex items-center justify-between">
+      <h3 class="font-bold text-ks-dark text-lg">📦 Chi tiết combo</h3>
+      <button id="closeComboDetailModal" class="text-2xl text-ks-mid-gray hover:text-ks-dark leading-none px-2">✕</button>
+    </div>
+    <div id="comboDetailModalBody" class="p-5"></div>
+  </div>
+</div>
+
 <!-- SUCCESS MODAL -->
 <div id="successModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
   <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl">
@@ -1382,6 +1420,7 @@ tailwind.config = {
       <p id="mColor" class="mb-1"></p>
       <p id="mTotal" class="font-bold text-ks-usa-red"></p>
     </div>
+    <div id="mComboDetail" class="text-left mb-4"></div>
     <button onclick="document.getElementById('successModal').classList.add('hidden'); document.getElementById('successModal').classList.remove('flex');"
             class="w-full bg-ks-teal text-white py-3 rounded-xl font-bold hover:bg-ks-dark-teal">Đóng</button>
   </div>
@@ -1568,6 +1607,21 @@ tailwind.config = {
     const discount = c.original && c.original > c.price ? Math.round((1 - c.price / c.original) * 100) : 0;
     document.getElementById('mTotal').textContent = '💰 ' + fmt(c.price) + (discount ? ` (giảm ${discount}%)` : '');
 
+    // Inject combo detail snapshot vào success modal (nếu cms-patcher đã load combo_details.json)
+    const detailWrap = document.getElementById('mComboDetail');
+    if (detailWrap) {
+      detailWrap.innerHTML = '';
+      if (window.KS_COMBO_DETAILS && window.KS_renderComboDetail) {
+        const detail = window.KS_COMBO_DETAILS[String(selectedCombo).trim()];
+        if (detail) {
+          detailWrap.innerHTML = `
+            <div class="mb-2"><span class="text-xs uppercase font-bold text-ks-mid-gray tracking-wider">📦 Chi tiết combo bạn vừa đặt</span></div>
+            ${window.KS_renderComboDetail(detail)}
+          `;
+        }
+      }
+    }
+
     const modal = document.getElementById('successModal');
     modal.classList.remove('hidden');
     modal.classList.add('flex');
@@ -1577,13 +1631,24 @@ tailwind.config = {
     btn.disabled = false;
     btn.textContent = originalBtnText;
   });
+
+  // Combo detail modal — close handlers (X, backdrop click, ESC)
+  (function () {
+    const modal = document.getElementById('comboDetailModal');
+    if (!modal) return;
+    const closeBtn = document.getElementById('closeComboDetailModal');
+    const close = () => { if (window.KS_closeComboDetailModal) window.KS_closeComboDetailModal(); };
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  })();
 </script>
 
 <!-- Behavior tracking (visitor ID + UTM persistence + funnel events) -->
 <script src="/assets/js/tracking.js?v=2" defer></script>
 
 <!-- Hybrid CMS Patcher (đọc /content/*.json → patch dynamic data + images on static HTML) -->
-<script src="/assets/js/cms-patcher.js?v=2" defer></script>
+<script src="/assets/js/cms-patcher.js?v=5" defer></script>
 
 <!-- Page Builder preview only (?cms=1 — admin tab). Static HTML stays master. -->
 <script src="/assets/js/cms-renderer.js?v=6" defer></script>
