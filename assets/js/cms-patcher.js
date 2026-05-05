@@ -19,8 +19,37 @@
 (function () {
   'use strict';
 
+  // -------------------- PRODUCT CONTEXT DETECTION --------------------
+  // Single codebase serves both Terrazy + Finex. Detect which product this
+  // page belongs to so we read content from the right folder.
+  //
+  // Signal priority:
+  //   1. window.KS_PRODUCT (if landing HTML hardcodes it)
+  //   2. URL path /finex.html
+  //   3. Hostname starts with "finex." (future custom domain)
+  //   4. Default = terrazy
+  function detectProduct() {
+    if (typeof window !== 'undefined' && window.KS_PRODUCT) return String(window.KS_PRODUCT);
+    const path = (location.pathname || '').toLowerCase();
+    if (/\/finex(\.html?)?$/.test(path) || /^\/finex\//.test(path)) return 'finex';
+    const host = (location.hostname || '').toLowerCase();
+    if (host === 'finex.vuakeoxaydung.vn' || host.startsWith('finex.')) return 'finex';
+    return 'terrazy';
+  }
+  const PRODUCT = detectProduct();
+  const CONTENT_BASE = (PRODUCT === 'finex') ? '/content-finex' : '/content';
+  // Expose so finex.html and tracking can tag the form payload + events
+  window.KS_PRODUCT = PRODUCT;
+  window.KS_CONTENT_BASE = CONTENT_BASE;
+  console.log(`[cms-patcher] product=${PRODUCT}, content_base=${CONTENT_BASE}`);
+
   // -------------------- HELPERS --------------------
-  function fetchJson(url) {
+  function fetchJson(pathOrUrl) {
+    // Accept either an absolute URL ("/content/foo.json") OR a bare filename
+    // ("foo.json" → resolve under CONTENT_BASE so caller doesn't have to).
+    const url = pathOrUrl.startsWith('/') || /^https?:/.test(pathOrUrl)
+      ? pathOrUrl
+      : `${CONTENT_BASE}/${pathOrUrl}`;
     return fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : null))
       .catch(() => null);
@@ -54,41 +83,254 @@
 
   // -------------------- BOOT --------------------
   async function run() {
-    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection] = await Promise.all([
-      fetchJson('/content/site.json'),
-      fetchJson('/content/combos.json'),
-      fetchJson('/content/colors.json'),
-      fetchJson('/content/faq.json'),
-      fetchJson('/content/reviews.json'),
-      fetchJson('/content/tiktok.json'),
-      fetchJson('/content/banners.json'),
-      fetchJson('/content/images.json'),
-      fetchJson('/content/comparison.json'),
-      fetchJson('/content/sections.json'),
-      fetchJson('/content/pas.json'),
-      fetchJson('/content/features.json'),
-      fetchJson('/content/safety.json'),
-      fetchJson('/content/waterproof.json'),
-      fetchJson('/content/steps.json'),
-      fetchJson('/content/objection.json'),
+    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts, comboDetails] = await Promise.all([
+      fetchJson('site.json'),
+      fetchJson('combos.json'),
+      fetchJson('colors.json'),
+      fetchJson('faq.json'),
+      fetchJson('reviews.json'),
+      fetchJson('tiktok.json'),
+      fetchJson('banners.json'),
+      fetchJson('images.json'),
+      fetchJson('comparison.json'),
+      fetchJson('sections.json'),
+      fetchJson('pas.json'),
+      fetchJson('features.json'),
+      fetchJson('safety.json'),
+      fetchJson('waterproof.json'),
+      fetchJson('steps.json'),
+      fetchJson('objection.json'),
+      fetchJson('menus.json'),
+      fetchJson('trust_stamps.json'),
+      fetchJson('gifts.json'),
+      fetchJson('combo_details.json'),
     ]);
 
     try { patchImages(images); } catch (e) { console.warn('[cms-patcher] images', e); }
     try { patchSite(site); } catch (e) { console.warn('[cms-patcher] site', e); }
     try { patchBanners(banners); } catch (e) { console.warn('[cms-patcher] banners', e); }
+    try { patchSections(sections); } catch (e) { console.warn('[cms-patcher] sections', e); }
+    try { patchFomo(sections, site); } catch (e) { console.warn('[cms-patcher] fomo', e); }
+    try { patchHeaderMenu(menus); } catch (e) { console.warn('[cms-patcher] menu', e); }
+    try { patchFloatingCtas(site); } catch (e) { console.warn('[cms-patcher] floating', e); }
+    // patchComboDetails MUST run before patchCombos so combo cards know which
+    // combos have a detail card to link to (renders "Xem chi tiết" button).
+    try { patchComboDetails(comboDetails); } catch (e) { console.warn('[cms-patcher] combo_details', e); }
     try { patchCombos(combos); } catch (e) { console.warn('[cms-patcher] combos', e); }
     try { patchColors(colors); } catch (e) { console.warn('[cms-patcher] colors', e); }
     try { patchFaq(faq); } catch (e) { console.warn('[cms-patcher] faq', e); }
     try { patchReviews(reviews); } catch (e) { console.warn('[cms-patcher] reviews', e); }
     try { patchTiktok(tiktok); } catch (e) { console.warn('[cms-patcher] tiktok', e); }
     try { patchComparison(comparison); } catch (e) { console.warn('[cms-patcher] comparison', e); }
-    try { patchSections(sections); } catch (e) { console.warn('[cms-patcher] sections', e); }
     try { patchPas(pas); } catch (e) { console.warn('[cms-patcher] pas', e); }
     try { patchFeatures(features); } catch (e) { console.warn('[cms-patcher] features', e); }
     try { patchSafety(safety); } catch (e) { console.warn('[cms-patcher] safety', e); }
     try { patchWaterproof(waterproof); } catch (e) { console.warn('[cms-patcher] waterproof', e); }
     try { patchSteps(steps); } catch (e) { console.warn('[cms-patcher] steps', e); }
     try { patchObjection(objection); } catch (e) { console.warn('[cms-patcher] objection', e); }
+    try { patchSuccessModal(sections); } catch (e) { console.warn('[cms-patcher] success', e); }
+    try { patchTrustStamps(trustStamps); } catch (e) { console.warn('[cms-patcher] trust_stamps', e); }
+    try { patchGifts(gifts); } catch (e) { console.warn('[cms-patcher] gifts', e); }
+  }
+
+  // -------------------- GIFTS / BONUSES --------------------
+  function patchGifts(data) {
+    const grid = document.getElementById('cms-gifts-grid');
+    if (!grid) return;
+    if (!data || !Array.isArray(data.items)) {
+      // Hide whole section if no data
+      const section = document.getElementById('gifts');
+      if (section) section.style.display = 'none';
+      return;
+    }
+    const items = data.items.filter((it) => it.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
+    if (items.length === 0) {
+      const section = document.getElementById('gifts');
+      if (section) section.style.display = 'none';
+      return;
+    }
+    grid.innerHTML = items.map((it) => {
+      const valueText = it.value && Number(it.value) > 0
+        ? `<div class="text-ks-gold font-bold text-sm mt-2">Trị giá ${fmtVnd(it.value)}</div>`
+        : '';
+      const imgBlock = it.image
+        ? `<img src="${escapeHtml(it.image)}" alt="${escapeHtml(it.title||'')}" class="w-full h-32 object-cover rounded-xl mb-3" loading="lazy">`
+        : `<div class="w-full h-32 flex items-center justify-center text-5xl bg-gradient-to-br from-amber-100 to-amber-50 rounded-xl mb-3">${escapeHtml(it.icon || '🎁')}</div>`;
+      return `
+        <div class="bg-white border-2 border-amber-200 rounded-2xl p-4 card-hover hover:border-ks-gold transition">
+          ${imgBlock}
+          <h3 class="font-bold text-ks-dark mb-1">${escapeHtml(it.title || '')}</h3>
+          <p class="text-xs text-ks-mid-gray mb-2">${escapeHtml(it.subtitle || '')}</p>
+          ${valueText}
+          ${it.condition ? `<p class="text-xs text-ks-mid-gray mt-2 italic">${escapeHtml(it.condition)}</p>` : ''}
+        </div>`;
+    }).join('');
+  }
+
+  // -------------------- COMBO DETAILS --------------------
+  // Lưu data dạng map keyed by combo_id để combo cards có thể trigger modal
+  // hiển thị chi tiết tương ứng. Section #combo-details mặc định ẩn — chỉ
+  // public render khi user bấm "Xem chi tiết" hoặc trong success modal.
+  function patchComboDetails(data) {
+    const grid = document.getElementById('cms-combo-details-grid');
+    if (!data || !Array.isArray(data.items)) {
+      window.KS_COMBO_DETAILS = {};
+      window.KS_COMBO_DETAILS_LIST = [];
+      return;
+    }
+    const items = data.items.filter((it) => it.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
+    // Build a lookup by combo_id (string) — used by combo cards' "Xem chi tiết" button
+    const map = {};
+    for (const it of items) {
+      const key = String(it.combo_id || '').trim();
+      if (key) map[key] = it;
+    }
+    window.KS_COMBO_DETAILS = map;
+    window.KS_COMBO_DETAILS_LIST = items;
+    // Expose render helper so other code (success modal, deeplink) can re-use
+    window.KS_renderComboDetail = renderComboDetailHTML;
+    // Section grid still gets populated (in case admin enables it via CSS or
+    // a "Xem tất cả combo" button is added later) — but section itself stays hidden.
+    if (grid) {
+      grid.innerHTML = items.map((it) => `<div class="combo-detail-card">${renderComboDetailHTML(it)}</div>`).join('');
+    }
+  }
+
+  // Build the inner HTML for a single combo detail card. Used by:
+  //  - hidden section #cms-combo-details-grid (cached for later use)
+  //  - "Xem chi tiết" modal triggered from combo cards
+  //  - Success modal after order submission
+  function renderComboDetailHTML(it) {
+    if (!it) return '';
+    const components = (it.components || []).map((c) =>
+      `<li class="flex justify-between gap-2 py-0.5"><span>${escapeHtml(c.name || '')}</span><strong class="text-ks-teal">${escapeHtml(c.qty || '')}</strong></li>`
+    ).join('');
+    const tools = (it.tools_included || []).map((t) =>
+      `<li class="flex items-start gap-1.5"><span class="text-ks-teal">✓</span><span>${escapeHtml(t)}</span></li>`
+    ).join('');
+    const specs = (it.specs || []).map((s) =>
+      `<div class="flex justify-between text-sm border-b border-ks-border last:border-0 py-1.5"><span class="text-ks-mid-gray">${escapeHtml(s.label || '')}</span><strong>${escapeHtml(s.value || '')}</strong></div>`
+    ).join('');
+    const imgBlock = it.image
+      ? `<img src="${escapeHtml(it.image)}" alt="${escapeHtml(it.title||'')}" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">`
+      : `<div class="w-full h-32 bg-gradient-to-br from-ks-teal to-ks-dark-teal rounded-2xl flex items-center justify-center text-white mb-4"><div class="text-center"><div class="text-5xl mb-1">📦</div><div class="text-sm font-bold">${escapeHtml(it.title || 'Combo')}</div></div></div>`;
+    const links = [];
+    if (it.datasheet_url)    links.push(`<a href="${escapeHtml(it.datasheet_url)}" target="_blank" class="text-ks-teal text-xs hover:underline">📄 Tải datasheet</a>`);
+    if (it.instructions_url) links.push(`<a href="${escapeHtml(it.instructions_url)}" target="_blank" class="text-ks-teal text-xs hover:underline">📖 Hướng dẫn DIY</a>`);
+    return `
+      ${imgBlock}
+      <h3 class="font-bold text-ks-dark text-xl mb-1">${escapeHtml(it.title || '')}</h3>
+      ${it.tagline ? `<p class="text-sm text-ks-teal font-semibold mb-3">${escapeHtml(it.tagline)}</p>` : ''}
+      <div class="space-y-3 text-sm">
+        ${it.coverage ? `<div><span class="text-xs uppercase font-bold text-ks-mid-gray tracking-wider">📐 Diện tích</span><div>${escapeHtml(it.coverage)}</div></div>` : ''}
+        ${it.duration ? `<div><span class="text-xs uppercase font-bold text-ks-mid-gray tracking-wider">⏱️ Thời gian thi công</span><div class="text-xs">${escapeHtml(it.duration)}</div></div>` : ''}
+        ${components ? `<div><span class="text-xs uppercase font-bold text-ks-mid-gray tracking-wider">🧪 Thành phần</span><ul class="text-xs space-y-0.5 mt-1">${components}</ul></div>` : ''}
+        ${tools ? `<div><span class="text-xs uppercase font-bold text-ks-mid-gray tracking-wider">🛠️ Dụng cụ kèm theo</span><ul class="text-xs space-y-0.5 mt-1">${tools}</ul></div>` : ''}
+        ${specs ? `<div><span class="text-xs uppercase font-bold text-ks-mid-gray tracking-wider">⚙️ Thông số kỹ thuật</span><div class="mt-1">${specs}</div></div>` : ''}
+        ${it.warranty ? `<div class="bg-amber-50 border-l-2 border-ks-gold p-2 rounded text-xs"><strong>🛡️</strong> ${escapeHtml(it.warranty)}</div>` : ''}
+        ${links.length ? `<div class="flex flex-wrap gap-3 pt-1">${links.join('')}</div>` : ''}
+      </div>
+    `;
+  }
+
+  // Modal open/close helpers (exposed globally so onclick attributes + the
+  // success-modal flow in index.html can call them).
+  window.KS_openComboDetailModal = function (comboId) {
+    const modal = document.getElementById('comboDetailModal');
+    const body  = document.getElementById('comboDetailModalBody');
+    if (!modal || !body) return;
+    const detail = (window.KS_COMBO_DETAILS || {})[String(comboId).trim()];
+    if (!detail) {
+      body.innerHTML = '<p class="text-center text-ks-mid-gray py-8">Chưa có chi tiết cho combo này. Liên hệ hotline để được tư vấn.</p>';
+    } else {
+      body.innerHTML = window.KS_renderComboDetail(detail);
+    }
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  };
+  window.KS_closeComboDetailModal = function () {
+    const modal = document.getElementById('comboDetailModal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  };
+
+  // -------------------- FOMO BAR (text + countdown + CTA + colors + visibility) --------------------
+  function patchFomo(sections, site) {
+    const fomo = document.getElementById('fomoBar');
+    if (!fomo) return;
+    const cfg = (site && site.fomo) || {};
+    // Visibility toggle (site.fomo.enabled)
+    if (cfg.enabled === false) { fomo.style.display = 'none'; return; }
+    fomo.style.display = '';
+    // Background / text color
+    if (cfg.bg_color) fomo.style.background = cfg.bg_color;
+    if (cfg.text_color) fomo.style.color = cfg.text_color;
+    // Countdown end time — drives the ticker. Use site.fomo.countdown_end (ISO datetime),
+    // or site.fomo.countdown_hours (number, hours-from-now-on-each-page-load),
+    // or default end-of-day (existing behavior).
+    let endMs = null;
+    if (cfg.countdown_end) {
+      const t = Date.parse(cfg.countdown_end);
+      if (!isNaN(t)) endMs = t;
+    }
+    if (!endMs && (cfg.countdown_hours || site && site.fomo_countdown_hours)) {
+      const h = Number(cfg.countdown_hours || site.fomo_countdown_hours);
+      if (h > 0) endMs = Date.now() + h * 3600000;
+    }
+    if (endMs) window.KS_FOMO_END_MS = endMs;
+  }
+
+  // -------------------- HEADER NAV MENU (from menus.header[]) --------------------
+  function patchHeaderMenu(menus) {
+    if (!menus || !Array.isArray(menus.header)) return;
+    const wrap = document.getElementById('headerNavMenu');
+    if (!wrap) return;
+    const items = menus.header.filter((m) => m && m.label && m.url);
+    if (items.length === 0) return;
+    wrap.innerHTML = items.map((m) => {
+      const target = m.target === '_blank' ? ' target="_blank" rel="noopener"' : '';
+      const icon = m.icon ? `${escapeHtml(m.icon)} ` : '';
+      return `<a href="${escapeHtml(m.url)}" class="hover:text-ks-teal"${target}>${icon}${escapeHtml(m.label)}</a>`;
+    }).join('');
+  }
+
+  // -------------------- FLOATING CTAs (visibility per button) --------------------
+  function patchFloatingCtas(site) {
+    const wrap = document.getElementById('floatingCtas');
+    if (!wrap) return;
+    const f = (site && site.floating_ctas) || {};
+    // Per-button visibility (default = visible)
+    [['call', 'show_call'], ['zalo', 'show_zalo'], ['order', 'show_order']].forEach(([fab, key]) => {
+      const btn = wrap.querySelector(`[data-fab="${fab}"]`);
+      if (!btn) return;
+      if (f[key] === false) btn.style.display = 'none';
+      else btn.style.display = '';
+    });
+    // Hide whole strip if all off OR explicit toggle
+    if (f.enabled === false) wrap.style.display = 'none';
+    else wrap.style.display = '';
+  }
+
+  // -------------------- SUCCESS MODAL TEXT (from sections.success.*) --------------------
+  function patchSuccessModal(sections) {
+    if (!sections) return;
+    const modal = document.getElementById('successModal');
+    if (!modal) return;
+    const map = [
+      ['success.emoji', 'data-cms-text'],
+      ['success.title', 'data-cms-text'],
+      ['success.body',  'data-cms-html'],
+      ['success.btn_close', 'data-cms-text'],
+    ];
+    map.forEach(([key, attr]) => {
+      const el = modal.querySelector(`[${attr}="${key}"]`);
+      const v = sections[key];
+      if (el && v != null && v !== '') {
+        if (attr === 'data-cms-html') el.innerHTML = v;
+        else el.textContent = v;
+      }
+    });
   }
 
   // -------------------- SAFETY (4 small icon cards) --------------------
@@ -187,16 +429,46 @@
   // -------------------- SECTIONS (per-key text) --------------------
   function patchSections(sections) {
     if (!sections || typeof sections !== 'object') return;
+    // [data-cms-text] — innerHTML (cho phép simple inline tags)
     document.querySelectorAll('[data-cms-text]').forEach((el) => {
       const key = el.getAttribute('data-cms-text');
       const v = sections[key];
-      // Skip null/undefined OR empty string — keep static fallback so admin clearing
-      // a field doesn't blank the rendered text. To intentionally hide, set the
-      // value to a single space " " or use an active=false toggle on a list item.
       if (v == null || v === '') return;
-      // Render as innerHTML so editors can include simple inline tags / entities
       if (el.innerHTML !== v) el.innerHTML = v;
     });
+    // [data-cms-html] — alias of data-cms-text (semantically rõ hơn cho HTML)
+    document.querySelectorAll('[data-cms-html]').forEach((el) => {
+      const key = el.getAttribute('data-cms-html');
+      const v = sections[key];
+      if (v == null || v === '') return;
+      if (el.innerHTML !== v) el.innerHTML = v;
+    });
+    // [data-cms-placeholder] — input placeholder text
+    document.querySelectorAll('[data-cms-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-cms-placeholder');
+      const v = sections[key];
+      if (v == null || v === '') return;
+      el.setAttribute('placeholder', v);
+    });
+    // [data-cms-attr-href] — anchor href driven by sections.json key
+    document.querySelectorAll('[data-cms-attr-href]').forEach((el) => {
+      const key = el.getAttribute('data-cms-attr-href');
+      const v = sections[key];
+      if (v == null || v === '') return;
+      el.setAttribute('href', v);
+    });
+  }
+
+  // -------------------- TRUST STAMPS (pills under hero) --------------------
+  function patchTrustStamps(stamps) {
+    if (!stamps || !Array.isArray(stamps.items)) return;
+    const wrap = document.getElementById('cms-trust-stamps');
+    if (!wrap) return;
+    const items = stamps.items
+      .filter((it) => it.active !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    if (items.length === 0) return;
+    wrap.innerHTML = items.map((it) => `<span class="stamp">${escapeHtml(it.label || '')}</span>`).join('');
   }
 
   // -------------------- COMPARISON TABLE --------------------
@@ -366,6 +638,12 @@
       const tagline = c.tagline || (c.area_m2 < 4 ? 'Combo nhỏ' : c.area_m2 < 6 ? 'Combo vừa' : 'Combo lớn');
       const sublineMap = { 3: 'Nhà tắm, ban công', '4.5': 'Phòng ngủ, bếp', 6: 'Phòng khách, văn phòng' };
       const subline = c.subline || sublineMap[c.area_m2] || sublineMap[String(c.area_m2)] || '';
+      const comboKey = String(c.id || c.area_m2 || '').trim();
+      // "Xem chi tiết" only renders if there's a matching combo_details entry
+      const hasDetail = window.KS_COMBO_DETAILS && window.KS_COMBO_DETAILS[comboKey];
+      const detailBtn = hasDetail
+        ? `<button type="button" class="combo-detail-btn mt-3 text-xs text-ks-teal underline hover:text-ks-dark-teal" data-combo-detail="${escapeHtml(comboKey)}" onclick="event.stopPropagation()">🔍 Xem chi tiết</button>`
+        : '';
       return `
         <div class="combo-card rounded-2xl p-5 cursor-pointer text-center ${isActive ? 'active' : ''} relative" data-combo="${escapeHtml(c.id || c.area_m2)}" data-price="${c.price || 0}">
           ${c.badge ? `<span class="badge-best absolute top-0 right-0 -mt-2 mr-2 px-3 py-1 rounded-full text-xs">${escapeHtml(c.badge)}</span>` : ''}
@@ -375,8 +653,20 @@
           ${c.original ? `<div class="line-through text-ks-mid-gray text-sm">${fmtVnd(c.original)}</div>` : ''}
           <div class="text-ks-teal font-black text-xl">${fmtVnd(c.price)}</div>
           ${saving > 0 ? `<div class="text-xs text-ks-usa-red font-bold mt-1">Tiết kiệm ${fmtVnd(saving)}</div>` : ''}
+          ${detailBtn}
         </div>`;
     }).join('');
+
+    // Wire "Xem chi tiết" buttons → open modal. event.stopPropagation in HTML
+    // prevents the click from also selecting the combo (cursor-pointer on parent).
+    grid.querySelectorAll('button[data-combo-detail]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (typeof window.KS_openComboDetailModal === 'function') {
+          window.KS_openComboDetailModal(btn.dataset.comboDetail);
+        }
+      });
+    });
 
     // Update window.COMBO_DATA for the static price-summary JS
     const data = {};
@@ -519,52 +809,44 @@
       .map((v) => ({
         ...v,
         video_id: extractTiktokId(v.video_id),
-        author: extractTiktokAuthor(v.author || v.video_id, 'kingsmenkeo'),
+        author: extractTiktokAuthor(v.author || v.video_id, 'vuakeoxaydung'),
       }))
       .filter((v) => v.video_id)
       .sort((a, b) => (a.order || 0) - (b.order || 0));
 
     if (items.length === 0) {
-      // Hide whole section if no valid videos — better than showing broken embeds
-      section.style.display = 'none';
+      // Không có video hợp lệ → giữ nguyên defaults trong HTML (không ẩn section)
       return;
     }
     section.style.display = '';
 
-    // Match TikTok's oEmbed-recommended structure exactly. The blockquote keeps
-    // max-width:605px / min-width:325px so embed.js sizes its iframe correctly.
-    // Card flows naturally — iframe height (~740px) drives the card height.
-    // Author URL uses ?refer=embed which embed.js expects for embed-traffic id.
+    // Render bằng IFRAME chính chủ TikTok player — không phụ thuộc embed.js,
+    // luôn hiển thị được kể cả khi embed.js không re-process được DOM mới.
     grid.innerHTML = items.map((v) => {
-      const userUrl  = `https://www.tiktok.com/@${escapeHtml(v.author)}?refer=embed`;
-      const videoUrl = `https://www.tiktok.com/@${escapeHtml(v.author)}/video/${escapeHtml(v.video_id)}`;
+      const playerUrl = `https://www.tiktok.com/player/v1/${encodeURIComponent(v.video_id)}?music_info=1&description=0&rel=0`;
+      const videoUrl  = `https://www.tiktok.com/@${encodeURIComponent(v.author)}/video/${encodeURIComponent(v.video_id)}`;
+      const caption   = v.caption || '';
       return `
-      <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover flex flex-col">
-        <div class="bg-black flex justify-center items-start" style="min-height:480px">
-          <blockquote class="tiktok-embed"
-            cite="${videoUrl}"
-            data-video-id="${escapeHtml(v.video_id)}"
-            data-embed-from="oembed"
-            style="max-width:605px; min-width:325px;">
-            <section>
-              <a target="_blank" title="@${escapeHtml(v.author)}" href="${userUrl}">@${escapeHtml(v.author)}</a>
-              ${v.caption ? `<p>${escapeHtml(v.caption)}</p>` : ''}
-              <a target="_blank" href="${videoUrl}?refer=embed">♬ ${v.caption ? escapeHtml(v.caption.slice(0, 60)) : 'Xem trên TikTok'}</a>
-            </section>
-          </blockquote>
-        </div>
-        ${v.caption ? `<div class="p-3 text-sm font-semibold text-ks-dark text-center border-t border-ks-border">${escapeHtml(v.caption)}</div>` : ''}
-      </div>`;
+        <div class="bg-white rounded-2xl overflow-hidden shadow-2xl card-hover flex flex-col">
+          <div class="tiktok-iframe-wrap" style="position:relative;width:100%;padding-bottom:177.78%;background:#000;">
+            <iframe
+              src="${playerUrl}"
+              allow="accelerometer; clipboard-write; encrypted-media; fullscreen; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+              title="TikTok ${escapeHtml(caption)}"></iframe>
+          </div>
+          <div class="p-4">
+            ${caption ? `<p class="text-center text-ks-dark text-sm font-semibold">${escapeHtml(caption)}</p>` : ''}
+            <p class="text-center mt-2"><a href="${videoUrl}" target="_blank" rel="noopener" class="text-xs text-ks-teal underline">Mở trên TikTok →</a></p>
+          </div>
+        </div>`;
     }).join('');
 
-    // (Re)load embed.js — easiest reliable way to (re)render after innerHTML swap.
-    // Remove any existing instance + state so the script reprocesses fresh blockquotes.
+    // Gỡ embed.js cũ nếu lỡ nạp — không cần nữa
     document.querySelectorAll('script[src*="tiktok.com/embed.js"]').forEach((s) => s.remove());
-    if (window.tiktokEmbed) try { delete window.tiktokEmbed; } catch {}
-    const fresh = document.createElement('script');
-    fresh.async = true;
-    fresh.src = 'https://www.tiktok.com/embed.js?_=' + Date.now();
-    document.body.appendChild(fresh);
   }
 
   // -------------------- BOOT --------------------
