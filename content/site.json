@@ -24,6 +24,6 @@
     "bg_color": "#888888",
     "text_color": "#a21616",
     "countdown_end": "",
-    "countdown_hours": null
+    "countdown_hours": 24
   }
 }
