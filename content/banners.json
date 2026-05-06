@@ -1,27 +1,47 @@
 {
   "top_bar": {
     "enabled": false,
-    "text": "🔥 Khuyến mãi cuối tuần · Giảm 25% cho đơn hàng đầu tiên",
+    "text": "🔥 Khuyến mãi cuối tuần · Giảm 23% cho đơn hàng đầu tiên",
     "cta_label": "Xem ngay",
     "cta_url": "#pricing",
-    "bg_color": "#0C7B6F",
-    "text_color": "#FFFFFF"
+    "bg_color": "#0c7b6f",
+    "text_color": "#ffffff"
   },
   "popup": {
     "enabled": false,
     "title": "🎁 Ưu đãi đặc biệt",
-    "description": "Giảm 25% cộng miễn phí demo mẫu tận nhà cho đơn hàng đầu tiên",
+    "description": "Giảm 23% cộng miễn phí demo mẫu tận nhà cho đơn hàng đầu tiên",
     "cta_label": "Nhận ưu đãi",
     "cta_url": "tel:0888144848",
     "trigger": "exit-intent",
-    "cooldown_days": 7
+    "cooldown_days": 7,
+    "image": ""
   },
   "sticky_bar": {
     "enabled": true,
     "buttons": [
-      { "icon": "📞", "label": "Gọi ngay", "url": "tel:0888144848", "style": "teal" },
-      { "icon": "💬", "label": "Zalo", "url": "https://zalo.me/0888144848", "style": "blue" },
-      { "icon": "🛒", "label": "Đặt hàng", "url": "#order", "style": "gold" }
+      {
+        "icon": "📞",
+        "label": "Gọi ngay",
+        "url": "tel:0888144848",
+        "style": "teal"
+      },
+      {
+        "icon": "💬",
+        "label": "Zalo",
+        "url": "https://zalo.me/0888144848",
+        "style": "blue"
+      },
+      {
+        "icon": "🛒",
+        "label": "Đặt hàng",
+        "url": "#order",
+        "style": "gold"
+      }
     ]
-  }
+  },
+  "icon": "🛒",
+  "label": "Đặt hàng",
+  "url": "#order",
+  "style": "gold"
 }
