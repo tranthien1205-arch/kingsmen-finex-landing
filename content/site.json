@@ -20,10 +20,11 @@
   "tiktok_url": "https://www.tiktok.com/@kingsmenkeo",
   "youtube_url": "https://www.youtube.com/@keokingsmen",
   "fomo": {
-    "enabled": false,
+    "enabled": true,
     "bg_color": "#890606",
     "text_color": "#47e1f5",
     "countdown_end": "",
-    "countdown_hours": 24
+    "countdown_hours": 24,
+    "bg_mode": ""
   }
 }
