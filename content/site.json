@@ -25,12 +25,38 @@
     "text_color": "#47e1f5",
     "countdown_end": "",
     "countdown_hours": 24,
-    "bg_mode": ""
+    "bg_mode": "",
+    "text": "",
+    "discount_badge": "23%"
   },
   "floating_ctas": {
     "enabled": true,
     "show_call": true,
     "show_zalo": true,
     "show_order": true
+  },
+  "hero": {
+    "headline": "",
+    "subline": ""
+  },
+  "contact": {
+    "address": "",
+    "email": "",
+    "hours": "",
+    "maps_url": ""
+  },
+  "social": {
+    "facebook": "",
+    "tiktok": "",
+    "youtube": "",
+    "instagram": ""
+  },
+  "tracking": {
+    "ga4_id": "",
+    "gtm_id": "",
+    "fb_pixel": "",
+    "tt_pixel": "",
+    "head_scripts": "",
+    "body_scripts": ""
   }
 }
