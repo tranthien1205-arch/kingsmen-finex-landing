@@ -2,58 +2,47 @@
   "items": [
     {
       "id": "sample-1kg",
+      "icon": "🎁",
       "title": "Mẫu thử Finex F300 1kg",
       "subtitle": "Test trên sàn nhà trước khi đặt combo",
-      "icon": "🎁",
       "image": "",
       "value": 250000,
       "condition": "Cho mọi combo",
-      "active": true,
-      "order": 1
+      "order": 1,
+      "active": true
     },
     {
       "id": "tools-kit",
-      "title": "Bộ dụng cụ thi công",
-      "subtitle": "Bay + rolo + bao tay + khẩu trang",
       "icon": "🛠️",
+      "title": "Bộ dụng cụ thi công",
+      "subtitle": "Gạt+ que khuấy + bao tay",
       "image": "",
       "value": 350000,
       "condition": "Combo từ 3.5kg trở lên",
-      "active": true,
-      "order": 2
+      "order": 2,
+      "active": true
     },
     {
       "id": "video-guide",
+      "icon": "📺",
       "title": "Video hướng dẫn DIY",
       "subtitle": "4 bước, hoàn thiện trong 24h",
-      "icon": "📺",
       "image": "",
       "value": 0,
       "condition": "Tặng kèm tất cả combo",
-      "active": true,
-      "order": 3
+      "order": 3,
+      "active": true
     },
     {
       "id": "shipping",
-      "title": "Miễn phí giao hàng",
-      "subtitle": "Toàn quốc · 24h nội thành",
       "icon": "🚚",
+      "title": "Miễn phí giao hàng",
+      "subtitle": "Toàn quốc · 24h nội thành HCM",
       "image": "",
       "value": 100000,
       "condition": "Đơn từ 1kg",
-      "active": true,
-      "order": 4
-    },
-    {
-      "id": "warranty",
-      "title": "Bảo hành 10 năm",
-      "subtitle": "Đổi mới 100% nếu lỗi vật liệu",
-      "icon": "🛡️",
-      "image": "",
-      "value": 0,
-      "condition": "Tặng tất cả khách hàng",
-      "active": true,
-      "order": 5
+      "order": 4,
+      "active": true
     }
   ]
 }
