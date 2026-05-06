@@ -30,7 +30,7 @@
       "label": "Finex F300 — 7kg",
       "price": 1827000,
       "original": 2372000,
-      "discount_pct": null,
+      "discount_pct": 23,
       "badge": "Phổ biến nhất",
       "tagline": "Phòng vừa, phổ biến nhất",
       "image": "assets/finex/pack-7kg.jpg",
