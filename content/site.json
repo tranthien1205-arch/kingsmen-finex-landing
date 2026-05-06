@@ -22,7 +22,7 @@
   "fomo": {
     "enabled": true,
     "bg_color": "#888888",
-    "text_color": "#a21616",
+    "text_color": "#47e1f5",
     "countdown_end": "",
     "countdown_hours": 24
   }
