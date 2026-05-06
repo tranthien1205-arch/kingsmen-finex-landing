@@ -21,7 +21,7 @@
   "youtube_url": "https://www.youtube.com/@keokingsmen",
   "fomo": {
     "enabled": true,
-    "bg_color": "#888888",
+    "bg_color": "#eef202",
     "text_color": "#47e1f5",
     "countdown_end": "",
     "countdown_hours": 24
