@@ -6,10 +6,10 @@
       "title": "Bộ dụng cụ thi công",
       "subtitle": "Gạt+ que khuấy + bao tay",
       "image": "",
-      "value": 350000,
+      "value": 0,
       "condition": "Combo từ 1kg trở lên",
-      "order": 2,
-      "active": true
+      "order": 1,
+      "active": false
     },
     {
       "id": "video-guide",
@@ -19,7 +19,7 @@
       "image": "",
       "value": 0,
       "condition": "Tặng kèm tất cả combo",
-      "order": 3,
+      "order": 2,
       "active": true
     },
     {
@@ -30,7 +30,7 @@
       "image": "",
       "value": 100000,
       "condition": "Đơn từ 1kg",
-      "order": 4,
+      "order": 3,
       "active": true
     }
   ]
