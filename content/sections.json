@@ -123,5 +123,9 @@
   "order.payment_heading": "",
   "order.payment_cod": "",
   "order.payment_bank": "",
-  "order.payment_ewallet": ""
+  "order.payment_ewallet": "",
+  "reviews.stars": "",
+  "reviews.rating_value": "",
+  "reviews.rating_count": "",
+  "reviews.disclaimer": ""
 }
