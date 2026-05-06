@@ -1,34 +1,39 @@
 {
   "items": [
     {
-      "question": "Terrazy có an toàn cho trẻ em và người cao tuổi không?",
-      "answer": "Hoàn toàn an toàn. Terrazy đạt chuẩn **Không VOC**, chứng nhận A+ (French Indoor Air Quality), không phát thải chất độc hại. Sau khi khô (24h), gia đình có thể sinh hoạt bình thường mà không cần thông gió đặc biệt.",
-      "order": 1
+      "question": "FINEX F300 có an toàn cho trẻ em và người cao tuổi không?",
+      "answer": "Hoàn toàn an toàn. FINEX F300 đạt chuẩn **Không VOC**, chứng nhận A+ (French Indoor Air Quality), không phát thải chất độc hại. Sau khi khô (24h), gia đình có thể sinh hoạt bình thường mà không cần thông gió đặc biệt.",
+      "category": "",
+      "order": 1,
+      "active": true
     },
     {
       "question": "Thi công có cần đục bỏ gạch/sàn cũ không?",
-      "answer": "**Không cần đục phá**. Terrazy phủ trực tiếp lên nền gạch/bê tông/sàn cũ miễn là nền còn bám dính tốt. Đây là ưu thế lớn nhất — tiết kiệm 30-50% chi phí so với phương án đục phá truyền thống.",
-      "order": 2
-    },
-    {
-      "question": "Bảo hành bao lâu? Nếu bị ố vàng hay bong tróc thì sao?",
-      "answer": "Bảo hành **10 năm** chống ố vàng, bạc màu và bong tróc. Nếu phát sinh lỗi do chất lượng sản phẩm, Masfico sẽ xử lý miễn phí (trừ trường hợp do tác động vật lý mạnh).",
-      "order": 3
+      "answer": "**Không cần đục phá**. FINEX F300 phủ trực tiếp lên nền gạch/bê tông/sàn cũ miễn là nền còn bám dính tốt. Đây là ưu thế lớn nhất — tiết kiệm 30-50% chi phí so với phương án đục phá truyền thống.",
+      "category": "",
+      "order": 2,
+      "active": true
     },
     {
       "question": "Tự làm (DIY) được không hay phải thuê thợ?",
       "answer": "**DIY được hoàn toàn** với 4 bước đơn giản: (1) làm sạch nền, (2) lót primer, (3) đổ lớp phủ terrazy, (4) hoàn thiện. Video hướng dẫn có sẵn trên TikTok @kingsmenkeo. Nếu cần thợ, chúng tôi hỗ trợ tìm đội thi công uy tín tại địa phương.",
-      "order": 4
+      "category": "",
+      "order": 4,
+      "active": true
     },
     {
       "question": "Thời gian hoàn thiện bao lâu?",
-      "answer": "**24-48 giờ** tuỳ diện tích. Với Combo 3m²: ~24h hoàn thiện. Combo 6m²: ~48h. Bạn không cần dọn đồ đạc nhiều — gia đình vẫn sinh hoạt được trong thời gian thi công.",
-      "order": 5
+      "answer": "**Khô bề mặt: 6 – 12 giờ\nĐi lại nhẹ:12- 24 giờ\nSử dụng hoàn toàn: sau 48 giờ\n** tuỳ diện tích. Bạn không cần dọn đồ đạc nhiều — gia đình vẫn sinh hoạt được trong thời gian thi công.",
+      "category": "",
+      "order": 5,
+      "active": true
     },
     {
       "question": "Chi phí so với gạch hoặc sàn gỗ thế nào?",
-      "answer": "Terrazy tiết kiệm **30-50% tổng chi phí** so với lát gạch mới (gồm cả công phá dỡ + công lát + vật liệu). So với sàn gỗ công nghiệp, Terrazy bền hơn 3-5 lần và chống nước tuyệt đối.",
-      "order": 6
+      "answer": "FINEX F300 tiết kiệm **30-50% tổng chi phí** so với lát gạch mới (gồm cả công phá dỡ + công lát + vật liệu). So với sàn gỗ công nghiệp, FINEX bền hơn 3-5 lần và chống thấm nước tuyệt đối, chống trơn trượt.",
+      "category": "",
+      "order": 6,
+      "active": true
     }
   ]
 }
