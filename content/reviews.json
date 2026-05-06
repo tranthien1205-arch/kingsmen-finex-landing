@@ -1,70 +1,88 @@
 {
   "items": [
     {
-      "name": "Chị Mai Anh",
-      "location": "Quận 7, TP.HCM",
-      "combo": "Combo 4.5m²",
-      "color": "Kem Terrazzo",
+      "name": "Chị Ngọc Anh",
+      "location": "Quận 2, TP.HCM",
+      "combo": "Combo 3m²",
+      "color": "Kem Vani",
       "rating": 5,
+      "headline": "",
       "quote": "Phòng khách nhà mình cải tạo trong 1 ngày, gia đình vẫn sinh hoạt bình thường, không bụi không mùi. Kết quả đẹp hơn kỳ vọng, bạn bè tới đều hỏi mua ở đâu!",
+      "avatar": "",
       "image": "/assets/prod-036.jpg",
       "verified": true,
-      "order": 1
+      "featured": false,
+      "active": true
     },
     {
-      "name": "Anh Tuấn Nguyễn",
+      "name": "Chị Huyền",
       "location": "Cầu Giấy, Hà Nội",
-      "combo": "Combo 6m²",
-      "color": "Xám Mưa",
+      "combo": "Combo 3m²",
+      "color": "Xám Núi",
       "rating": 5,
-      "quote": "Làm sàn quán cafe 6m² chỉ 2 ngày là mở bán lại. So với gạch thì tiết kiệm được gần 40%, mà hiệu ứng terrazzo sang hơn hẳn. Khách khen nức nở.",
+      "headline": "",
+      "quote": "Mua 2 combo 3m² để làm sàn quán cafe 6m² chỉ 2 ngày là mở bán lại. So với gạch thì tiết kiệm được gần 40% chi phí, mà hiệu ứng terrazzo sang hơn hẳn. Khách khen nức nở luôn.",
+      "avatar": "",
       "image": "/assets/prod-246.jpg",
       "verified": true,
-      "order": 2
+      "featured": false,
+      "active": true
     },
     {
-      "name": "Chị Lan Phạm",
+      "name": "Anh Huy",
       "location": "Đà Nẵng",
-      "combo": "Combo 6m²",
-      "color": "Trắng Ngọc",
+      "combo": "Combo 3m²",
+      "color": "Xám núi",
       "rating": 5,
-      "quote": "Showroom của mình cần nâng cấp sàn nhưng không muốn đóng cửa thi công lâu. Terrazy giúp mình xong trong 48h, bề mặt láng mịn, khách hàng cứ tưởng đá thật.",
+      "headline": "",
+      "quote": "Showroom của mình cần nâng cấp sàn nhưng không muốn đóng cửa thi công lâu. FINEX giúp mình xong trong 48h, bề mặt láng mịn, khách hàng cứ tưởng đá thật.",
+      "avatar": "",
       "image": "/assets/prod-266.jpg",
       "verified": true,
-      "order": 3
+      "featured": false,
+      "active": true
     },
     {
-      "name": "Bé Minh Châu (phụ huynh)",
+      "name": "Chị Lan Anh",
       "location": "Thủ Đức, TP.HCM",
       "combo": "Combo 3m²",
-      "color": "Hồng Phấn",
+      "color": "Xanh khói",
       "rating": 5,
+      "headline": "",
       "quote": "Làm phòng bé 3m² màu hồng phấn, không lo bé hít phải VOC. Bé chạy xe đạp trong phòng cũng không trầy, thấy yên tâm hẳn.",
-      "image": "/assets/prod-178.jpg",
+      "avatar": "",
+      "image": "/assets/uploads/1778053532338-xanh-khoi.png",
       "verified": true,
-      "order": 4
+      "featured": false,
+      "active": true
     },
     {
-      "name": "Anh Hoàng Long",
+      "name": "Anh Minh Long",
       "location": "Bình Thạnh, TP.HCM",
-      "combo": "Combo 4.5m²",
-      "color": "Nâu Gỗ",
+      "combo": "Combo 1.5m²",
+      "color": "Xanh khói",
       "rating": 5,
-      "quote": "Cải tạo nhà tắm mà không đục gạch cũ — tiết kiệm được 2 tuần và 5 triệu tiền công phá dỡ. Chống thấm tuyệt đối, đã test 6 tháng không vấn đề.",
+      "headline": "",
+      "quote": "Cải tạo nhà tắm mà không đục gạch cũ — tiết kiệm được 2 tuần và 5 triệu tiền công phá dỡ. Chống thấm tuyệt đối, lại chống trơn trượt, dùng rất hài lòng nha.",
+      "avatar": "",
       "image": "/assets/prod-215.jpg",
       "verified": true,
-      "order": 5
+      "featured": false,
+      "active": true
     },
     {
-      "name": "Gia đình anh Vinh",
+      "name": "Gia đình anh Minh",
       "location": "Bình Dương",
-      "combo": "Combo 6m²",
-      "color": "Đen Carbon + Kem Terrazzo",
+      "combo": "Combo 1.5m²",
+      "color": "Kem Vanila",
       "rating": 5,
-      "quote": "Xem trước-sau khách hàng khác xong là quyết mua luôn. DIY 4 bước rất dễ, 2 vợ chồng tự làm 6m² trong weekend. Không ngờ kết quả chuyên nghiệp vậy.",
+      "headline": "",
+      "quote": "Xem trước-sau khách hàng khác xong là quyết mua luôn. DIY 4 bước rất dễ, 2 vợ chồng tự làm 3m² trong weekend. Không ngờ kết quả đẹp hơn tưởng tượng.",
+      "avatar": "",
       "image": "/assets/prod-165.jpg",
       "verified": true,
-      "order": 6
+      "featured": false,
+      "active": true
     }
   ]
 }
