@@ -83,7 +83,7 @@
 
   // -------------------- BOOT --------------------
   async function run() {
-    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts] = await Promise.all([
+    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts, comboDetailsFallback] = await Promise.all([
       fetchJson('site.json'),
       fetchJson('combos.json'),
       fetchJson('colors.json'),
@@ -103,6 +103,9 @@
       fetchJson('menus.json'),
       fetchJson('trust_stamps.json'),
       fetchJson('gifts.json'),
+      // FALLBACK only: nếu admin save combos qua bản admin cũ (cached) → details
+      // bị ghi đè mất. cms-patcher đọc combo_details.json làm safety net.
+      fetchJson('combo_details.json'),
     ]);
 
     try { patchImages(images); } catch (e) { console.warn('[cms-patcher] images', e); }
@@ -112,9 +115,9 @@
     try { patchFomo(sections, site); } catch (e) { console.warn('[cms-patcher] fomo', e); }
     try { patchHeaderMenu(menus); } catch (e) { console.warn('[cms-patcher] menu', e); }
     try { patchFloatingCtas(site); } catch (e) { console.warn('[cms-patcher] floating', e); }
-    // patchCombos cũng build window.KS_COMBO_DETAILS từ items[i].details (đã merge
-    // combos.json + combo_details.json thành 1 file — single source of truth).
-    try { patchCombos(combos); } catch (e) { console.warn('[cms-patcher] combos', e); }
+    // patchCombos build window.KS_COMBO_DETAILS từ items[i].details (preferred)
+    // hoặc fallback combo_details.json (nếu details bị wipe).
+    try { patchCombos(combos, comboDetailsFallback); } catch (e) { console.warn('[cms-patcher] combos', e); }
     try { patchColors(colors); } catch (e) { console.warn('[cms-patcher] colors', e); }
     try { patchFaq(faq); } catch (e) { console.warn('[cms-patcher] faq', e); }
     try { patchReviews(reviews); } catch (e) { console.warn('[cms-patcher] reviews', e); }
@@ -602,12 +605,16 @@
   }
 
   // -------------------- COMBOS (cards + details map + window helpers) --------------------
-  // Combos JSON từ v6 chứa luôn `details` field (merged từ combo_details.json cũ).
+  // Combos JSON v6+ chứa luôn `details` field (merged từ combo_details.json cũ).
   // Function này build window.KS_COMBO_DETAILS map keyed by combo.id để:
   //   - Combo card render nút "🔍 Xem chi tiết" nếu có detail
   //   - Success modal sau submit hiển thị chi tiết combo khách vừa đặt
   //   - window.KS_openComboDetailModal(comboId) mở modal
-  function patchCombos(combos) {
+  //
+  // SAFETY NET: nếu combos.json items không có .details (vd: admin save bằng bản
+  // cũ cached trước khi merge schema deploy), fallback sang combo_details.json
+  // (file orphan giữ làm bản dự phòng).
+  function patchCombos(combos, fallbackDetails) {
     if (!combos || !Array.isArray(combos.items)) {
       window.KS_COMBO_DETAILS = {};
       window.KS_COMBO_DETAILS_LIST = [];
@@ -615,18 +622,16 @@
       return;
     }
 
-    // === Step 1: Build details map từ items[i].details (merged source) ===
+    // === Step 1: Build details map từ items[i].details (preferred source) ===
     const detailsMap = {};
     for (const c of combos.items) {
       const id = String(c.id || c.area_m2 || '').trim();
       const d = c.details;
-      // Coi là "có detail" nếu có ít nhất coverage / components / specs
       const hasDetail = d && typeof d === 'object' && (
         d.coverage || (Array.isArray(d.components) && d.components.length) ||
         (Array.isArray(d.specs) && d.specs.length) || d.duration || d.warranty
       );
       if (id && hasDetail) {
-        // Backfill title/image từ combo level nếu detail không override
         detailsMap[id] = {
           ...d,
           combo_id: id,
@@ -635,6 +640,24 @@
         };
       }
     }
+
+    // === Step 1b: Merge fallback combo_details.json cho id chưa có detail ===
+    if (fallbackDetails && Array.isArray(fallbackDetails.items)) {
+      for (const it of fallbackDetails.items) {
+        const id = String(it.combo_id || '').trim();
+        if (id && !detailsMap[id]) {
+          // Tìm combo level info để backfill image/title nếu thiếu
+          const c = combos.items.find(x => String(x.id || x.area_m2 || '').trim() === id) || {};
+          detailsMap[id] = {
+            ...it,
+            combo_id: id,
+            title: it.title || c.label || `Combo ${c.area_m2 || id}`,
+            image: it.image || c.image || '',
+          };
+        }
+      }
+    }
+
     window.KS_COMBO_DETAILS = detailsMap;
     window.KS_COMBO_DETAILS_LIST = Object.values(detailsMap);
     window.KS_renderComboDetail = renderComboDetailHTML;

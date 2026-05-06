@@ -10,7 +10,34 @@
       "badge": "",
       "tagline": "Dùng thử / sample",
       "image": "assets/finex/pack-1kg.jpg",
-      "active": true
+      "active": true,
+      "details": {
+        "title": "Finex F300 — 1kg",
+        "tagline": "Combo nhỏ — test thử / sửa chữa diện tích nhỏ",
+        "image": "",
+        "coverage": "~1m² ở độ dày 1mm",
+        "duration": "Trộn 5 phút · Thi công 1h · Khô đi lại 8h · Hoàn thiện 24h",
+        "components": [
+          { "name": "Phần A — Resin epoxy F300", "qty": "0.7kg" },
+          { "name": "Phần B — Hardener", "qty": "0.3kg" },
+          { "name": "Sand màu", "qty": "Tùy chọn (1 màu)" }
+        ],
+        "tools_included": [
+          "Bay trộn nhỏ",
+          "Bao tay 1 đôi",
+          "Khẩu trang 1 chiếc"
+        ],
+        "specs": [
+          { "label": "Tổng khối lượng (A+B)", "value": "1kg" },
+          { "label": "Tỉ lệ trộn", "value": "A:B = 7:3" },
+          { "label": "Pot life", "value": "30 phút (25°C)" },
+          { "label": "Độ cứng", "value": "Hardness 6H" },
+          { "label": "Bám dính", "value": "≥ 3.0 MPa" }
+        ],
+        "warranty": "Bảo hành vật liệu 10 năm",
+        "datasheet_url": "",
+        "instructions_url": ""
+      }
     },
     {
       "id": "3.5kg",
@@ -22,7 +49,36 @@
       "badge": "",
       "tagline": "Phòng nhỏ / WC",
       "image": "assets/finex/pack-3.5kg.jpg",
-      "active": true
+      "active": true,
+      "details": {
+        "title": "Finex F300 — 3.5kg",
+        "tagline": "Combo phổ biến — đủ cho phòng nhỏ ~3-4m²",
+        "image": "",
+        "coverage": "~3.5m² ở độ dày 1mm",
+        "duration": "Trộn 5 phút · Thi công 2h · Khô đi lại 8h · Hoàn thiện 24h",
+        "components": [
+          { "name": "Phần A — Resin epoxy F300", "qty": "2.5kg" },
+          { "name": "Phần B — Hardener", "qty": "1.0kg" },
+          { "name": "Sand màu (1 màu chọn)", "qty": "Tùy chọn" }
+        ],
+        "tools_included": [
+          "Bay trộn 1 cái",
+          "Rolo lăn 1 cái",
+          "Bao tay 4 đôi",
+          "Khẩu trang 4 chiếc",
+          "Băng keo phân màu"
+        ],
+        "specs": [
+          { "label": "Tổng khối lượng (A+B)", "value": "3.5kg" },
+          { "label": "Tỉ lệ trộn", "value": "A:B = 7:3" },
+          { "label": "Pot life", "value": "30 phút (25°C)" },
+          { "label": "Độ cứng", "value": "Hardness 6H" },
+          { "label": "Bám dính", "value": "≥ 3.0 MPa" }
+        ],
+        "warranty": "Bảo hành vật liệu 10 năm",
+        "datasheet_url": "",
+        "instructions_url": ""
+      }
     },
     {
       "id": "7kg",
@@ -34,7 +90,36 @@
       "badge": "Phổ biến nhất",
       "tagline": "Phòng vừa, phổ biến nhất",
       "image": "assets/finex/pack-7kg.jpg",
-      "active": true
+      "active": true,
+      "details": {
+        "title": "Finex F300 — 7kg ⭐",
+        "tagline": "Combo phổ biến nhất — phòng vừa ~3-7m²",
+        "image": "",
+        "coverage": "~3m² ở độ dày 2mm (hoặc ~7m² ở 1mm)",
+        "duration": "Trộn 7-10 phút · Thi công 4h · Khô đi lại 8h · Hoàn thiện 24h",
+        "components": [
+          { "name": "Phần A — Resin epoxy F300", "qty": "5kg" },
+          { "name": "Phần B — Hardener", "qty": "2kg" },
+          { "name": "Sand màu (chọn 1-2 màu)", "qty": "Tùy chọn" }
+        ],
+        "tools_included": [
+          "Bay trộn 1 cái",
+          "Rolo lăn 2 cái",
+          "Bao tay 6 đôi",
+          "Khẩu trang 6 chiếc",
+          "Băng keo phân màu 2 cuộn"
+        ],
+        "specs": [
+          { "label": "Tổng khối lượng (A+B)", "value": "7kg" },
+          { "label": "Tỉ lệ trộn", "value": "A:B = 7:3" },
+          { "label": "Pot life", "value": "30 phút (25°C)" },
+          { "label": "Độ cứng", "value": "Hardness 6H" },
+          { "label": "Bám dính", "value": "≥ 3.0 MPa" }
+        ],
+        "warranty": "Bảo hành vật liệu 10 năm",
+        "datasheet_url": "",
+        "instructions_url": ""
+      }
     }
   ]
 }
