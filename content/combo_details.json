@@ -2,81 +2,144 @@
   "items": [
     {
       "combo_id": "1kg",
+      "order": 1,
       "title": "Finex F300 — 1kg",
       "tagline": "Combo nhỏ — test thử / sửa chữa diện tích nhỏ",
       "image": "",
-      "coverage": "~1m² ở độ dày 1mm",
-      "duration": "Trộn 5 phút · Thi công 1h · Khô đi lại 8h · Hoàn thiện 24h",
-      "components": [
-        { "name": "Phần A — Resin epoxy F300", "qty": "0.7kg" },
-        { "name": "Phần B — Hardener", "qty": "0.3kg" },
-        { "name": "Sand màu", "qty": "Tùy chọn (1 màu)" }
-      ],
-      "tools_included": ["Bay trộn nhỏ", "Bao tay 1 đôi", "Khẩu trang 1 chiếc"],
-      "specs": [
-        { "label": "Tổng khối lượng (A+B)", "value": "1kg" },
-        { "label": "Tỉ lệ trộn", "value": "A:B = 7:3" },
-        { "label": "Pot life", "value": "30 phút (25°C)" },
-        { "label": "Độ cứng", "value": "Hardness 6H" },
-        { "label": "Bám dính", "value": "≥ 3.0 MPa" }
-      ],
-      "warranty": "Bảo hành vật liệu 10 năm",
+      "coverage": "~0.3m² ở độ dày 1.5-2mm",
+      "duration": "Khô bề mặt: 6 – 12 giờ  ·  Đi lại nhẹ: 12- 24 giờ  ·  Sử dụng hoàn toàn: sau 48 giờ\n",
+      "warranty": "Hỗ trợ kỹ thuật",
       "datasheet_url": "",
-      "instructions_url": "",
+      "instructions_url": "https://keokingsmen.com/huong-dan-thi-cong-kingsmen-terrazy/",
       "active": true,
-      "order": 1
+      "components": [
+        {
+          "name": "1 thùng sơn sàn FINEX F300 1kg",
+          "qty": "1g"
+        }
+      ],
+      "tools_included": [
+        "Gạt san phẳng (1 cái)",
+        "Que khuấy (1 cái)",
+        "Bao tay (1 đôi)",
+        "Rule gai 15cm (1 cái)"
+      ],
+      "specs": [
+        {
+          "label": "Tổng khối lượng (A+B)",
+          "value": "1kg"
+        },
+        {
+          "label": "Tỉ lệ trộn",
+          "value": "A:B = 6:1"
+        },
+        {
+          "label": "Pot life",
+          "value": "30 phút (25°C)"
+        },
+        {
+          "label": "Độ cứng",
+          "value": "Hardness 6H"
+        },
+        {
+          "label": "Bám dính",
+          "value": "≥ 3.0 MPa"
+        }
+      ]
     },
     {
       "combo_id": "3.5kg",
+      "order": 2,
       "title": "Finex F300 — 3.5kg ⭐",
-      "tagline": "Combo phổ biến — đủ cho phòng nhỏ ~3-4m²",
+      "tagline": "Combo phổ biến — đủ cho phòng nhỏ ~1.5m²",
       "image": "",
-      "coverage": "~3.5m² ở độ dày 1mm",
-      "duration": "Trộn 5 phút · Thi công 2h · Khô đi lại 8h · Hoàn thiện 24h",
-      "components": [
-        { "name": "Phần A — Resin epoxy F300", "qty": "2.5kg" },
-        { "name": "Phần B — Hardener", "qty": "1.0kg" },
-        { "name": "Sand màu (1 màu chọn)", "qty": "Tùy chọn" }
-      ],
-      "tools_included": ["Bay trộn 1 cái", "Rolo lăn 1 cái", "Bao tay 4 đôi", "Khẩu trang 4 chiếc", "Băng keo phân màu"],
-      "specs": [
-        { "label": "Tổng khối lượng (A+B)", "value": "3.5kg" },
-        { "label": "Tỉ lệ trộn", "value": "A:B = 7:3" },
-        { "label": "Pot life", "value": "30 phút (25°C)" },
-        { "label": "Độ cứng", "value": "Hardness 6H" },
-        { "label": "Bám dính", "value": "≥ 3.0 MPa" }
-      ],
-      "warranty": "Bảo hành vật liệu 10 năm",
+      "coverage": "~1.5m² ở độ dày 1.5-2mm",
+      "duration": "Khô bề mặt: 6 – 12 giờ  ·  Đi lại nhẹ: 12- 24 giờ  ·  Sử dụng hoàn toàn: sau 48 giờ",
+      "warranty": "Hỗ trợ kỹ thuật",
       "datasheet_url": "",
-      "instructions_url": "",
+      "instructions_url": "https://keokingsmen.com/huong-dan-thi-cong-kingsmen-terrazy/",
       "active": true,
-      "order": 2
+      "components": [
+        {
+          "name": "1 thùng sơn sàn FINEX F300 3.5kg",
+          "qty": "3.5kg"
+        }
+      ],
+      "tools_included": [
+        "Gạt san phẳng (1 cái)",
+        "Que khuấy (1 cái)",
+        "Bao tay (1 đôi)",
+        "Rule gai 15cm (1 cái)"
+      ],
+      "specs": [
+        {
+          "label": "Tổng khối lượng (A+B)",
+          "value": "3.5kg"
+        },
+        {
+          "label": "Tỉ lệ trộn",
+          "value": "A:B = 6:1"
+        },
+        {
+          "label": "Pot life",
+          "value": "30 phút (25°C)"
+        },
+        {
+          "label": "Độ cứng",
+          "value": "Hardness 6H"
+        },
+        {
+          "label": "Bám dính",
+          "value": "≥ 3.0 MPa"
+        }
+      ]
     },
     {
-      "combo_id": "21kg",
-      "title": "Finex F300 — 21kg",
-      "tagline": "Combo lớn — cho diện tích thi công ~20m² (showroom, văn phòng)",
+      "combo_id": "7kg",
+      "order": 3,
+      "title": "Finex F300 — 7kg",
+      "tagline": "Combo lớn — cho diện tích thi công ~3m² ",
       "image": "",
-      "coverage": "~21m² ở độ dày 1mm",
-      "duration": "Trộn 5-10 phút/mẻ · Thi công 8h · Khô đi lại 8h · Hoàn thiện 24h",
-      "components": [
-        { "name": "Phần A — Resin epoxy F300", "qty": "15kg" },
-        { "name": "Phần B — Hardener", "qty": "6kg" },
-        { "name": "Sand màu (chọn nhiều màu)", "qty": "Tùy chọn" }
-      ],
-      "tools_included": ["Bay trộn 2 cái", "Rolo lăn 2 cái", "Bao tay 10 đôi", "Khẩu trang 10 chiếc", "Băng keo phân màu 5 cuộn", "Máy khuấy điện (cho mẻ lớn)"],
-      "specs": [
-        { "label": "Tổng khối lượng (A+B)", "value": "21kg" },
-        { "label": "Tỉ lệ trộn", "value": "A:B = 7:3" },
-        { "label": "Pot life", "value": "30 phút (25°C)" },
-        { "label": "Độ cứng", "value": "Hardness 6H" },
-        { "label": "Bám dính", "value": "≥ 3.0 MPa" }
-      ],
-      "warranty": "Bảo hành vật liệu 10 năm + hỗ trợ kỹ thuật on-site",
+      "coverage": "~3m² ở độ dày 1.5-2mm",
+      "duration": "Khô bề mặt: 6 – 12 giờ  ·  Đi lại nhẹ: 12- 24 giờ  ·  Sử dụng hoàn toàn: sau 48 giờ",
+      "warranty": "Hỗ trợ kỹ thuật",
       "datasheet_url": "",
-      "instructions_url": "",
-      "active": true,
-      "order": 3
+      "instructions_url": "https://keokingsmen.com/huong-dan-thi-cong-kingsmen-terrazy/",
+      "active": false,
+      "components": [
+        {
+          "name": "1 thùng sơn sàn FINEX F300 7kg",
+          "qty": "7kg"
+        }
+      ],
+      "tools_included": [
+        "Gạt san phẳng (1 cái)",
+        "Que khuấy (1 cái)",
+        "Bao tay (1 đôi)",
+        "Rule gai 15cm (1 cái)"
+      ],
+      "specs": [
+        {
+          "label": "Tổng khối lượng (A+B)",
+          "value": "7kg"
+        },
+        {
+          "label": "Tỉ lệ trộn",
+          "value": "A:B = 6:1"
+        },
+        {
+          "label": "Pot life",
+          "value": "30 phút (25°C)"
+        },
+        {
+          "label": "Độ cứng",
+          "value": "Hardness 6H"
+        },
+        {
+          "label": "Bám dính",
+          "value": "≥ 3.0 MPa"
+        }
+      ]
     }
   ]
 }
