@@ -1,24 +1,13 @@
 {
   "items": [
     {
-      "id": "sample-1kg",
-      "icon": "🎁",
-      "title": "Mẫu thử Finex F300 1kg",
-      "subtitle": "Test trên sàn nhà trước khi đặt combo",
-      "image": "",
-      "value": 250000,
-      "condition": "Cho mọi combo",
-      "order": 1,
-      "active": true
-    },
-    {
       "id": "tools-kit",
       "icon": "🛠️",
       "title": "Bộ dụng cụ thi công",
       "subtitle": "Gạt+ que khuấy + bao tay",
       "image": "",
       "value": 350000,
-      "condition": "Combo từ 3.5kg trở lên",
+      "condition": "Combo từ 1kg trở lên",
       "order": 2,
       "active": true
     },
