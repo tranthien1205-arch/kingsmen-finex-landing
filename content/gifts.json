@@ -9,7 +9,7 @@
       "value": 0,
       "condition": "Combo từ 1kg trở lên",
       "order": 1,
-      "active": false
+      "active": true
     },
     {
       "id": "video-guide",
