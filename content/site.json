@@ -26,5 +26,11 @@
     "countdown_end": "",
     "countdown_hours": 24,
     "bg_mode": ""
+  },
+  "floating_ctas": {
+    "enabled": true,
+    "show_call": true,
+    "show_zalo": true,
+    "show_order": true
   }
 }
