@@ -1,63 +1,51 @@
 {
   "items": [
     {
-      "code": "T05",
-      "name": "Nâu Gỗ",
+      "code": "FN50",
+      "name": "Xanh khói",
       "hex": "#8b6f47",
       "recommended_for": "",
       "order": 1,
       "description": "",
-      "swatch_image": "",
+      "swatch_image": "/assets/uploads/1778052557917-xanh-khoi.png",
       "scene_image": "",
       "featured": false,
       "active": true
     },
     {
-      "code": "T06",
-      "name": "Xanh Rêu",
+      "code": "FN21",
+      "name": "Kem van",
       "hex": "#6b8068",
       "recommended_for": "",
       "order": 1,
       "description": "",
-      "swatch_image": "",
+      "swatch_image": "/assets/uploads/1778052575083-z7775286973659-78e6def98a32286804be321e919d5e10.jpg",
       "scene_image": "",
       "featured": false,
       "active": true
     },
     {
-      "code": "T07",
-      "name": "Xanh Dương Nhẹ",
+      "code": "FN41",
+      "name": "Xám núi",
       "hex": "#a4bdd4",
       "recommended_for": "",
       "order": 1,
       "description": "",
-      "swatch_image": "",
+      "swatch_image": "/assets/uploads/1778052589642-z7775286885686-cbc36c1c601464703e7832594a5fa335.jpg",
       "scene_image": "",
       "featured": false,
       "active": true
     },
     {
-      "code": "T08",
-      "name": "Hồng Phấn",
+      "code": "FN43",
+      "name": "Xám mè",
       "hex": "#e8c8c4",
       "recommended_for": "",
       "order": 1,
       "description": "",
-      "swatch_image": "",
+      "swatch_image": "/assets/uploads/1778052602143-z7775286696723-e5f136cb0e3eb386342a7c6d28623ed0.jpg",
       "scene_image": "",
       "featured": false,
-      "active": true
-    },
-    {
-      "code": "T09",
-      "name": "Đen Carbon",
-      "hex": "#2d2d2d",
-      "recommended_for": "",
-      "order": 1,
-      "description": "",
-      "swatch_image": "",
-      "scene_image": "",
-      "featured": true,
       "active": true
     }
   ]
