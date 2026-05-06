@@ -83,7 +83,7 @@
 
   // -------------------- BOOT --------------------
   async function run() {
-    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts, comboDetails] = await Promise.all([
+    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts] = await Promise.all([
       fetchJson('site.json'),
       fetchJson('combos.json'),
       fetchJson('colors.json'),
@@ -103,7 +103,6 @@
       fetchJson('menus.json'),
       fetchJson('trust_stamps.json'),
       fetchJson('gifts.json'),
-      fetchJson('combo_details.json'),
     ]);
 
     try { patchImages(images); } catch (e) { console.warn('[cms-patcher] images', e); }
@@ -113,9 +112,8 @@
     try { patchFomo(sections, site); } catch (e) { console.warn('[cms-patcher] fomo', e); }
     try { patchHeaderMenu(menus); } catch (e) { console.warn('[cms-patcher] menu', e); }
     try { patchFloatingCtas(site); } catch (e) { console.warn('[cms-patcher] floating', e); }
-    // patchComboDetails MUST run before patchCombos so combo cards know which
-    // combos have a detail card to link to (renders "Xem chi tiết" button).
-    try { patchComboDetails(comboDetails); } catch (e) { console.warn('[cms-patcher] combo_details', e); }
+    // patchCombos cũng build window.KS_COMBO_DETAILS từ items[i].details (đã merge
+    // combos.json + combo_details.json thành 1 file — single source of truth).
     try { patchCombos(combos); } catch (e) { console.warn('[cms-patcher] combos', e); }
     try { patchColors(colors); } catch (e) { console.warn('[cms-patcher] colors', e); }
     try { patchFaq(faq); } catch (e) { console.warn('[cms-patcher] faq', e); }
@@ -165,35 +163,6 @@
           ${it.condition ? `<p class="text-xs text-ks-mid-gray mt-2 italic">${escapeHtml(it.condition)}</p>` : ''}
         </div>`;
     }).join('');
-  }
-
-  // -------------------- COMBO DETAILS --------------------
-  // Lưu data dạng map keyed by combo_id để combo cards có thể trigger modal
-  // hiển thị chi tiết tương ứng. Section #combo-details mặc định ẩn — chỉ
-  // public render khi user bấm "Xem chi tiết" hoặc trong success modal.
-  function patchComboDetails(data) {
-    const grid = document.getElementById('cms-combo-details-grid');
-    if (!data || !Array.isArray(data.items)) {
-      window.KS_COMBO_DETAILS = {};
-      window.KS_COMBO_DETAILS_LIST = [];
-      return;
-    }
-    const items = data.items.filter((it) => it.active !== false).sort((a, b) => (a.order || 0) - (b.order || 0));
-    // Build a lookup by combo_id (string) — used by combo cards' "Xem chi tiết" button
-    const map = {};
-    for (const it of items) {
-      const key = String(it.combo_id || '').trim();
-      if (key) map[key] = it;
-    }
-    window.KS_COMBO_DETAILS = map;
-    window.KS_COMBO_DETAILS_LIST = items;
-    // Expose render helper so other code (success modal, deeplink) can re-use
-    window.KS_renderComboDetail = renderComboDetailHTML;
-    // Section grid still gets populated (in case admin enables it via CSS or
-    // a "Xem tất cả combo" button is added later) — but section itself stays hidden.
-    if (grid) {
-      grid.innerHTML = items.map((it) => `<div class="combo-detail-card">${renderComboDetailHTML(it)}</div>`).join('');
-    }
   }
 
   // Build the inner HTML for a single combo detail card. Used by:
@@ -256,15 +225,20 @@
   };
 
   // -------------------- FOMO BAR (text + countdown + CTA + colors + visibility) --------------------
+  // HTML mặc định #fomoBar có style="display:none" để tránh FOUC khi enabled=false.
+  // patchFomo set display='' để reveal khi cfg.enabled !== false (default-on khi missing).
+  // Background:
+  //   cfg.bg_mode = 'solid' → dùng cfg.bg_color (override gradient)
+  //   cfg.bg_mode = 'gradient' (hoặc undefined) → giữ nguyên CSS .fomo-bar gradient mặc định
   function patchFomo(sections, site) {
     const fomo = document.getElementById('fomoBar');
     if (!fomo) return;
     const cfg = (site && site.fomo) || {};
-    // Visibility toggle (site.fomo.enabled)
+    // Visibility toggle (site.fomo.enabled). Default = true (ẩn chỉ khi explicit false).
     if (cfg.enabled === false) { fomo.style.display = 'none'; return; }
     fomo.style.display = '';
-    // Background / text color
-    if (cfg.bg_color) fomo.style.background = cfg.bg_color;
+    // Background — chỉ override gradient khi bg_mode === 'solid'
+    if (cfg.bg_mode === 'solid' && cfg.bg_color) fomo.style.background = cfg.bg_color;
     if (cfg.text_color) fomo.style.color = cfg.text_color;
     // Countdown end time — drives the ticker. Use site.fomo.countdown_end (ISO datetime),
     // or site.fomo.countdown_hours (number, hours-from-now-on-each-page-load),
@@ -427,12 +401,17 @@
   }
 
   // -------------------- SECTIONS (per-key text) --------------------
+  // Sentinel `__HIDE__` cho phép admin ẨN element thay vì rỗng-thì-giữ-static.
+  // Empty string vẫn keep static fallback (intentional defensive: admin xóa nhầm
+  // 1 ô không làm trắng UI). Muốn ẩn thật → fill `__HIDE__`.
+  const SECTIONS_HIDE_SENTINEL = '__HIDE__';
   function patchSections(sections) {
     if (!sections || typeof sections !== 'object') return;
     // [data-cms-text] — innerHTML (cho phép simple inline tags)
     document.querySelectorAll('[data-cms-text]').forEach((el) => {
       const key = el.getAttribute('data-cms-text');
       const v = sections[key];
+      if (v === SECTIONS_HIDE_SENTINEL) { el.style.display = 'none'; return; }
       if (v == null || v === '') return;
       if (el.innerHTML !== v) el.innerHTML = v;
     });
@@ -440,6 +419,7 @@
     document.querySelectorAll('[data-cms-html]').forEach((el) => {
       const key = el.getAttribute('data-cms-html');
       const v = sections[key];
+      if (v === SECTIONS_HIDE_SENTINEL) { el.style.display = 'none'; return; }
       if (v == null || v === '') return;
       if (el.innerHTML !== v) el.innerHTML = v;
     });
@@ -621,9 +601,45 @@
     }
   }
 
-  // -------------------- COMBOS --------------------
+  // -------------------- COMBOS (cards + details map + window helpers) --------------------
+  // Combos JSON từ v6 chứa luôn `details` field (merged từ combo_details.json cũ).
+  // Function này build window.KS_COMBO_DETAILS map keyed by combo.id để:
+  //   - Combo card render nút "🔍 Xem chi tiết" nếu có detail
+  //   - Success modal sau submit hiển thị chi tiết combo khách vừa đặt
+  //   - window.KS_openComboDetailModal(comboId) mở modal
   function patchCombos(combos) {
-    if (!combos || !Array.isArray(combos.items)) return;
+    if (!combos || !Array.isArray(combos.items)) {
+      window.KS_COMBO_DETAILS = {};
+      window.KS_COMBO_DETAILS_LIST = [];
+      window.KS_renderComboDetail = renderComboDetailHTML;
+      return;
+    }
+
+    // === Step 1: Build details map từ items[i].details (merged source) ===
+    const detailsMap = {};
+    for (const c of combos.items) {
+      const id = String(c.id || c.area_m2 || '').trim();
+      const d = c.details;
+      // Coi là "có detail" nếu có ít nhất coverage / components / specs
+      const hasDetail = d && typeof d === 'object' && (
+        d.coverage || (Array.isArray(d.components) && d.components.length) ||
+        (Array.isArray(d.specs) && d.specs.length) || d.duration || d.warranty
+      );
+      if (id && hasDetail) {
+        // Backfill title/image từ combo level nếu detail không override
+        detailsMap[id] = {
+          ...d,
+          combo_id: id,
+          title: d.title || c.label || `Combo ${c.area_m2 || id}`,
+          image: d.image || c.image || '',
+        };
+      }
+    }
+    window.KS_COMBO_DETAILS = detailsMap;
+    window.KS_COMBO_DETAILS_LIST = Object.values(detailsMap);
+    window.KS_renderComboDetail = renderComboDetailHTML;
+
+    // === Step 2: Render combo cards ===
     const grid = document.getElementById('comboGrid');
     if (!grid) return;
     const items = combos.items.filter((c) => c.active !== false).slice(0, 3);

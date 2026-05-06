@@ -283,8 +283,8 @@ tailwind.config = {
 <!-- CMS Block Renderer container (chỉ hiển thị khi ?cms=1) -->
 <div id="cms-blocks-root"></div>
 
-<!-- FOMO STICKY BAR (Scarcity + Urgency) -->
-<div id="fomoBar" class="fomo-bar text-white text-sm py-2 px-4 sticky top-0 z-50 shadow-md">
+<!-- FOMO STICKY BAR (Scarcity + Urgency) — default hidden, cms-patcher reveals if site.fomo.enabled !== false -->
+<div id="fomoBar" class="fomo-bar text-white text-sm py-2 px-4 sticky top-0 z-50 shadow-md" style="display:none">
   <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 md:gap-6 text-center">
     <span class="font-bold">🎁 ƯU ĐÃI RA MẮT — GIẢM 22-24%</span>
     <span class="hidden md:inline">|</span>
@@ -1384,19 +1384,7 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- 📦 COMBO DETAILS — Mặc định ẩn, mở qua modal khi khách bấm "Xem chi tiết" -->
-<section id="combo-details" class="py-16 bg-white" style="display:none">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="text-center mb-10">
-      <span class="text-ks-teal font-bold text-sm uppercase tracking-wider" data-cms-text="combo_details.eyebrow">📦 Chi tiết combo</span>
-      <h2 class="display text-3xl md:text-4xl text-ks-dark mt-2" data-cms-text="combo_details.title">Trong mỗi combo Finex F300 có gì?</h2>
-      <p class="text-ks-mid-gray mt-3 max-w-2xl mx-auto" data-cms-text="combo_details.subtitle">Resin + Hardener + Sand màu chuẩn nhập + dụng cụ thi công</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5" id="cms-combo-details-grid"></div>
-  </div>
-</section>
-
-<!-- 📦 COMBO DETAIL MODAL -->
+<!-- 📦 COMBO DETAIL MODAL — combo detail data nay merge vào /content/combos.json (item.details) -->
 <div id="comboDetailModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
   <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-auto shadow-2xl">
     <div class="sticky top-0 bg-white border-b border-ks-border p-4 flex items-center justify-between">
@@ -1648,7 +1636,7 @@ tailwind.config = {
 <script src="/assets/js/tracking.js?v=2" defer></script>
 
 <!-- Hybrid CMS Patcher (đọc /content/*.json → patch dynamic data + images on static HTML) -->
-<script src="/assets/js/cms-patcher.js?v=5" defer></script>
+<script src="/assets/js/cms-patcher.js?v=6" defer></script>
 
 <!-- Page Builder preview only (?cms=1 — admin tab). Static HTML stays master. -->
 <script src="/assets/js/cms-renderer.js?v=6" defer></script>
