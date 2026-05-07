@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "label": "🏅 ISO 9001:2015",
+      "order": 1,
+      "active": true
+    },
+    {
+      "label": "🇫🇷 A+ Eurofins",
+      "order": 2,
+      "active": true
+    },
+    {
+      "label": "🇪🇺 CE Standard",
+      "order": 3,
+      "active": true
+    },
+    {
+      "label": "🧪 SGS Tested",
+      "order": 4,
+      "active": true
+    },
+    {
+      "label": "✓ QCVN VN",
+      "order": 5,
+      "active": true
+    }
+  ]
+}
