@@ -76,7 +76,7 @@
   "footer.col1_title": "Sản phẩm",
   "footer.col2_title": "Hỗ trợ",
   "footer.col3_title": "Liên hệ",
-  "footer.copyright": "© 2026 Finex — Phân phối bởi Masfico Việt Nam",
+  "footer.copyright": "© 2026 Vuakeoxaydung— Bản quyền thuộc Vua Keo Xây Dựng",
   "header.cta_order": "🛒 Đặt ngay",
   "faq.eyebrow": "FAQ",
   "faq.title": "Câu hỏi thường gặp",
@@ -127,5 +127,15 @@
   "reviews.stars": "",
   "reviews.rating_value": "",
   "reviews.rating_count": "",
-  "reviews.disclaimer": ""
+  "reviews.disclaimer": "",
+  "footer.intro": "Finex F300 — Sàn Epoxy Tự Phẳng F300 thế hệ mới.",
+  "footer.shop_label": "",
+  "footer.shop_url": "",
+  "footer.shop_url_label": "",
+  "footer.hotline": "📞 Hotline/Zalo: 0888 144 848",
+  "footer.email": "📧 vuakeoxaydung@gmail.com",
+  "footer.email_href": "mailto:vuakeoxaydung@gmail.com",
+  "footer.website": "",
+  "footer.website_url": "",
+  "footer.address": ""
 }
