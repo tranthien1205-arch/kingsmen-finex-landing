@@ -286,11 +286,11 @@ tailwind.config = {
 <!-- FOMO STICKY BAR (Scarcity + Urgency) — default hidden, cms-patcher reveals if site.fomo.enabled !== false -->
 <div id="fomoBar" class="fomo-bar text-white text-sm py-2 px-4 sticky top-0 z-50 shadow-md" style="display:none">
   <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 md:gap-6 text-center">
-    <span class="font-bold">🎁 ƯU ĐÃI RA MẮT — GIẢM 22-24%</span>
+    <span class="font-bold" data-cms-text="fomo.text">🎁 ƯU ĐÃI RA MẮT — GIẢM 22-24%</span>
     <span class="hidden md:inline">|</span>
-    <span class="hidden md:inline">Còn: <span class="cd-digit" id="cdH">00</span>:<span class="cd-digit" id="cdM">00</span>:<span class="cd-digit" id="cdS">00</span></span>
+    <span class="hidden md:inline"><span data-cms-text="fomo.countdown_label">Còn:</span> <span class="cd-digit" id="cdH">00</span>:<span class="cd-digit" id="cdM">00</span>:<span class="cd-digit" id="cdS">00</span></span>
     <span class="hidden md:inline">|</span>
-    <a href="#order" class="bg-white text-ks-dark-teal px-3 py-1 rounded-full font-bold hover:brightness-110 transition">Đặt ngay →</a>
+    <a href="#order" class="bg-white text-ks-dark-teal px-3 py-1 rounded-full font-bold hover:brightness-110 transition" data-cms-text="fomo.cta_label">Đặt ngay →</a>
   </div>
 </div>
 
@@ -300,7 +300,7 @@ tailwind.config = {
     <a href="#" class="flex items-center gap-2 shrink-0">
       <img src="assets/finex/logo-header.png" alt="Finex F300 — Finish Made Easy" data-cms-img="logo_header" class="h-8 md:h-10 w-auto">
     </a>
-    <div class="hidden lg:flex items-center gap-5 text-sm font-semibold text-ks-dark">
+    <div id="headerNavMenu" class="hidden lg:flex items-center gap-5 text-sm font-semibold text-ks-dark">
       <a href="#features" class="hover:text-ks-teal">Tính năng</a>
       <a href="#spaces" class="hover:text-ks-teal">Ứng dụng</a>
       <a href="#order" class="hover:text-ks-teal">Combo & giá</a>
@@ -459,7 +459,7 @@ tailwind.config = {
     <div class="bg-white rounded-3xl p-4 md:p-8 shadow-xl">
       <img src="assets/finex/before-after.jpg" alt="Before After sàn cải tạo Finex F300" data-cms-img="pas_before_after" class="w-full rounded-2xl">
     </div>
-    <p class="text-center text-ks-mid-gray text-sm mt-4 italic">* Hình ảnh từ công trình thực tế khách hàng Finex F300</p>
+    <p class="text-center text-ks-mid-gray text-sm mt-4 italic" data-cms-text="before_after.disclaimer">* Hình ảnh từ công trình thực tế khách hàng Finex F300</p>
   </div>
 </section>
 
@@ -757,7 +757,7 @@ tailwind.config = {
     <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
       <!-- STEP 1: COMBO -->
       <div class="p-6 md:p-8 border-b border-ks-border">
-        <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">1</span>Chọn combo diện tích</h3>
+        <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">1</span><span data-cms-text="order.step1_title">Chọn combo diện tích</span></h3>
         <div class="grid md:grid-cols-3 gap-3" id="comboGrid">
           <div class="combo-card rounded-2xl p-5 cursor-pointer text-center" data-combo="3" data-price="2195100">
             <div class="text-xs font-bold text-ks-mid-gray uppercase">Combo nhỏ</div>
@@ -785,12 +785,12 @@ tailwind.config = {
             <div class="text-xs text-ks-usa-red font-bold mt-1">Tiết kiệm 1.431.000₫</div>
           </div>
         </div>
-        <p class="text-xs text-ks-mid-gray mt-3">💡 Diện tích lớn hơn? Liên hệ hotline <strong class="text-ks-teal">0888 144 848</strong> để được báo giá riêng.</p>
+        <p class="text-xs text-ks-mid-gray mt-3" data-cms-html="order.step1_hint">💡 Diện tích lớn hơn? Liên hệ hotline <strong class="text-ks-teal">0888 144 848</strong> để được báo giá riêng.</p>
       </div>
 
       <!-- STEP 2: COLOR -->
       <div class="p-6 md:p-8 border-b border-ks-border">
-        <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">2</span>Chọn màu <span id="selectedColorName" class="text-ks-teal font-normal">(Kem Terrazzo)</span></h3>
+        <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">2</span><span data-cms-text="order.step2_title">Chọn màu</span> <span id="selectedColorName" class="text-ks-teal font-normal">(Kem Terrazzo)</span></h3>
         <div class="grid grid-cols-4 md:grid-cols-6 gap-3" id="colorGrid">
           <div class="swatch selected rounded-xl overflow-hidden text-center" data-color="Kem Terrazzo">
             <div class="w-full aspect-square rounded-lg" style="background: #E8DCC8;"></div>
@@ -841,31 +841,31 @@ tailwind.config = {
             <div class="text-xs mt-1 font-semibold">Xám khói</div>
           </div>
         </div>
-        <p class="text-xs text-ks-mid-gray mt-3">💡 Không chắc? Yêu cầu <strong class="text-ks-teal">mẫu thử 1kg</strong> — test trên sàn thật trước khi đặt combo đầy đủ.</p>
+        <p class="text-xs text-ks-mid-gray mt-3" data-cms-html="order.step2_hint">💡 Không chắc? Yêu cầu <strong class="text-ks-teal">mẫu thử 1kg</strong> — test trên sàn thật trước khi đặt combo đầy đủ.</p>
       </div>
 
       <!-- STEP 3: INFO -->
       <div class="p-6 md:p-8">
-        <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">3</span>Thông tin giao hàng</h3>
+        <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">3</span><span data-cms-text="order.step3_title">Thông tin giao hàng</span></h3>
         <form id="orderForm" class="grid md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-semibold text-ks-dark mb-1">Họ tên *</label>
-            <input type="text" id="fName" required placeholder="Nguyễn Văn A"
+            <label class="block text-sm font-semibold text-ks-dark mb-1" data-cms-text="order.label_name">Họ tên *</label>
+            <input type="text" id="fName" required placeholder="Nguyễn Văn A" data-cms-placeholder="order.ph_name"
                    class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none">
           </div>
           <div>
-            <label class="block text-sm font-semibold text-ks-dark mb-1">Số điện thoại *</label>
-            <input type="tel" id="fPhone" required placeholder="0912 xxx xxx"
+            <label class="block text-sm font-semibold text-ks-dark mb-1" data-cms-text="order.label_phone">Số điện thoại *</label>
+            <input type="tel" id="fPhone" required placeholder="0912 xxx xxx" data-cms-placeholder="order.ph_phone"
                    class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none">
           </div>
           <div class="md:col-span-2">
-            <label class="block text-sm font-semibold text-ks-dark mb-1">Địa chỉ giao hàng *</label>
-            <input type="text" id="fAddr" required placeholder="Số nhà, đường, quận/huyện, tỉnh/thành phố"
+            <label class="block text-sm font-semibold text-ks-dark mb-1" data-cms-text="order.label_addr">Địa chỉ giao hàng *</label>
+            <input type="text" id="fAddr" required placeholder="Số nhà, đường, quận/huyện, tỉnh/thành phố" data-cms-placeholder="order.ph_addr"
                    class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none">
           </div>
           <div class="md:col-span-2">
-            <label class="block text-sm font-semibold text-ks-dark mb-1">Ghi chú (tuỳ chọn)</label>
-            <textarea id="fNote" rows="2" placeholder="Ví dụ: thời gian giao thuận tiện, cần tư vấn thi công..."
+            <label class="block text-sm font-semibold text-ks-dark mb-1" data-cms-text="order.label_note">Ghi chú (tuỳ chọn)</label>
+            <textarea id="fNote" rows="2" placeholder="Ví dụ: thời gian giao thuận tiện, cần tư vấn thi công..." data-cms-placeholder="order.ph_note"
                       class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none"></textarea>
           </div>
         </form>
@@ -873,46 +873,46 @@ tailwind.config = {
         <!-- ORDER SUMMARY -->
         <div class="mt-6 bg-ks-light rounded-2xl p-5">
           <div class="flex justify-between text-sm mb-2">
-            <span>Combo:</span><span id="sumCombo" class="font-bold">Combo 4.5m²</span>
+            <span data-cms-text="order.summary_combo">Combo:</span><span id="sumCombo" class="font-bold">Combo 4.5m²</span>
           </div>
           <div class="flex justify-between text-sm mb-2">
-            <span>Màu:</span><span id="sumColor" class="font-bold">Kem Terrazzo</span>
+            <span data-cms-text="order.summary_color">Màu:</span><span id="sumColor" class="font-bold">Kem Terrazzo</span>
           </div>
           <div class="flex justify-between text-sm mb-2">
-            <span>Giá combo:</span><span id="sumPrice" class="font-bold text-ks-teal">3.215.700₫</span>
+            <span data-cms-text="order.summary_price">Giá combo:</span><span id="sumPrice" class="font-bold text-ks-teal">3.215.700₫</span>
           </div>
           <div class="flex justify-between text-sm mb-3 text-ks-usa-red">
-            <span>Ưu đãi 25%:</span><span id="sumSaving" class="font-bold">-1.071.900₫</span>
+            <span data-cms-text="order.summary_discount">Ưu đãi 25%:</span><span id="sumSaving" class="font-bold">-1.071.900₫</span>
           </div>
           <hr class="border-ks-border mb-3">
           <div class="flex justify-between items-center">
-            <span class="font-bold text-ks-dark">Tổng thanh toán:</span>
+            <span class="font-bold text-ks-dark" data-cms-text="order.summary_total">Tổng thanh toán:</span>
             <span id="sumTotal" class="display text-2xl text-ks-usa-red">3.215.700₫</span>
           </div>
-          <p class="text-xs text-ks-mid-gray mt-2">✓ Đã bao gồm VAT · ✓ Miễn phí giao hàng · ✓ Không phát sinh</p>
+          <p class="text-xs text-ks-mid-gray mt-2" data-cms-text="order.summary_note">✓ Đã bao gồm VAT · ✓ Miễn phí giao hàng · ✓ Không phát sinh</p>
         </div>
 
         <!-- BIG CTA -->
-        <button id="submitOrder" class="w-full mt-5 bg-ks-gold hover:bg-ks-gold/90 text-ks-dark font-black text-lg py-5 rounded-2xl shadow-xl transition-all hover:shadow-2xl pulse-ring">
+        <button id="submitOrder" class="w-full mt-5 bg-ks-gold hover:bg-ks-gold/90 text-ks-dark font-black text-lg py-5 rounded-2xl shadow-xl transition-all hover:shadow-2xl pulse-ring" data-cms-text="order.submit_label">
           🎁 ĐẶT HÀNG NGAY — NHẬN ƯU ĐÃI 25%
         </button>
-        <p class="text-center text-xs text-ks-mid-gray mt-3">🔒 Thông tin được bảo mật · Nhân viên sẽ gọi xác nhận trong 15 phút</p>
+        <p class="text-center text-xs text-ks-mid-gray mt-3" data-cms-text="order.submit_trust">🔒 Thông tin được bảo mật · Nhân viên sẽ gọi xác nhận trong 15 phút</p>
 
         <!-- Payment methods (selectable) -->
         <div class="mt-4">
-          <p class="text-sm font-bold text-ks-dark mb-2">💳 Phương thức thanh toán:</p>
+          <p class="text-sm font-bold text-ks-dark mb-2" data-cms-text="order.payment_heading">💳 Phương thức thanh toán:</p>
           <div class="grid grid-cols-3 gap-2">
             <label class="payment-opt cursor-pointer flex items-center gap-2 p-3 border-2 border-ks-border rounded-xl hover:border-ks-teal transition">
               <input type="radio" name="payment_method" value="cod" class="accent-ks-teal" checked>
-              <span class="text-sm">💵 COD</span>
+              <span class="text-sm" data-cms-text="order.payment_cod">💵 COD</span>
             </label>
             <label class="payment-opt cursor-pointer flex items-center gap-2 p-3 border-2 border-ks-border rounded-xl hover:border-ks-teal transition">
               <input type="radio" name="payment_method" value="bank" class="accent-ks-teal">
-              <span class="text-sm">🏦 Chuyển khoản</span>
+              <span class="text-sm" data-cms-text="order.payment_bank">🏦 Chuyển khoản</span>
             </label>
             <label class="payment-opt cursor-pointer flex items-center gap-2 p-3 border-2 border-ks-border rounded-xl hover:border-ks-teal transition">
               <input type="radio" name="payment_method" value="ewallet" class="accent-ks-teal">
-              <span class="text-sm">📱 Momo/Zalo</span>
+              <span class="text-sm" data-cms-text="order.payment_ewallet">📱 Momo/Zalo</span>
             </label>
           </div>
         </div>
@@ -932,7 +932,7 @@ tailwind.config = {
 
     <details class="bg-ks-light rounded-2xl shadow-lg overflow-hidden" open>
       <summary class="p-5 flex items-center justify-between bg-ks-gradient text-white">
-        <span class="font-bold">📖 Xem hướng dẫn đầy đủ 4 bước (có hình)</span>
+        <span class="font-bold" data-cms-text="steps.toggle_label">📖 Xem hướng dẫn đầy đủ 4 bước (có hình)</span>
         <span class="chev text-2xl">⌄</span>
       </summary>
       <div class="p-4 md:p-6 bg-white">
@@ -960,7 +960,7 @@ tailwind.config = {
     </div>
     <details class="bg-white rounded-2xl shadow-lg overflow-hidden">
       <summary class="p-5 flex items-center justify-between border-b border-ks-border">
-        <span class="font-bold text-ks-dark">📋 Xem toàn bộ thông số chi tiết</span>
+        <span class="font-bold text-ks-dark" data-cms-text="specs.toggle_label">📋 Xem toàn bộ thông số chi tiết</span>
         <span class="chev text-2xl text-ks-teal">⌄</span>
       </summary>
       <div class="p-4 md:p-6">
@@ -978,9 +978,9 @@ tailwind.config = {
       <h2 class="display text-3xl md:text-4xl text-ks-dark mt-2" data-cms-text="reviews.title">Khách hàng nói gì về Finex F300?</h2>
       <p class="text-ks-mid-gray mt-3 max-w-2xl mx-auto" data-cms-text="reviews.subtitle">Khách hàng thật, đơn thật — review không filter</p>
       <div class="flex justify-center items-center gap-2 mt-3">
-        <span class="text-2xl">⭐⭐⭐⭐⭐</span>
-        <span class="font-bold text-ks-dark">4.9/5</span>
-        <span class="text-ks-mid-gray text-sm">· 3.547 đánh giá</span>
+        <span class="text-2xl" data-cms-text="reviews.stars">⭐⭐⭐⭐⭐</span>
+        <span class="font-bold text-ks-dark" data-cms-text="reviews.rating_value">4.9/5</span>
+        <span class="text-ks-mid-gray text-sm" data-cms-text="reviews.rating_count">· 3.547 đánh giá</span>
       </div>
     </div>
 
@@ -1088,7 +1088,7 @@ tailwind.config = {
       </div>
     </div>
 
-    <p class="text-center text-xs text-ks-mid-gray mt-6 italic">
+    <p class="text-center text-xs text-ks-mid-gray mt-6 italic" data-cms-text="reviews.disclaimer">
       * Hình ảnh là kết quả thực tế từ các công trình sử dụng Finex F300. Tên khách hàng đã được viết tắt để bảo mật thông tin.
     </p>
   </div>
@@ -1099,7 +1099,7 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-10">
       <span class="text-ks-gold font-bold text-sm uppercase tracking-wider" data-cms-text="tiktok.eyebrow">📱 Xem trên TikTok</span>
-      <h2 class="display text-3xl md:text-4xl mt-2">Khách hàng quay lại sau khi dùng Finex</h2>
+      <h2 class="display text-3xl md:text-4xl mt-2" data-cms-text="tiktok.title">Khách hàng quay lại sau khi dùng Finex</h2>
       <p class="text-white/80 mt-3 max-w-2xl mx-auto" data-cms-text="tiktok.subtitle">Video thực tế thi công, trước/sau, review khách — theo dõi <a href="https://www.tiktok.com/@kingsmenkeo" target="_blank" class="text-ks-gold underline font-bold">@kingsmenkeo</a> để xem thêm</p>
     </div>
 
@@ -1399,9 +1399,9 @@ tailwind.config = {
 <!-- SUCCESS MODAL -->
 <div id="successModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
   <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl">
-    <div class="text-6xl mb-4">🎉</div>
-    <h3 class="display text-2xl text-ks-dark mb-2">Đặt hàng thành công!</h3>
-    <p class="text-ks-dark-text mb-4">Cảm ơn bạn. Nhân viên Kingsmen sẽ <strong class="text-ks-teal">gọi xác nhận trong 15 phút</strong>.</p>
+    <div class="text-6xl mb-4" data-cms-text="success.emoji">🎉</div>
+    <h3 class="display text-2xl text-ks-dark mb-2" data-cms-text="success.title">Đặt hàng thành công!</h3>
+    <p class="text-ks-dark-text mb-4" data-cms-html="success.body">Cảm ơn bạn. Nhân viên Kingsmen sẽ <strong class="text-ks-teal">gọi xác nhận trong 15 phút</strong>.</p>
     <div class="bg-ks-light rounded-xl p-4 mb-4 text-sm text-left">
       <p id="mName" class="mb-1"></p>
       <p id="mPhone" class="mb-1"></p>
@@ -1411,7 +1411,7 @@ tailwind.config = {
     </div>
     <div id="mComboDetail" class="text-left mb-4"></div>
     <button onclick="document.getElementById('successModal').classList.add('hidden'); document.getElementById('successModal').classList.remove('flex');"
-            class="w-full bg-ks-teal text-white py-3 rounded-xl font-bold hover:bg-ks-dark-teal">Đóng</button>
+            class="w-full bg-ks-teal text-white py-3 rounded-xl font-bold hover:bg-ks-dark-teal" data-cms-text="success.btn_close">Đóng</button>
   </div>
 </div>
 
