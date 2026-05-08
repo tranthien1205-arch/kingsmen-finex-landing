@@ -1,8 +1,8 @@
 {
-  "hotline": "0888 357 711",
+  "hotline": "0888 144 848",
   "cta": {
     "phone": "0888 144 848",
-    "phone_display": "0888 357 711",
+    "phone_display": "0888 144 848",
     "zalo": "0888144848",
     "call_label": "📞 {phone}",
     "order_label": "ĐẶT NGAY",
@@ -27,7 +27,7 @@
     "countdown_hours": 24,
     "bg_mode": "",
     "text": "",
-    "discount_badge": "23%"
+    "discount_badge": "25%"
   },
   "floating_ctas": {
     "enabled": true,
@@ -41,7 +41,7 @@
   },
   "contact": {
     "address": "",
-    "email": "marketing.masfico@gmail.com",
+    "email": "vuakeoxaydung@gmail.com",
     "hours": "8:00-17:00",
     "maps_url": ""
   },
