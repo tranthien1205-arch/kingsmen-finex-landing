@@ -1329,44 +1329,45 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
     <div class="md:col-span-2">
       <img src="assets/finex/logo.png" alt="Finex F300" data-cms-img="logo_footer" class="h-12 bg-white rounded p-2 mb-3 inline-block">
-      <p class="text-sm mb-2">Finex F300 — Sàn Epoxy Tự Phẳng F300 thế hệ mới.<br>
+      <p class="text-sm mb-2" data-cms-html="footer.intro">Finex F300 — Sàn Epoxy Tự Phẳng F300 thế hệ mới.<br>
       Thương hiệu Mỹ · Phân phối độc quyền bởi <strong class="text-white">Công ty CP Masfico Việt Nam</strong>.</p>
-      <p class="text-sm mt-4">Website thương mại: <a href="https://finex.vuakeoxaydung.vn" class="text-ks-gold hover:underline">finex.vuakeoxaydung.vn</a></p>
+      <p class="text-sm mt-4" data-cms-html="footer.shop_link"><span data-cms-text="footer.shop_label">Website thương mại:</span> <a href="https://finex.vuakeoxaydung.vn" class="text-ks-gold hover:underline" data-cms-attr-href="footer.shop_url" data-cms-text="footer.shop_url_label">finex.vuakeoxaydung.vn</a></p>
     </div>
     <div>
-      <h4 class="font-bold text-white mb-3">Liên hệ</h4>
+      <h4 class="font-bold text-white mb-3" data-cms-text="footer.col2_title">Liên hệ</h4>
       <ul class="text-sm space-y-2">
         <li>📞 <a href="tel:0888144848" data-cms-cta="call" class="hover:text-ks-gold"><span data-cms-cta-label="phone_display">0888 144 848</span></a></li>
-        <li>📞 Hotline: 1900 7121</li>
-        <li>📧 keokingsmen@gmail.com</li>
-        <li>🌐 keokingsmen.com</li>
+        <li data-cms-text="footer.hotline">📞 Hotline: 1900 7121</li>
+        <li><a href="mailto:keokingsmen@gmail.com" data-cms-attr-href="footer.email_href" class="hover:text-ks-gold" data-cms-text="footer.email">📧 keokingsmen@gmail.com</a></li>
+        <li><a href="https://keokingsmen.com" target="_blank" rel="noopener" data-cms-attr-href="footer.website_url" class="hover:text-ks-gold" data-cms-text="footer.website">🌐 keokingsmen.com</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-bold text-white mb-3">Địa chỉ</h4>
-      <p class="text-sm leading-relaxed">
+      <h4 class="font-bold text-white mb-3" data-cms-text="footer.col3_title">Địa chỉ</h4>
+      <p class="text-sm leading-relaxed" data-cms-html="footer.address" data-cms="address">
         42 Trần Lựu, KĐT An Phú An Khánh,<br>
         Thủ Đức, TP. Hồ Chí Minh
       </p>
       <div class="flex gap-2 mt-3 text-xl">
-        <a href="#" class="hover:text-ks-gold">📘</a>
-        <a href="#" class="hover:text-ks-gold">▶️</a>
-        <a href="#" class="hover:text-ks-gold">🎵</a>
+        <a href="#" data-cms-social="facebook" class="hover:text-ks-gold" aria-label="Facebook">📘</a>
+        <a href="#" data-cms-social="youtube" class="hover:text-ks-gold" aria-label="YouTube">▶️</a>
+        <a href="#" data-cms-social="tiktok" class="hover:text-ks-gold" aria-label="TikTok">🎵</a>
+        <a href="#" data-cms-social="instagram" class="hover:text-ks-gold" aria-label="Instagram" style="display:none">📷</a>
       </div>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-white/10 text-xs text-white/60 text-center">
+  <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-white/10 text-xs text-white/60 text-center" data-cms-text="footer.copyright">
     © 2026 Vua Keo Xây Dựng · Đại lý ủy quyền Masfico Việt Nam · Tất cả các quyền được bảo lưu
   </div>
 </footer>
 
 <!-- FLOATING CTAs -->
-<div class="fixed bottom-4 right-4 z-40 flex flex-col gap-2">
-  <a href="tel:0888144848" data-cms-cta="call" class="w-14 h-14 bg-ks-teal rounded-full shadow-2xl flex items-center justify-center text-white text-2xl pulse-ring" title="Gọi">📞</a>
-  <a href="https://zalo.me/0888144848" data-cms-cta="zalo" target="_blank" class="w-14 h-14 rounded-full shadow-2xl flex items-center justify-center pulse-ring-blue relative overflow-hidden" style="background:#0068FF" aria-label="Chat Zalo" title="Chat Zalo">
+<div id="floatingCtas" class="fixed bottom-4 right-4 z-40 flex flex-col gap-2">
+  <a href="tel:0888144848" data-cms-cta="call" data-fab="call" class="w-14 h-14 bg-ks-teal rounded-full shadow-2xl flex items-center justify-center text-white text-2xl pulse-ring" title="Gọi" aria-label="Gọi">📞</a>
+  <a href="https://zalo.me/0888144848" data-cms-cta="zalo" data-fab="zalo" target="_blank" class="w-14 h-14 rounded-full shadow-2xl flex items-center justify-center pulse-ring-blue relative overflow-hidden" style="background:#0068FF" aria-label="Chat Zalo" title="Chat Zalo">
     <span style="color:#fff;font-family:'Arial Black','Helvetica',sans-serif;font-weight:900;font-size:14px;letter-spacing:-0.5px;line-height:1;">Zalo</span>
   </a>
-  <a href="#order" data-cms-cta="order" data-keep-content class="w-14 h-14 bg-ks-gold rounded-full shadow-2xl flex items-center justify-center text-white text-2xl" title="Đặt hàng">🛒</a>
+  <a href="#order" data-cms-cta="order" data-fab="order" data-keep-content class="w-14 h-14 bg-ks-gold rounded-full shadow-2xl flex items-center justify-center text-white text-2xl" title="Đặt hàng" aria-label="Đặt hàng">🛒</a>
 </div>
 
 <!-- 🎁 GIFTS / BONUSES -->
