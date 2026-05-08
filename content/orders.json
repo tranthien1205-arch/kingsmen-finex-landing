@@ -7,11 +7,16 @@
       "name": "Thien - CEO",
       "email": "tranthien1205@gmail.com",
       "active": true
+    },
+    {
+      "name": "Marketing",
+      "email": "marketing.masfico@gmail.com",
+      "active": true
     }
   ],
   "email_subject": "🔔 [Kingsmen Terrazy] Đơn hàng mới từ website",
   "internal_zalo": "",
-  "name": "Thien - CEO",
-  "email": "tranthien1205@gmail.com",
+  "name": "Marketing",
+  "email": "marketing.masfico@gmail.com",
   "active": true
 }
