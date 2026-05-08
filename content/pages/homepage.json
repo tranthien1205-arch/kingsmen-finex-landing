@@ -2,7 +2,7 @@
   "seo": {
     "title": "Finex F300 — Sàn Epoxy Tự Phẳng | Finish Made Easy",
     "description": "Finex F300 — Sàn Epoxy Tự Phẳng từ Mỹ. Tự phẳng thông minh, chống thấm tuyệt đối, không bụi-VOC. Phân phối bởi Masfico Việt Nam.",
-    "canonical": "https://kingsmen-finex-landing.pages.dev/",
+    "canonical": "https://finex.vuakeoxaydung.vn/",
     "index": true,
     "og_image": ""
   },
@@ -285,66 +285,7 @@
       "title": "12 màu hiệu ứng đá — phối mọi phong cách",
       "subtitle": "",
       "layout": "grid-4",
-      "source": "collection",
-      "show_filter": false,
-      "items": [
-        {
-          "code": "T04",
-          "name": "Xám Sáng",
-          "hex": "#c8c8c8",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T05",
-          "name": "Xám Đậm",
-          "hex": "#5a5a5a",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T06",
-          "name": "Đen Thanh Lịch",
-          "hex": "#2a2a2a",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T07",
-          "name": "Vàng Gold",
-          "hex": "#c9a84c",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T08",
-          "name": "Xanh Mint",
-          "hex": "#a8d5c4",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T09",
-          "name": "Xanh Pastel",
-          "hex": "#b7d4e5",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T10",
-          "name": "Hồng Pastel",
-          "hex": "#f0d4d4",
-          "swatch_image": "",
-          "scene_image": ""
-        },
-        {
-          "code": "T11",
-          "name": "Nâu Đất",
-          "hex": "#9a6b4f",
-          "swatch_image": "",
-          "scene_image": ""
-        }
-      ]
+      "show_filter": false
     },
     {
       "block_type": "cta_banner",
@@ -394,60 +335,10 @@
     {
       "block_type": "testimonials",
       "block_label": "15. Reviews — 6 review thực tế",
+      "eyebrow": "",
       "title": "Khách hàng nói gì về Kingsmen Terrazy?",
       "subtitle": "",
-      "layout": "grid-3",
-      "source": "collection",
-      "items": [
-        {
-          "name": "Chị Nguyễn H.",
-          "subtitle": "",
-          "rating": 5,
-          "quote": "Cải tạo nhà 60m² trong đúng 1 ngày, con nhỏ vẫn ở nhà bình thường. Sàn đẹp như villa resort. Tiết kiệm 40% so với lát gạch lại.",
-          "avatar": "",
-          "project_photo": ""
-        },
-        {
-          "name": "Anh Trần L.",
-          "subtitle": "",
-          "rating": 5,
-          "quote": "Làm quán cafe 80m², khách đi vô khen 'sàn đẹp quá'. Không bụi khi thi công, chỉ đóng cửa 2 ngày là hoạt động lại. Sau 8 tháng vẫn như mới.",
-          "avatar": "",
-          "project_photo": ""
-        },
-        {
-          "name": "Anh Minh T.",
-          "subtitle": "",
-          "rating": 5,
-          "quote": "Trưng bày Terrazy ở showroom, khách tới là thích ngay. Tỷ lệ chốt đơn tăng 30%. Kingsmen hỗ trợ demo mẫu tận nơi, kỹ thuật rất chuẩn.",
-          "avatar": "",
-          "project_photo": ""
-        },
-        {
-          "name": "Chị Lan P.",
-          "subtitle": "",
-          "rating": 5,
-          "quote": "Trước định đục phá gạch cũ, báo giá 25tr cho 30m². Làm Terrazy xong hết 12tr, đẹp hơn và không ồn. Bé 3 tuổi nhà mình lăn lê thoải mái.",
-          "avatar": "",
-          "project_photo": ""
-        },
-        {
-          "name": "Anh Vũ Đ.",
-          "subtitle": "",
-          "rating": 5,
-          "quote": "Làm nhà thầu 15 năm, chưa thấy loại vật liệu nào thi công dễ như Terrazy. Tự phẳng thật, không cần kỹ thuật cao. Team mình làm được 300m²/ngày.",
-          "avatar": "",
-          "project_photo": ""
-        },
-        {
-          "name": "Chị Kim T.",
-          "subtitle": "",
-          "rating": 5,
-          "quote": "Làm KTS, mình luôn tư vấn Terrazy cho khách muốn sàn liền mạch sang trọng. 12 màu phối với mọi phong cách. Chống thấm tuyệt đối — hợp resort, villa.",
-          "avatar": "",
-          "project_photo": ""
-        }
-      ]
+      "layout": "grid-3"
     },
     {
       "block_type": "tiktok",
@@ -455,83 +346,21 @@
       "eyebrow": "📱 Xem trên TikTok",
       "title": "Khách hàng quay lại sau khi dùng Terrazy",
       "subtitle": "Video thực tế thi công, trước/sau, review khách — theo dõi @kingsmenkeo để xem thêm",
-      "layout": "grid-3",
-      "background": "dark"
+      "layout": "grid-3"
     },
     {
       "block_type": "faq",
       "block_label": "17. Objection handling — Giải đáp lo lắng",
       "title": "Còn lăn tăn? Đây là câu trả lời",
       "subtitle": "",
-      "layout": "accordion",
-      "source": "collection",
-      "items": [
-        {
-          "question": "💭 Tôi chưa tin chất lượng — lỡ không như quảng cáo?",
-          "answer": "Hiểu mà — tâm lý ai cũng vậy. Vì thế chúng tôi có:\n- **Mẫu thử 1kg** — bạn test trực tiếp trên sàn nhà\n- **Bảo hành 10 năm** — lỗi vật liệu đổi mới 100%\n- **3.547 review ⭐4.9/5** từ khách thật, có hình\n- Đạt chuẩn **A+ Eurofins, ISO 9001, CE** — không phải nói suông",
-          "category": ""
-        },
-        {
-          "question": "💭 Không biết thi công — có tự làm được không?",
-          "answer": "Terrazy là **vật liệu tự phẳng thông minh** — dễ thi công nhất trong các loại sàn. Chỉ 4 bước: Vệ sinh → Trộn → Đổ → Chờ khô.\n\nNếu ngại, bạn chọn combo, team kỹ thuật Kingsmen sẽ **hỗ trợ miễn phí qua video call** hoặc giới thiệu đội thợ gần nhất tại khu vực của bạn.",
-          "category": ""
-        },
-        {
-          "question": "💭 Giá có đắt hơn sàn gạch/nhựa không?",
-          "answer": "Tính **tổng chi phí** (vật liệu + công + dọn rác + thời gian sinh hoạt bị gián đoạn), Terrazy **tiết kiệm 40-50%** so với đục phá lát gạch mới. Rẻ hơn sàn gỗ cao cấp và bền gấp 3 lần sàn nhựa PVC.",
-          "category": ""
-        },
-        {
-          "question": "💭 Bền được bao lâu?",
-          "answer": "Tuổi thọ thực tế **10-15 năm** trong điều kiện dân dụng bình thường. Hardness 6H (khó trầy), chịu tải nặng 1000g không nứt, chịu hóa chất (axit, kiềm, dầu). Khách hàng đầu tiên dùng Terrazy từ 2021 tới giờ vẫn như mới.",
-          "category": ""
-        },
-        {
-          "question": "💭 Nhà tôi có trẻ nhỏ — có độc hại không?",
-          "answer": "**Không. Tuyệt đối không.** Terrazy đạt chuẩn **A+ Eurofins** — tiêu chuẩn không khí trong nhà cao nhất của Pháp.\n\nKhông VOC, không formaldehyde, không bụi khi thi công. Bé con có thể lăn lê bò trườn ngay sau 8 giờ thi công (đi lại được). Phụ huynh nhiều công trình confirm: \"bé không bị dị ứng, không ho\".",
-          "category": ""
-        }
-      ]
+      "layout": "accordion"
     },
     {
       "block_type": "faq",
       "block_label": "18. FAQ — Câu hỏi thường gặp",
       "title": "Câu hỏi thường gặp",
       "subtitle": "",
-      "layout": "accordion",
-      "source": "collection",
-      "items": [
-        {
-          "question": "🚚 Giao hàng mất bao lâu?",
-          "answer": "Nội thành TP.HCM & Hà Nội: **24 giờ**. Các tỉnh khác: 2-4 ngày. Miễn phí giao hàng toàn quốc cho combo từ 3m² trở lên.",
-          "category": ""
-        },
-        {
-          "question": "💰 Có thể trả khi nhận hàng (COD) không?",
-          "answer": "Có. Bạn có thể chọn COD, chuyển khoản, Momo, ZaloPay hoặc trả góp (đơn từ 5 triệu). Nhân viên sẽ tư vấn cụ thể khi gọi xác nhận.",
-          "category": ""
-        },
-        {
-          "question": "📏 1 combo phủ được bao nhiêu m²?",
-          "answer": "Định mức chuẩn: **1.1-1.3 kg/m²** ở độ dày 1mm. Combo 3m², 4.5m², 6m² tương ứng với diện tích phủ tiêu chuẩn. Với nền cũ không đều có thể cần thêm 10-15%.",
-          "category": ""
-        },
-        {
-          "question": "🎨 Có thể pha màu theo yêu cầu không?",
-          "answer": "Có. Với đơn từ **20m² trở lên**, Kingsmen có dịch vụ **ColorMatch™** — pha màu custom theo yêu cầu. Thời gian xử lý thêm 5-7 ngày.",
-          "category": ""
-        },
-        {
-          "question": "🛠️ Hỗ trợ thi công như thế nào?",
-          "answer": "Video hướng dẫn chi tiết, hotline kỹ thuật **24/7**, hỗ trợ qua video call. Với đơn từ 10m², có thể giới thiệu đội thợ chuẩn tại khu vực của bạn (phí thợ riêng, minh bạch).",
-          "category": ""
-        },
-        {
-          "question": "📃 Có chính sách bảo hành không?",
-          "answer": "**Bảo hành vật liệu 10 năm.** Nếu có lỗi từ nhà sản xuất (bong tróc, phai màu bất thường), đổi mới 100%. Thi công đúng hướng dẫn.",
-          "category": ""
-        }
-      ]
+      "layout": "accordion"
     },
     {
       "block_type": "cta_banner",
