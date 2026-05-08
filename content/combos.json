@@ -9,7 +9,7 @@
       "discount_pct": 23,
       "badge": "",
       "tagline": "Dùng thử / sample",
-      "image": "/assets/uploads/1778130059746-inex.jpg",
+      "image": "/assets/uploads/1778223036181-pos-finex-f300-1kg.jpg",
       "active": true,
       "details": {
         "tagline": "Combo nhỏ — test thử / sửa chữa diện tích nhỏ",
@@ -64,7 +64,7 @@
       "discount_pct": 23,
       "badge": "",
       "tagline": "Phòng nhỏ / WC",
-      "image": "assets/finex/pack-3.5kg.jpg",
+      "image": "/assets/uploads/1778223062129-pos-finex-f300-3.5kg.jpg",
       "active": true,
       "details": {
         "tagline": "Combo cơ bản — đủ cho phòng nhỏ ~1.5m²",
@@ -119,7 +119,7 @@
       "discount_pct": 23,
       "badge": "Phổ biến nhất",
       "tagline": "Phòng vừa, phổ biến nhất",
-      "image": "assets/finex/pack-7kg.jpg",
+      "image": "/assets/uploads/1778223074385-pos-finex-f300--1.jpg",
       "active": true,
       "details": {
         "tagline": "Combo phổ biến nhất — phòng vừa ~3m²",
