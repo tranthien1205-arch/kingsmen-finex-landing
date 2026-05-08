@@ -3,7 +3,7 @@
   "cta": {
     "phone": "0888 357 711",
     "phone_display": "0888 357 711",
-    "zalo": "0888 357 711",
+    "zalo": "https://zalo.me/0888 357 711",
     "call_label": "📞 {phone}",
     "order_label": "ĐẶT NGAY",
     "offer_label": "🎁 NHẬN ƯU ĐÃI RA MẮT →"
