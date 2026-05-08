@@ -12,7 +12,7 @@
     "title": "🎁 Ưu đãi đặc biệt",
     "description": "Giảm 23% cộng miễn phí demo mẫu tận nhà cho đơn hàng đầu tiên",
     "cta_label": "Nhận ưu đãi",
-    "cta_url": "tel:0888144848",
+    "cta_url": "tel:0888 357 711",
     "trigger": "exit-intent",
     "cooldown_days": 7,
     "image": ""
@@ -23,13 +23,13 @@
       {
         "icon": "📞",
         "label": "Gọi ngay",
-        "url": "tel:0888144848",
+        "url": "tel:0888 357 711",
         "style": "teal"
       },
       {
         "icon": "💬",
         "label": "Zalo",
-        "url": "https://zalo.me/0888144848",
+        "url": "https://zalo.me/0888 357 711",
         "style": "blue"
       },
       {
