@@ -108,6 +108,10 @@
       fetchJson('combo_details.json'),
     ]);
 
+    // Tracking FIRST — chèn pixel/analytics sớm nhất có thể (giảm delay,
+    // tránh FB Pixel Helper báo "not found" do inject quá trễ).
+    try { if (site && site.tracking) injectTracking(site.tracking); } catch (e) { console.warn('[cms-patcher] tracking', e); }
+
     try { patchImages(images); } catch (e) { console.warn('[cms-patcher] images', e); }
     try { patchSite(site); } catch (e) { console.warn('[cms-patcher] site', e); }
     try { patchBanners(banners); } catch (e) { console.warn('[cms-patcher] banners', e); }
@@ -559,30 +563,106 @@
         }
       }
     }
-    // Tracking IDs (GA4 / FB Pixel) — inject if not already
-    if (site.tracking) {
-      injectTracking(site.tracking);
-    }
+    // Tracking đã được inject sớm ở đầu run() — không gọi lại ở đây để tránh double-fire.
   }
 
+  // -------------------- TRACKING / ANALYTICS --------------------
+  // Wire TẤT CẢ field của site.tracking (không chỉ ga4_id + fb_pixel):
+  //   ga4_id, gtm_id, fb_pixel, tt_pixel, head_scripts, body_scripts
+  // Forgiving: fb_pixel / tt_pixel chấp nhận cả ID thuần LẪN nguyên block <script>
+  // (tự regex tách ID). Mỗi loại có guard chống double-inject.
   function injectTracking(t) {
-    // GA4
-    if (t.ga4_id && !document.querySelector('script[data-ga4]')) {
+    if (!t || typeof t !== 'object') return;
+
+    // Tách FB pixel ID (15-16 số) từ ID thuần hoặc snippet fbq('init','...')
+    function extractFbId(raw) {
+      if (!raw) return '';
+      const s = String(raw).trim();
+      if (/^\d{6,}$/.test(s)) return s;
+      const m = s.match(/fbq\(\s*['"]init['"]\s*,\s*['"](\d{6,})['"]/);
+      return m ? m[1] : '';
+    }
+    // Tách TikTok pixel ID từ ID thuần hoặc snippet ttq.load('...')
+    function extractTtId(raw) {
+      if (!raw) return '';
+      const s = String(raw).trim();
+      if (/^[A-Z0-9]{10,40}$/i.test(s)) return s;
+      const m = s.match(/ttq\.load\(\s*['"]([A-Z0-9]{10,40})['"]/i);
+      return m ? m[1] : '';
+    }
+    // Chèn raw HTML (có thể chứa <script>) vào target. Phải re-create <script>
+    // node vì script set qua innerHTML KHÔNG tự execute. Dedup bằng data-marker.
+    function injectRawHtml(rawHtml, target, marker) {
+      if (!rawHtml || !String(rawHtml).trim()) return;
+      if (document.querySelector(`[data-cms-inject="${marker}"]`)) return;
+      const tpl = document.createElement('template');
+      tpl.innerHTML = String(rawHtml);
+      const wrap = document.createElement('div');
+      wrap.setAttribute('data-cms-inject', marker);
+      wrap.style.display = 'none';
+      Array.from(tpl.content.childNodes).forEach((node) => {
+        if (node.tagName === 'SCRIPT') {
+          const s = document.createElement('script');
+          for (const a of Array.from(node.attributes)) s.setAttribute(a.name, a.value);
+          s.text = node.textContent || '';
+          wrap.appendChild(s);
+        } else {
+          wrap.appendChild(node.cloneNode(true));
+        }
+      });
+      target.appendChild(wrap);
+    }
+
+    // --- GA4 ---
+    const ga4 = (t.ga4_id || '').toString().trim();
+    if (ga4 && !document.querySelector('script[data-ga4]')) {
       const s = document.createElement('script');
       s.async = true; s.setAttribute('data-ga4', '1');
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(t.ga4_id);
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ga4);
       document.head.appendChild(s);
       const inl = document.createElement('script');
       inl.setAttribute('data-ga4-init', '1');
-      inl.text = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${t.ga4_id}');`;
+      inl.text = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga4}');`;
       document.head.appendChild(inl);
     }
-    // FB Pixel
-    if (t.fb_pixel && !window.fbq) {
+
+    // --- Google Tag Manager ---
+    const gtm = (t.gtm_id || '').toString().trim();
+    if (gtm && !document.querySelector('script[data-gtm]')) {
       const s = document.createElement('script');
-      s.text = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${t.fb_pixel}');fbq('track','PageView');`;
+      s.setAttribute('data-gtm', '1');
+      s.text = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtm}');`;
+      document.head.appendChild(s);
+      const ns = document.createElement('noscript');
+      ns.setAttribute('data-gtm-ns', '1');
+      ns.innerHTML = `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtm}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`;
+      if (document.body) document.body.insertBefore(ns, document.body.firstChild);
+    }
+
+    // --- Facebook Pixel (forgiving: ID hoặc full snippet) ---
+    const fbId = extractFbId(t.fb_pixel);
+    if (fbId && !window.fbq) {
+      const s = document.createElement('script');
+      s.setAttribute('data-fb-pixel', fbId);
+      s.text = `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${fbId}');fbq('track','PageView');`;
+      document.head.appendChild(s);
+      const noscript = document.createElement('noscript');
+      noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${fbId}&ev=PageView&noscript=1"/>`;
+      document.head.appendChild(noscript);
+    }
+
+    // --- TikTok Pixel (forgiving) ---
+    const ttId = extractTtId(t.tt_pixel);
+    if (ttId && !window.ttq) {
+      const s = document.createElement('script');
+      s.setAttribute('data-tt-pixel', ttId);
+      s.text = `!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load('${ttId}');ttq.page()}(window,document,'ttq');`;
       document.head.appendChild(s);
     }
+
+    // --- Custom raw scripts (admin có thể dán nguyên snippet bất kỳ) ---
+    injectRawHtml(t.head_scripts, document.head, 'head-scripts');
+    if (document.body) injectRawHtml(t.body_scripts, document.body, 'body-scripts');
   }
 
   // -------------------- BANNERS (FOMO bar) --------------------
