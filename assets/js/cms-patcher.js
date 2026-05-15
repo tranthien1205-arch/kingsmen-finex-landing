@@ -83,7 +83,7 @@
 
   // -------------------- BOOT --------------------
   async function run() {
-    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts, comboDetailsFallback] = await Promise.all([
+    const [site, combos, colors, faq, reviews, tiktok, banners, images, comparison, sections, pas, features, safety, waterproof, steps, objection, menus, trustStamps, gifts, comboDetailsFallback, sales] = await Promise.all([
       fetchJson('site.json'),
       fetchJson('combos.json'),
       fetchJson('colors.json'),
@@ -106,6 +106,8 @@
       // FALLBACK only: nếu admin save combos qua bản admin cũ (cached) → details
       // bị ghi đè mất. cms-patcher đọc combo_details.json làm safety net.
       fetchJson('combo_details.json'),
+      // Đội ngũ NV trực — picker chọn người gọi/zalo (rỗng → fallback 1 số như cũ)
+      fetchJson('sales.json'),
     ]);
 
     // Tracking FIRST — chèn pixel/analytics sớm nhất có thể (giảm delay,
@@ -114,6 +116,7 @@
 
     try { patchImages(images); } catch (e) { console.warn('[cms-patcher] images', e); }
     try { patchSite(site); } catch (e) { console.warn('[cms-patcher] site', e); }
+    try { patchSales(sales); } catch (e) { console.warn('[cms-patcher] sales', e); }
     try { patchBanners(banners); } catch (e) { console.warn('[cms-patcher] banners', e); }
     try { patchSections(sections); } catch (e) { console.warn('[cms-patcher] sections', e); }
     try { patchFomo(sections, site); } catch (e) { console.warn('[cms-patcher] fomo', e); }
@@ -564,6 +567,81 @@
       }
     }
     // Tracking đã được inject sớm ở đầu run() — không gọi lại ở đây để tránh double-fire.
+  }
+
+  // -------------------- SALES TEAM PICKER (gọi / zalo nhiều NV) --------------------
+  // sales.json: { enabled, heading, subheading, rotate, items:[{name,phone,zalo,active}] }
+  // Khách bấm CTA Gọi/Zalo → popup chọn NV. 0 NV active hoặc enabled=false →
+  // return sớm, CTA chạy y như cũ (1 số từ site.json qua patchSite). An toàn fallback.
+  function patchSales(sales) {
+    if (!sales || sales.enabled === false) return;
+    const items = (sales.items || []).filter((s) => s && s.active !== false && (s.phone || s.zalo));
+    if (items.length === 0) return;
+
+    let modal = document.getElementById('salesPickerModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'salesPickerModal';
+      modal.className = 'hidden fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm items-center justify-center p-4';
+      modal.innerHTML =
+        '<div class="bg-white rounded-3xl max-w-sm w-full max-h-[88vh] overflow-auto shadow-2xl">' +
+          '<div class="sticky top-0 bg-ks-gradient text-white p-4 flex items-center justify-between">' +
+            '<div><div id="spkHead" class="font-bold text-lg">Chọn nhân viên</div>' +
+            '<div id="spkSub" class="text-xs opacity-80"></div></div>' +
+            '<button id="spkClose" type="button" class="text-2xl leading-none px-2 hover:opacity-70" aria-label="Đóng">✕</button>' +
+          '</div><div id="spkBody" class="p-4 space-y-2"></div></div>';
+      document.body.appendChild(modal);
+      modal.querySelector('#spkClose').addEventListener('click', closeSalesModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeSalesModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeSalesModal(); });
+    }
+    function closeSalesModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow = ''; }
+    window.KS_closeSalesPicker = closeSalesModal;
+
+    function openSalesModal(mode) {
+      const list = items.slice();
+      if (sales.rotate !== false) {
+        for (let i = list.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = list[i]; list[i] = list[j]; list[j] = t; }
+      }
+      const head = sales.heading || 'Chọn nhân viên tư vấn';
+      const sub  = sales.subheading || (mode === 'zalo' ? 'Bấm để chat Zalo ngay' : 'Bấm để gọi ngay');
+      modal.querySelector('#spkHead').textContent = (mode === 'zalo' ? '💬 ' : '📞 ') + head;
+      modal.querySelector('#spkSub').textContent = sub;
+      modal.querySelector('#spkBody').innerHTML = list.map((s) => {
+        let href, label, color;
+        if (mode === 'zalo') {
+          const z = String(s.zalo || s.phone || '').replace(/^https?:\/\//, '').replace(/^zalo\.me\//, '');
+          const zNum = z.replace(/[^\d]/g, '') || z;
+          href = 'https://zalo.me/' + zNum; label = '💬 Chat Zalo'; color = '#0068FF';
+        } else {
+          href = 'tel:' + String(s.phone || '').replace(/[^\d+]/g, ''); label = '📞 Gọi'; color = '#0E5F66';
+        }
+        const nm = (s.name || 'Nhân viên').trim();
+        return '<a href="' + href + '"' + (mode === 'zalo' ? ' target="_blank" rel="noopener"' : '') +
+          ' data-spk-pick="1" class="flex items-center justify-between gap-3 bg-ks-light hover:brightness-95 rounded-xl p-3 transition">' +
+          '<span class="flex items-center gap-2 min-w-0">' +
+          '<span class="w-9 h-9 rounded-full bg-ks-teal text-white flex items-center justify-center font-bold flex-shrink-0">' + escapeHtml(nm.charAt(0).toUpperCase()) + '</span>' +
+          '<span class="min-w-0"><span class="block font-bold text-ks-dark truncate">' + escapeHtml(nm) + '</span>' +
+          '<span class="block text-xs text-ks-mid-gray truncate">' + escapeHtml(s.phone || s.zalo || '') + '</span></span></span>' +
+          '<span class="text-white text-sm font-bold px-3 py-2 rounded-lg flex-shrink-0" style="background:' + color + '">' + label + '</span></a>';
+      }).join('');
+      modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden';
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest) return;
+      if (e.target.closest('[data-spk-pick]') || e.target.closest('#salesPickerModal')) return;
+      const a = e.target.closest('a, button');
+      if (!a) return;
+      const href = (a.getAttribute('href') || '').toLowerCase();
+      const cta = a.getAttribute('data-cms-cta') || '';
+      const fab = a.getAttribute('data-fab') || '';
+      const isCall = href.indexOf('tel:') === 0 || cta === 'call' || fab === 'call';
+      const isZalo = href.indexOf('zalo.me') > -1 || cta === 'zalo' || fab === 'zalo';
+      if (!isCall && !isZalo) return;
+      e.preventDefault(); e.stopPropagation();
+      openSalesModal(isZalo ? 'zalo' : 'call');
+    }, true);
   }
 
   // -------------------- TRACKING / ANALYTICS --------------------

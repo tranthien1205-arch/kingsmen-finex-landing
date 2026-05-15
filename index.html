@@ -1776,7 +1776,11 @@ tailwind.config = {
 
     if (href.indexOf('tel:') === 0 || href.indexOf('zalo.me') > -1 ||
         cta === 'call' || cta === 'zalo' || fab === 'call' || fab === 'zalo') {
-      fb('Contact', { method: (href.indexOf('zalo') > -1 || cta === 'zalo' || fab === 'zalo') ? 'zalo' : 'phone' });
+      var _now = Date.now();           // dedup 3s: CTA mở picker + chọn NV = 1 Contact
+      if (_now - (window.__fbContactTs || 0) > 3000) {
+        window.__fbContactTs = _now;
+        fb('Contact', { method: (href.indexOf('zalo') > -1 || cta === 'zalo' || fab === 'zalo') ? 'zalo' : 'phone' });
+      }
       return;
     }
     if (href === '#order' || cta === 'order' || cta === 'offer' || fab === 'order') {
@@ -1806,7 +1810,7 @@ tailwind.config = {
 <script src="/assets/js/tracking.js?v=2" defer></script>
 
 <!-- Hybrid CMS Patcher (đọc /content/*.json → patch dynamic data + images on static HTML) -->
-<script src="/assets/js/cms-patcher.js?v=8" defer></script>
+<script src="/assets/js/cms-patcher.js?v=9" defer></script>
 
 <!-- Page Builder preview only (?cms=1 — admin tab). Static HTML stays master. -->
 <script src="/assets/js/cms-renderer.js?v=6" defer></script>
