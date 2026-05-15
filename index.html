@@ -1633,6 +1633,51 @@ tailwind.config = {
   })();
 </script>
 
+<!-- Meta Pixel — standard events (Lead / Contact / InitiateCheckout / ViewContent).
+     Gắn thẳng code, KHÔNG dùng "Thiết lập sự kiện" của FB (tool đó kén & hay hỏng).
+     fbq queue-safe: gọi được kể cả trước khi fbevents.js load xong. -->
+<script>
+(function () {
+  function fb(ev, params) {
+    if (typeof window.fbq === 'function') window.fbq('track', ev, params || {});
+  }
+  var _leadFired = false;
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a, button');
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    var cta  = a.getAttribute('data-cms-cta') || '';
+    var fab  = a.getAttribute('data-fab') || '';
+
+    if (href.indexOf('tel:') === 0 || href.indexOf('zalo.me') > -1 ||
+        cta === 'call' || cta === 'zalo' || fab === 'call' || fab === 'zalo') {
+      fb('Contact', { method: (href.indexOf('zalo') > -1 || cta === 'zalo' || fab === 'zalo') ? 'zalo' : 'phone' });
+      return;
+    }
+    if (href === '#order' || cta === 'order' || cta === 'offer' || fab === 'order') {
+      fb('InitiateCheckout');
+      return;
+    }
+    if (a.matches && a.matches('[data-combo-detail], .combo-detail-btn')) {
+      fb('ViewContent', { content_type: 'product', content_name: a.getAttribute('data-combo-detail') || 'combo' });
+      return;
+    }
+  }, true);
+
+  // Lead = success modal hiện ra (đơn tạo thành công)
+  var modal = document.getElementById('successModal');
+  if (modal && 'MutationObserver' in window) {
+    new MutationObserver(function () {
+      var visible = !modal.classList.contains('hidden') &&
+                    (modal.classList.contains('flex') || (modal.style.display && modal.style.display !== 'none'));
+      if (visible && !_leadFired) { _leadFired = true; fb('Lead'); }
+      else if (!visible) { _leadFired = false; }
+    }).observe(modal, { attributes: true, attributeFilter: ['class', 'style'] });
+  }
+})();
+</script>
+
 <!-- Behavior tracking (visitor ID + UTM persistence + funnel events) -->
 <script src="/assets/js/tracking.js?v=2" defer></script>
 
