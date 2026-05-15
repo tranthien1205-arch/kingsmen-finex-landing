@@ -1396,6 +1396,130 @@ tailwind.config = {
   </div>
 </div>
 
+<!-- ⚡ QUICK-ORDER POPUP — bấm combo card là mở luôn, đặt nhanh không cần cuộn -->
+<div id="quickOrderModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-md w-full max-h-[92vh] overflow-auto shadow-2xl">
+    <div class="sticky top-0 bg-ks-gradient text-white p-4 flex items-center justify-between z-10">
+      <div>
+        <div class="text-[11px] uppercase tracking-wider opacity-80">⚡ Đặt nhanh</div>
+        <div id="qoComboName" class="font-bold text-lg">Combo</div>
+      </div>
+      <button id="qoClose" type="button" class="text-2xl leading-none px-2 hover:opacity-70" aria-label="Đóng">✕</button>
+    </div>
+    <div class="p-5">
+      <div class="bg-ks-light rounded-xl p-3 mb-4 flex items-baseline justify-between">
+        <span class="text-sm text-ks-mid-gray">Tổng thanh toán</span>
+        <span id="qoPrice" class="display text-2xl text-ks-usa-red">—</span>
+      </div>
+      <label class="block text-sm font-semibold text-ks-dark mb-2">Chọn màu</label>
+      <div id="qoColorGrid" class="flex gap-2 overflow-x-auto pb-2 mb-4 no-scrollbar"></div>
+      <label class="block text-sm font-semibold text-ks-dark mb-1">Họ tên *</label>
+      <input id="qoName" type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none mb-3">
+      <label class="block text-sm font-semibold text-ks-dark mb-1">Số điện thoại *</label>
+      <input id="qoPhone" type="tel" inputmode="tel" placeholder="0912 xxx xxx" class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none mb-3">
+      <label class="block text-sm font-semibold text-ks-dark mb-1">Địa chỉ <span class="text-ks-mid-gray font-normal">(tùy chọn — NV gọi xác nhận sau)</span></label>
+      <input id="qoAddr" type="text" placeholder="Số nhà, đường, quận/huyện…" class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none mb-4">
+      <button id="qoSubmit" type="button" class="w-full bg-ks-gold hover:bg-ks-gold/90 text-ks-dark font-black text-lg py-4 rounded-2xl shadow-xl transition-all pulse-ring">🎁 ĐẶT NGAY — NHẬN ƯU ĐÃI</button>
+      <p class="text-center text-xs text-ks-mid-gray mt-3">🔒 Bảo mật thông tin · NV gọi xác nhận trong 15 phút</p>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var modal = document.getElementById('quickOrderModal');
+  if (!modal) return;
+  var nameI = document.getElementById('qoName'),
+      phoneI = document.getElementById('qoPhone'),
+      addrI = document.getElementById('qoAddr');
+
+  function openM() { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden'; }
+  function closeM() {
+    modal.classList.add('hidden'); modal.classList.remove('flex');
+    document.body.style.overflow = '';
+    window.__qoSkipAddr = false;
+  }
+  window.KS_closeQuickOrder = closeM;
+
+  function buildColors() {
+    var grid = document.getElementById('qoColorGrid');
+    var src = document.querySelectorAll('#colorGrid .swatch');
+    if (!grid || !src.length) { if (grid) grid.style.display = 'none'; return; }
+    grid.style.display = '';
+    grid.innerHTML = '';
+    src.forEach(function (sw) {
+      var color = sw.getAttribute('data-color') || '';
+      var inner = sw.querySelector('div');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.title = color;
+      b.setAttribute('data-qo-color', color);
+      b.style.cssText = 'flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:3px solid ' +
+        (sw.classList.contains('selected') ? '#0E5F66' : 'transparent') + ';overflow:hidden;cursor:pointer;padding:0';
+      var sw_d = document.createElement('div');
+      sw_d.style.cssText = 'width:100%;height:100%;' + (inner ? inner.getAttribute('style') || '' : 'background:#ccc');
+      b.appendChild(sw_d);
+      b.addEventListener('click', function () {
+        var real = document.querySelector('#colorGrid .swatch[data-color="' + (window.CSS && CSS.escape ? CSS.escape(color) : color) + '"]');
+        if (real) real.click();
+        grid.querySelectorAll('button').forEach(function (x) { x.style.borderColor = 'transparent'; });
+        b.style.borderColor = '#0E5F66';
+      });
+      grid.appendChild(b);
+    });
+  }
+
+  function openQuickOrder(card) {
+    var key = card.getAttribute('data-combo');
+    var data = (window.COMBO_DATA || {})[key] || (window.COMBO_DATA || {})[String(key)] || {};
+    var label = data.label ||
+      (card.querySelector('.display') ? card.querySelector('.display').textContent.trim() : ('Combo ' + key));
+    var price = (typeof data.price === 'number') ? data.price : parseInt(card.getAttribute('data-price') || '0', 10);
+    document.getElementById('qoComboName').textContent = label;
+    document.getElementById('qoPrice').textContent = (window.fmt ? window.fmt(price) : (Number(price).toLocaleString('vi-VN') + '₫'));
+    buildColors();
+    openM();
+    setTimeout(function () { nameI && nameI.focus(); }, 150);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    if (e.target.closest('[data-combo-detail], .combo-detail-btn')) return;
+    var card = e.target.closest('#comboGrid .combo-card');
+    if (!card) return;
+    setTimeout(function () { openQuickOrder(card); }, 30);
+  });
+
+  document.getElementById('qoSubmit').addEventListener('click', function () {
+    var n = (nameI.value || '').trim(), p = (phoneI.value || '').trim(), a = (addrI.value || '').trim();
+    if (!n) { alert('Vui lòng nhập họ tên'); nameI.focus(); return; }
+    if (!p || p.replace(/\D/g, '').length < 9) { alert('Vui lòng nhập số điện thoại hợp lệ'); phoneI.focus(); return; }
+    var fN = document.getElementById('fName'), fP = document.getElementById('fPhone'),
+        fA = document.getElementById('fAddr'), fNote = document.getElementById('fNote'),
+        sBtn = document.getElementById('submitOrder');
+    if (!fN || !fP || !sBtn) { alert('Có lỗi, vui lòng dùng form bên dưới.'); closeM(); return; }
+    fN.value = n; fP.value = p; if (fA) fA.value = a; if (fNote) fNote.value = '';
+    window.__qoSkipAddr = !a;
+    sBtn.click();
+  });
+
+  var sm = document.getElementById('successModal');
+  if (sm && 'MutationObserver' in window) {
+    new MutationObserver(function () {
+      var vis = !sm.classList.contains('hidden') &&
+                (sm.classList.contains('flex') || (sm.style.display && sm.style.display !== 'none'));
+      if (vis && !modal.classList.contains('hidden')) {
+        if (nameI) nameI.value = ''; if (phoneI) phoneI.value = ''; if (addrI) addrI.value = '';
+        closeM();
+      }
+    }).observe(sm, { attributes: true, attributeFilter: ['class', 'style'] });
+  }
+
+  document.getElementById('qoClose').addEventListener('click', closeM);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeM(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeM(); });
+})();
+</script>
+
 <!-- SUCCESS MODAL -->
 <div id="successModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
   <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl">
@@ -1499,7 +1623,7 @@ tailwind.config = {
 
     if (!name) { alert('Vui lòng nhập họ tên'); document.getElementById('fName').focus(); return; }
     if (!phone || phone.length < 9) { alert('Vui lòng nhập số điện thoại hợp lệ'); document.getElementById('fPhone').focus(); return; }
-    if (!addr) { alert('Vui lòng nhập địa chỉ giao hàng'); document.getElementById('fAddr').focus(); return; }
+    if (!addr && !window.__qoSkipAddr) { alert('Vui lòng nhập địa chỉ giao hàng'); document.getElementById('fAddr').focus(); return; }
 
     const c = window.COMBO_DATA[selectedCombo];
     const btn = document.getElementById('submitOrder');
