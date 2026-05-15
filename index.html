@@ -1411,7 +1411,8 @@ tailwind.config = {
         <span class="text-sm text-ks-mid-gray">Tổng thanh toán</span>
         <span id="qoPrice" class="display text-2xl text-ks-usa-red">—</span>
       </div>
-      <label class="block text-sm font-semibold text-ks-dark mb-2">Chọn màu</label>
+      <label class="block text-sm font-semibold text-ks-dark mb-2">Chọn màu <span id="qoColorName" class="text-ks-teal font-normal"></span></label>
+      <div id="qoColorPreview" class="w-full mb-2 rounded-2xl border border-ks-border" style="height:6rem;background:#eee;background-size:cover;background-position:center"></div>
       <div id="qoColorGrid" class="flex gap-2 overflow-x-auto pb-2 mb-4 no-scrollbar"></div>
       <label class="block text-sm font-semibold text-ks-dark mb-1">Họ tên *</label>
       <input id="qoName" type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border-2 border-ks-border focus:border-ks-teal focus:outline-none mb-3">
@@ -1440,32 +1441,45 @@ tailwind.config = {
   }
   window.KS_closeQuickOrder = closeM;
 
+  function setQoPreview(styleStr, name) {
+    var pv = document.getElementById('qoColorPreview'),
+        nm = document.getElementById('qoColorName');
+    if (pv) pv.style.cssText = 'height:6rem;border-radius:1rem;margin-bottom:0.5rem;border:1px solid #D8DDDF;background-size:cover;background-position:center;' + (styleStr || 'background:#eee');
+    if (nm) nm.textContent = name ? '— ' + name : '';
+  }
   function buildColors() {
     var grid = document.getElementById('qoColorGrid');
     var src = document.querySelectorAll('#colorGrid .swatch');
     if (!grid || !src.length) { if (grid) grid.style.display = 'none'; return; }
     grid.style.display = '';
     grid.innerHTML = '';
+    var firstStyle = '', firstName = '', selStyle = '', selName = '';
     src.forEach(function (sw) {
       var color = sw.getAttribute('data-color') || '';
       var inner = sw.querySelector('div');
+      var innerStyle = inner ? (inner.getAttribute('style') || '') : 'background:#ccc';
+      var isSel = sw.classList.contains('selected');
+      if (!firstStyle) { firstStyle = innerStyle; firstName = color; }
+      if (isSel) { selStyle = innerStyle; selName = color; }
       var b = document.createElement('button');
       b.type = 'button';
       b.title = color;
       b.setAttribute('data-qo-color', color);
       b.style.cssText = 'flex:0 0 auto;width:44px;height:44px;border-radius:10px;border:3px solid ' +
-        (sw.classList.contains('selected') ? '#0E5F66' : 'transparent') + ';overflow:hidden;cursor:pointer;padding:0';
+        (isSel ? '#0E5F66' : 'transparent') + ';overflow:hidden;cursor:pointer;padding:0';
       var sw_d = document.createElement('div');
-      sw_d.style.cssText = 'width:100%;height:100%;' + (inner ? inner.getAttribute('style') || '' : 'background:#ccc');
+      sw_d.style.cssText = 'width:100%;height:100%;' + innerStyle;
       b.appendChild(sw_d);
       b.addEventListener('click', function () {
         var real = document.querySelector('#colorGrid .swatch[data-color="' + (window.CSS && CSS.escape ? CSS.escape(color) : color) + '"]');
         if (real) real.click();
         grid.querySelectorAll('button').forEach(function (x) { x.style.borderColor = 'transparent'; });
         b.style.borderColor = '#0E5F66';
+        setQoPreview(innerStyle, color);   // hiện màu LỚN + tên khi chọn
       });
       grid.appendChild(b);
     });
+    setQoPreview(selStyle || firstStyle, selName || firstName);   // preview màu đang chọn
   }
 
   function openQuickOrder(card) {
