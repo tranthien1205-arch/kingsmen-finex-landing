@@ -788,8 +788,8 @@ tailwind.config = {
         <p class="text-xs text-ks-mid-gray mt-3" data-cms-html="order.step1_hint">💡 Diện tích lớn hơn? Liên hệ hotline <strong class="text-ks-teal">0888 144 848</strong> để được báo giá riêng.</p>
       </div>
 
-      <!-- STEP 2: COLOR -->
-      <div class="p-6 md:p-8 border-b border-ks-border">
+      <!-- STEP 2: COLOR — ẩn: đã thay bằng Quick-Order popup. GIỮ DOM (#colorGrid) cho popup reuse -->
+      <div class="p-6 md:p-8 border-b border-ks-border" style="display:none">
         <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">2</span><span data-cms-text="order.step2_title">Chọn màu</span> <span id="selectedColorName" class="text-ks-teal font-normal">(Kem Terrazzo)</span></h3>
         <div class="grid grid-cols-4 md:grid-cols-6 gap-3" id="colorGrid">
           <div class="swatch selected rounded-xl overflow-hidden text-center" data-color="Kem Terrazzo">
@@ -844,8 +844,8 @@ tailwind.config = {
         <p class="text-xs text-ks-mid-gray mt-3" data-cms-html="order.step2_hint">💡 Không chắc? Yêu cầu <strong class="text-ks-teal">mẫu thử 1kg</strong> — test trên sàn thật trước khi đặt combo đầy đủ.</p>
       </div>
 
-      <!-- STEP 3: INFO -->
-      <div class="p-6 md:p-8">
+      <!-- STEP 3: INFO — ẩn: đã thay bằng Quick-Order popup. GIỮ DOM (#orderForm/#submitOrder) cho popup reuse -->
+      <div class="p-6 md:p-8" style="display:none">
         <h3 class="display text-xl text-ks-dark mb-4"><span class="bg-ks-teal text-white px-3 py-1 rounded-full text-sm mr-2">3</span><span data-cms-text="order.step3_title">Thông tin giao hàng</span></h3>
         <form id="orderForm" class="grid md:grid-cols-2 gap-4">
           <div>
