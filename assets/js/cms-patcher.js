@@ -495,6 +495,12 @@
       const url = images[key];
       if (url && el.getAttribute('src') !== url) el.setAttribute('src', url);
     });
+    // Favicon (admin: Header → "Favicon"). images.favicon → cập nhật icon tab trình duyệt.
+    if (images.favicon) {
+      document.querySelectorAll('#ks-favicon, #ks-favicon-apple').forEach((l) => {
+        if (l.getAttribute('href') !== images.favicon) l.setAttribute('href', images.favicon);
+      });
+    }
   }
 
   // -------------------- SITE --------------------
