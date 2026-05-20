@@ -19,18 +19,10 @@
 <link rel="canonical" href="https://kingsmen-finex-landing.pages.dev/">
 <link rel="icon" id="ks-favicon" href="/assets/finex/logo.png">
 <link rel="apple-touch-icon" id="ks-favicon-apple" href="/assets/finex/logo.png">
-<!-- Meta (Facebook) Pixel — hardcode trong <head> để Facebook detect được +
-     bắn PageView sớm nhất (cms-patcher injectTracking sẽ tự skip vì window.fbq
-     đã tồn tại → không double-fire). Đổi pixel ID = sửa số bên dưới.
-     Hiện dùng chung pixel với Terrazy (984103273851624). Muốn pixel riêng cho
-     Finex → thay dãy số bên dưới bằng ID mới của Finex. -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','984103273851624');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=984103273851624&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
+<!-- Meta (Facebook) Pixel — quản lý qua admin "📊 Tracking & Analytics" →
+     Facebook Pixel ID (lưu vào site.json tracking.fb_pixel). cms-patcher
+     injectTracking sẽ chèn pixel sớm nhất có thể trong run() + bắn PageView.
+     Không hardcode để admin tự đổi pixel riêng cho Finex mà không cần code. -->
 <title>Finex F300 — Sàn Epoxy Tự Phẳng | Finish Made Easy · Cải Tạo Sàn Không Đục Phá</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
