@@ -1,41 +1,42 @@
 {
   "items": [
     {
-      "id": "1kg",
-      "area_m2": 0.3,
-      "label": "Finex F300 — 1kg",
-      "price": 420000,
-      "original": 559000,
-      "discount_pct": 25,
+      "id": "3",
+      "area_m2": 3,
+      "label": "Combo 3m²",
+      "price": 2048800,
+      "original": 2926800,
+      "discount_pct": 30,
       "badge": "",
       "tagline": "Dùng thử / sample",
-      "image": "/assets/uploads/1778223036181-pos-finex-f300-1kg.jpg",
+      "image": "",
       "active": true,
       "details": {
-        "tagline": "Combo nhỏ — test thử / sửa chữa diện tích nhỏ",
+        "tagline": "Combo 3m² - phù hợp nhà tắm, ban công",
         "image": "",
-        "coverage": "~0.3m² ở độ dày 1.5-2mm",
+        "coverage": "3m² ở độ dày 1.5-2mm",
         "duration": "Trộn 7-10 phút · Thi công 4h · Khô bề mặt 6-12h · Đi lại nhe 12-24h · Hoàn thiện 24-48h",
         "warranty": "Hướng dẫn kỹ thuật thi công",
         "datasheet_url": "",
         "instructions_url": "",
         "components": [
           {
-            "name": "1 thùng FINEX F300 - 1kg",
-            "qty": "1kg"
+            "name": "1 thùng FINEX F300 7kg",
+            "qty": "7kg"
+          },
+          {
+            "name": "1 bộ sơn lót Primer 0.5L",
+            "qty": "0.5L"
           }
         ],
         "tools_included": [
           "Gạt san phẳng (1 cái)",
           "Que khuấy (1 cái)",
           "Bao tay (1 đôi)",
-          "Rule gai 15cm (1 cái)"
+          "Rule gai 15cm (1 cái)",
+          "Rule vải 15cm (1 cái)"
         ],
         "specs": [
-          {
-            "label": "Tổng khối lượng (A+B)",
-            "value": "1kg"
-          },
           {
             "label": "Tỉ lệ trộn",
             "value": "A:B = 6:1"
@@ -46,7 +47,7 @@
           },
           {
             "label": "Độ cứng",
-            "value": "Hardness 6H"
+            "value": "Hardness H"
           },
           {
             "label": "Bám dính",
@@ -56,20 +57,20 @@
       }
     },
     {
-      "id": "3.5kg",
-      "area_m2": 1.5,
-      "label": "Finex F300 — 3.5kg",
-      "price": 1230000,
-      "original": 1640000,
-      "discount_pct": 25,
-      "badge": "",
-      "tagline": "Phòng nhỏ / WC",
-      "image": "/assets/uploads/1778223062129-pos-finex-f300-3.5kg.jpg",
+      "id": "4.5",
+      "area_m2": 4.5,
+      "label": "Combo 4.5m²",
+      "price": 3001400,
+      "original": 4287600,
+      "discount_pct": 30,
+      "badge": "Phổ biến nhất",
+      "tagline": "",
+      "image": "",
       "active": true,
       "details": {
-        "tagline": "Combo cơ bản — đủ cho phòng nhỏ ~1.5m²",
+        "tagline": "Combo bán chạy nhất — phòng ngủ, bếp",
         "image": "",
-        "coverage": "~1.5m² ở độ dày 1.5-2mm",
+        "coverage": "4.5m² ở độ dày 1.5-2mm",
         "duration": "Trộn 7-10 phút · Thi công 4h · Khô bề mặt 6-12h · Đi lại nhe 12-24h · Hoàn thiện 24-48h",
         "warranty": "Hướng dẫn kỹ thuật thi công",
         "datasheet_url": "",
@@ -78,19 +79,24 @@
           {
             "name": "1 thùng FINEX F300 - 3.5kg",
             "qty": "3.5kg"
+          },
+          {
+            "name": "1 thùng FINEX F300 - 7kg",
+            "qty": "7kg"
+          },
+          {
+            "name": "1 bộ sơn lót Primer 0.5L",
+            "qty": "0.5L"
           }
         ],
         "tools_included": [
           "Gạt san phẳng (1 cái)",
           "Que khuấy (1 cái)",
           "Bao tay (1 đôi)",
-          "Rule gai 15cm (1 cái)"
+          "Rule gai 15cm (1 cái)",
+          "Rule vải 15cm (1 cái)"
         ],
         "specs": [
-          {
-            "label": "Tổng khối lượng (A+B)",
-            "value": "3.5kg"
-          },
           {
             "label": "Tỉ lệ trộn",
             "value": "A:B = 6:1"
@@ -101,7 +107,7 @@
           },
           {
             "label": "Độ cứng",
-            "value": "Hardness 6H"
+            "value": "Hardness H"
           },
           {
             "label": "Bám dính",
@@ -111,41 +117,42 @@
       }
     },
     {
-      "id": "7kg",
-      "area_m2": 3,
-      "label": "Finex F300 — 7kg",
-      "price": 2175000,
-      "original": 2899000,
-      "discount_pct": 25,
-      "badge": "Phổ biến nhất",
-      "tagline": "Phòng vừa, phổ biến nhất",
-      "image": "/assets/uploads/1778223074385-pos-finex-f300--1.jpg",
+      "id": "6",
+      "area_m2": 6,
+      "label": "Combo 6m²",
+      "price": 3984200,
+      "original": 5691600,
+      "discount_pct": 30,
+      "badge": "Tiết kiệm nhất",
+      "tagline": "",
+      "image": "",
       "active": true,
       "details": {
-        "tagline": "Combo phổ biến nhất — phòng vừa ~3m²",
+        "tagline": "Combo phổ biến nhất — phòng vừa ~6m²",
         "image": "",
-        "coverage": "~3m² ở độ dày 1.5-2mm",
+        "coverage": "~m² ở độ dày 1.5-2mm",
         "duration": "Trộn 7-10 phút · Thi công 4h · Khô bề mặt 6-12h · Đi lại nhe 12-24h · Hoàn thiện 24-48h",
         "warranty": "Hướng dẫn kỹ thuật thi công",
         "datasheet_url": "",
         "instructions_url": "",
         "components": [
           {
-            "name": "1 thùng FINEX F300 - 7kg",
-            "qty": "7kg"
+            "name": "2 thùng sơn sàn Terrazy 7Kg",
+            "qty": "14kg"
+          },
+          {
+            "name": "2 bộ sơn lót Primer 0.5L",
+            "qty": "1L"
           }
         ],
         "tools_included": [
           "Gạt san phẳng (1 cái)",
           "Que khuấy (1 cái)",
           "Bao tay (1 đôi)",
-          "Rule gai 15cm (1 cái)"
+          "Rule gai 15cm (1 cái)",
+          "Rule vải 15cm (1 cái)"
         ],
         "specs": [
-          {
-            "label": "Tổng khối lượng (A+B)",
-            "value": "7kg"
-          },
           {
             "label": "Tỉ lệ trộn",
             "value": "A:B = 6:1"
@@ -156,7 +163,7 @@
           },
           {
             "label": "Độ cứng",
-            "value": "Hardness 6H"
+            "value": "Hardness 5H"
           },
           {
             "label": "Bám dính",
