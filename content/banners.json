@@ -1,7 +1,7 @@
 {
   "top_bar": {
     "enabled": false,
-    "text": "🔥 Khuyến mãi cuối tuần · Giảm 25% cho đơn hàng đầu tiên",
+    "text": "🔥 Khuyến mãi cuối tuần · Giảm 30% cho đơn hàng đầu tiên",
     "cta_label": "Xem ngay",
     "cta_url": "#pricing",
     "bg_color": "#0c7b6f",
@@ -10,7 +10,7 @@
   "popup": {
     "enabled": false,
     "title": "🎁 Ưu đãi đặc biệt",
-    "description": "Giảm 25% cộng miễn phí demo mẫu tận nhà cho đơn hàng đầu tiên",
+    "description": "Giảm 30% cộng miễn phí demo mẫu tận nhà cho đơn hàng đầu tiên",
     "cta_label": "Nhận ưu đãi",
     "cta_url": "tel:0888 357 711",
     "trigger": "exit-intent",
