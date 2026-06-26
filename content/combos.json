@@ -3,12 +3,12 @@
     {
       "id": "3",
       "area_m2": 3,
-      "label": "Combo 3m²",
+      "label": "Combo nhỏ",
       "price": 2048800,
       "original": 2926800,
       "discount_pct": 30,
       "badge": "",
-      "tagline": "COMBO NHỎ",
+      "tagline": "",
       "image": "",
       "active": true,
       "details": {
@@ -59,12 +59,12 @@
     {
       "id": "4.5",
       "area_m2": 4.5,
-      "label": "Combo 4.5m²",
+      "label": "Combo Vừa",
       "price": 3001400,
       "original": 4287600,
       "discount_pct": 30,
       "badge": "Phổ biến nhất",
-      "tagline": "COMBO VỪA",
+      "tagline": "",
       "image": "",
       "active": true,
       "details": {
@@ -119,12 +119,12 @@
     {
       "id": "6",
       "area_m2": 6,
-      "label": "Combo 6m²",
+      "label": "Combo Lớn",
       "price": 3984200,
       "original": 5691600,
       "discount_pct": 30,
       "badge": "Tiết kiệm nhất",
-      "tagline": "COMBO LỚN",
+      "tagline": "",
       "image": "",
       "active": true,
       "details": {
