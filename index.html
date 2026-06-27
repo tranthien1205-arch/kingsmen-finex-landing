@@ -1414,6 +1414,8 @@ tailwind.config = {
 #qoComboDetail > div.bg-gradient-to-br,
 #qoComboDetail > h3,
 #qoComboDetail > p.text-ks-teal { display: none !important; }
+/* Mượt scroll trong popup + chặn cuộn lan ra nền (iOS Safari) */
+#quickOrderModal > div { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 </style>
 <div id="quickOrderModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
   <div class="bg-white rounded-3xl max-w-md md:max-w-2xl w-full max-h-[92vh] overflow-auto shadow-2xl">
@@ -1427,7 +1429,10 @@ tailwind.config = {
     <div class="p-5">
       <div class="bg-ks-light rounded-xl p-3 mb-4 flex items-baseline justify-between">
         <span class="text-sm text-ks-mid-gray">Tổng thanh toán</span>
-        <span id="qoPrice" class="display text-2xl text-ks-usa-red">—</span>
+        <span class="text-right">
+          <span id="qoPrice" class="display text-2xl text-ks-usa-red block leading-none">—</span>
+          <span id="qoSaving" class="block text-xs text-ks-usa-red font-bold mt-1" style="display:none"></span>
+        </span>
       </div>
       <label class="block text-sm font-semibold text-ks-dark mb-2">Chọn màu <span id="qoColorName" class="text-ks-teal font-normal"></span></label>
       <div id="qoColorPreview" class="w-full mb-2 rounded-2xl border border-ks-border" style="height:6rem;background:#eee;background-size:cover;background-position:center"></div>
@@ -1460,10 +1465,19 @@ tailwind.config = {
       phoneI = document.getElementById('qoPhone'),
       addrI = document.getElementById('qoAddr');
 
-  function openM() { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden'; }
+  var _scrollY = 0;
+  function openM() {
+    _scrollY = window.scrollY || window.pageYOffset || 0;
+    modal.classList.remove('hidden'); modal.classList.add('flex');
+    // Khoá nền sau ngay cả iOS Safari: position fixed + giữ scroll position
+    var s = document.body.style;
+    s.position = 'fixed'; s.top = '-' + _scrollY + 'px'; s.left = '0'; s.right = '0'; s.width = '100%'; s.overflow = 'hidden';
+  }
   function closeM() {
     modal.classList.add('hidden'); modal.classList.remove('flex');
-    document.body.style.overflow = '';
+    var s = document.body.style;
+    s.position = ''; s.top = ''; s.left = ''; s.right = ''; s.width = ''; s.overflow = '';
+    window.scrollTo(0, _scrollY);
     window.__qoSkipAddr = false;
   }
   window.KS_closeQuickOrder = closeM;
@@ -1517,6 +1531,18 @@ tailwind.config = {
     var price = (typeof data.price === 'number') ? data.price : parseInt(card.getAttribute('data-price') || '0', 10);
     document.getElementById('qoComboName').textContent = label;
     document.getElementById('qoPrice').textContent = (window.fmt ? window.fmt(price) : (Number(price).toLocaleString('vi-VN') + '₫'));
+    // Số tiền tiết kiệm = giá gốc - giá bán (nếu có)
+    var savEl = document.getElementById('qoSaving');
+    var origPrice = (typeof data.original === 'number' ? data.original : parseInt(card.getAttribute('data-original') || '0', 10)) || 0;
+    var saving = origPrice > price ? (origPrice - price) : 0;
+    if (savEl) {
+      if (saving > 0) {
+        savEl.textContent = '💰 Tiết kiệm ' + (window.fmt ? window.fmt(saving) : (Number(saving).toLocaleString('vi-VN') + '₫'));
+        savEl.style.display = '';
+      } else {
+        savEl.style.display = 'none';
+      }
+    }
     buildColors();
     // Chi tiết combo: render trong cùng popup (kết hợp form + detail)
     var detailSec = document.getElementById('qoDetailSection');
