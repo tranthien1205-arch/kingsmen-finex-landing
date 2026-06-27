@@ -842,11 +842,11 @@
       const sublineMap = { 3: 'Nhà tắm, ban công', '4.5': 'Phòng ngủ, bếp', 6: 'Phòng khách, văn phòng' };
       const subline = c.subline || sublineMap[c.area_m2] || sublineMap[String(c.area_m2)] || '';
       const comboKey = String(c.id || c.area_m2 || '').trim();
-      // "Xem chi tiết" only renders if there's a matching combo_details entry
-      const hasDetail = window.KS_COMBO_DETAILS && window.KS_COMBO_DETAILS[comboKey];
-      const detailBtn = hasDetail
-        ? `<button type="button" class="combo-detail-btn mt-3 text-xs text-ks-teal underline hover:text-ks-dark-teal" data-combo-detail="${escapeHtml(comboKey)}" onclick="event.stopPropagation()">🔍 Xem chi tiết</button>`
-        : '';
+      // "Xem chi tiết" button KHÔNG render nữa — combo card click mở Quick-Order
+      // popup gộp luôn form + chi tiết combo (1 popup duy nhất). Standalone
+      // #comboDetailModal vẫn còn trong DOM để window.KS_openComboDetailModal
+      // backward-compat (vd: deeplink), nhưng không có nút trigger trên card.
+      const detailBtn = '';
       return `
         <div class="combo-card rounded-2xl p-5 cursor-pointer text-center ${isActive ? 'active' : ''} relative" data-combo="${escapeHtml(c.id || c.area_m2)}" data-price="${c.price || 0}">
           ${c.badge ? `<span class="badge-best absolute top-0 right-0 -mt-2 mr-2 px-3 py-1 rounded-full text-xs">${escapeHtml(c.badge)}</span>` : ''}

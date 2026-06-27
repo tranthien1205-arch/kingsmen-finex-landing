@@ -1434,6 +1434,15 @@ tailwind.config = {
       <button id="qoSubmit" type="button" class="w-full bg-ks-gold hover:bg-ks-gold/90 text-ks-dark font-black text-lg py-4 rounded-2xl shadow-xl transition-all pulse-ring">🎁 ĐẶT NGAY — NHẬN ƯU ĐÃI</button>
       <p class="text-center text-xs text-ks-mid-gray mt-3">🔒 Bảo mật thông tin · NV gọi xác nhận trong 15 phút</p>
     </div>
+    <!-- Chi tiết combo — render từ window.KS_COMBO_DETAILS theo combo đang chọn -->
+    <div id="qoDetailSection" style="display:none;background:#F4F7F7;border-top:1px solid #D8DDDF">
+      <div class="p-5">
+        <div style="font-size:11px;text-transform:uppercase;font-weight:700;color:#6B7079;letter-spacing:1.2px;margin-bottom:12px;display:flex;align-items:center;gap:6px">
+          <span style="font-size:15px">📦</span> Chi tiết sản phẩm khách sẽ nhận
+        </div>
+        <div id="qoComboDetail" style="font-size:13px;color:#3D4045;line-height:1.55"></div>
+      </div>
+    </div>
   </div>
 </div>
 <script>
@@ -1502,6 +1511,16 @@ tailwind.config = {
     document.getElementById('qoComboName').textContent = label;
     document.getElementById('qoPrice').textContent = (window.fmt ? window.fmt(price) : (Number(price).toLocaleString('vi-VN') + '₫'));
     buildColors();
+    // Chi tiết combo: render trong cùng popup (kết hợp form + detail)
+    var detailSec = document.getElementById('qoDetailSection');
+    var detailBox = document.getElementById('qoComboDetail');
+    var detail = (window.KS_COMBO_DETAILS || {})[key] || (window.KS_COMBO_DETAILS || {})[String(key)];
+    if (detailSec && detailBox && detail && typeof window.KS_renderComboDetail === 'function') {
+      detailBox.innerHTML = window.KS_renderComboDetail(detail);
+      detailSec.style.display = '';
+    } else if (detailSec) {
+      detailSec.style.display = 'none';
+    }
     openM();
     setTimeout(function () { nameI && nameI.focus(); }, 150);
   }
@@ -1835,7 +1854,7 @@ tailwind.config = {
 <script src="/assets/js/tracking.js?v=2" defer></script>
 
 <!-- Hybrid CMS Patcher (đọc /content/*.json → patch dynamic data + images on static HTML) -->
-<script src="/assets/js/cms-patcher.js?v=10" defer></script>
+<script src="/assets/js/cms-patcher.js?v=11" defer></script>
 
 <!-- Page Builder preview only (?cms=1 — admin tab). Static HTML stays master. -->
 <script src="/assets/js/cms-renderer.js?v=6" defer></script>
