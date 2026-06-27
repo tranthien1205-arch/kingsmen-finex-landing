@@ -1408,8 +1408,15 @@ tailwind.config = {
 </div>
 
 <!-- ⚡ QUICK-ORDER POPUP — bấm combo card là mở luôn, đặt nhanh không cần cuộn -->
+<style>
+/* Popup gộp: ẩn ảnh/tên/tagline trùng (header popup đã có) trong section chi tiết */
+#qoComboDetail > img,
+#qoComboDetail > div.bg-gradient-to-br,
+#qoComboDetail > h3,
+#qoComboDetail > p.text-ks-teal { display: none !important; }
+</style>
 <div id="quickOrderModal" class="hidden fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm items-center justify-center p-4">
-  <div class="bg-white rounded-3xl max-w-md w-full max-h-[92vh] overflow-auto shadow-2xl">
+  <div class="bg-white rounded-3xl max-w-md md:max-w-2xl w-full max-h-[92vh] overflow-auto shadow-2xl">
     <div class="sticky top-0 bg-ks-gradient text-white p-4 flex items-center justify-between z-10">
       <div>
         <div class="text-[11px] uppercase tracking-wider opacity-80">⚡ Đặt nhanh</div>
