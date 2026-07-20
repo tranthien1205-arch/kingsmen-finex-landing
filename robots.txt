@@ -1,0 +1,13 @@
+# robots.txt for Finex F300 landing
+# https://f300.vatlieufinex.com/
+
+User-agent: *
+Allow: /
+
+# Block admin/CMS paths (defensive — none exist currently)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /oauth/
+
+# Sitemap location
+Sitemap: https://f300.vatlieufinex.com/sitemap.xml
