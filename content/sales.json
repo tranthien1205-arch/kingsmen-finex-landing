@@ -5,34 +5,6 @@
   "rotate": true,
   "items": [
     {
-      "name": "Như Ngọc",
-      "phone": "0888144848",
-      "zalo": "0888144848",
-      "email": " sales03.kingsmen@gmail.com",
-      "active": true
-    },
-    {
-      "name": "Hàn Ny",
-      "phone": "0888811890",
-      "zalo": "0888811890",
-      "email": "hanni.masfico@gmail.com",
-      "active": true
-    },
-    {
-      "name": "Lan Ngọc",
-      "phone": "0888857680",
-      "zalo": "0888857680",
-      "email": "lanngoc.masfico@gmail.com",
-      "active": true
-    },
-    {
-      "name": "Kim Ngân",
-      "phone": "0888397711",
-      "zalo": "0888397711",
-      "email": "sales04.kingsmen@gmail.com",
-      "active": true
-    },
-    {
       "name": "",
       "phone": "",
       "zalo": "",
@@ -44,6 +16,13 @@
       "phone": "",
       "zalo": "",
       "email": "ai.tranthien1205@gmail.com",
+      "active": true
+    },
+    {
+      "name": " Ngọc Diễm",
+      "phone": "0888397711",
+      "zalo": "https://zalo.me/0888397711",
+      "email": "",
       "active": true
     }
   ],
