@@ -1,9 +1,9 @@
 {
-  "hotline": "0888 144 848",
+  "hotline": "0888397711",
   "cta": {
-    "phone": "0888 144 848",
-    "phone_display": "0888 144 848",
-    "zalo": "0888144848",
+    "phone": "0888397711",
+    "phone_display": "0888397711",
+    "zalo": "https://zalo.me/0888397711",
     "call_label": "📞 {phone}",
     "order_label": "ĐẶT NGAY",
     "offer_label": "🎁 NHẬN ƯU ĐÃI RA MẮT →"
@@ -41,13 +41,13 @@
   },
   "contact": {
     "address": "",
-    "email": "vuakeoxaydung@gmail.com",
+    "email": "",
     "hours": "8:00-17:00",
     "maps_url": ""
   },
   "social": {
     "facebook": "",
-    "tiktok": "https://www.tiktok.com/@vuakeoxaydung",
+    "tiktok": "https://www.tiktok.com/@vatlieumoifinex",
     "youtube": "",
     "instagram": ""
   },
