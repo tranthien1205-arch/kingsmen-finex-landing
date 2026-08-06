@@ -2,23 +2,23 @@
   "hotline": "0888397711",
   "cta": {
     "phone": "0888397711",
-    "phone_display": "0888397711",
+    "phone_display": "0888 397 711",
     "zalo": "https://zalo.me/0888397711",
     "call_label": "📞 {phone}",
     "order_label": "ĐẶT NGAY",
     "offer_label": "🎁 NHẬN ƯU ĐÃI RA MẮT →"
   },
-  "zalo_phone": "0888144848",
+  "zalo_phone": "0888397711",
   "fomo_text": "🔥 Ưu đãi ra mắt — Giảm 22-24% cho 50 đơn đầu. Kết thúc sau:",
   "fomo_countdown_hours": 48,
   "discount_badge": "RA MẮT",
   "hero_headline": "Finex F300 — Sàn Epoxy Tự Phẳng · Finish Made Easy",
   "hero_subline": "Tự phẳng thông minh · Chống thấm tuyệt đối · Không bụi - VOC. Thi công không đục phá, hoàn thiện 24-48h. Thương hiệu từ Mỹ.",
   "address": "42 Trần Lựu, Khu đô thị An Phú An Khánh, Thủ Đức, TP.HCM",
-  "email": "info@masfico.vn",
-  "facebook_url": "https://www.facebook.com/KeoKingsmen",
-  "tiktok_url": "https://www.tiktok.com/@kingsmenkeo",
-  "youtube_url": "https://www.youtube.com/@keokingsmen",
+  "email": "vatlieumoifinex@gmail.com",
+  "facebook_url": "https://www.facebook.com/vatlieumoifinex",
+  "tiktok_url": "https://www.tiktok.com/@vatlieumoifinex",
+  "youtube_url": "https://www.youtube.com/@vatlieumoifinex",
   "fomo": {
     "enabled": true,
     "bg_color": "#890606",
@@ -41,12 +41,12 @@
   },
   "contact": {
     "address": "",
-    "email": "",
+    "email": "vatlieumoifinex@gmail.com",
     "hours": "8:00-17:00",
     "maps_url": ""
   },
   "social": {
-    "facebook": "",
+    "facebook": "https://www.facebook.com/vatlieumoifinex",
     "tiktok": "https://www.tiktok.com/@vatlieumoifinex",
     "youtube": "",
     "instagram": ""
